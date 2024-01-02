@@ -1,0 +1,58 @@
+<!--
+
+50 beginner-friendly JavaScript projects that are fun to work on and can typically be completed in under two hours.
+These projects will help reinforce your understanding of JavaScript fundamentals in an engaging way
+
+1. To-Do List: Create a simple task manager to add, remove, and mark tasks as complete.
+2. Calculator: Build a basic arithmetic calculator with a user interface.
+3. Digital Clock: Make a live digital clock showing the current time.
+4. Color Flipper: Change the background color of the page randomly with a button.
+5. Counter: Implement a counter with increment, decrement, and reset functionality.
+6. Quiz App: Create a quiz game with a set of questions and score tracking.
+7. Weather App: Fetch and display weather data from an API based on user input.
+8. Rock Paper Scissors Game: Code the classic rock paper scissors game.
+9. Modal Popup: Implement a modal popup that can be opened and closed.
+10. Hangman Game: Create a simple hangman game with SVG for drawing.
+11. Form Validator: Validate a form with various fields (email, password, etc.).
+12. Recipe App: Display a list of recipes and their details.
+13. Tip Calculator: Calculate the tip amount for a restaurant bill.
+14. Palindrome Checker: Check if a word or phrase is a palindrome.
+15. Memory (Card Matching) Game: Build a card matching memory game.
+16. Animated Navigation: Implement an animated navigation menu.
+17. BMI Calculator: Calculate Body Mass Index based on weight and height.
+18. Grocery List: Manage a grocery list with add, remove, and check-off features.
+19. Word Count Tool: Create a tool that counts words and characters in text.
+20. Random Quote Generator: Display a random quote from an array of quotes.
+21. Image Slider: Make a simple image carousel/slider.
+22. Todo List with Local Storage: Enhance the to-do list with local storage to retain tasks.
+23. Countdown Timer: Set up a countdown timer for a specific date and time.
+24. Drum Kit: Create a virtual drum kit that plays sounds on key press.
+25. Expense Tracker: Track income and expenses and display the balance.
+26. Guess the Number Game: Make a number guessing game.
+27. Password Generator: Generate a random, secure password.
+28. Currency Converter: Convert amounts between different currencies using an API.
+29. Typing Speed Test: Build a typing speed test game.
+30. Note Taking App: Create an app for writing and saving notes.
+31. Drawing App: Make a basic drawing/painting app.
+32. Breakout Game: Code a simple breakout (brick breaker) game.
+33. Dice Roll Simulator: Simulate dice rolls and display outcomes.
+34. Basic Portfolio Site: Develop a portfolio website with personal info.
+35. Analog Clock: Build an analog clock interface.
+36. Sticky Navigation: Implement a navigation bar that sticks to the top on scroll.
+37. JavaScript Quiz: Create a JavaScript knowledge quiz.
+38. Mouse Move Shadow Effect: Make text shadows that move with the mouse.
+39. Movie Seat Booking: Implement a cinema seat selection interface.
+40. Filterable List: Create a list that can be filtered based on user input.
+41. Tic Tac Toe Game: Develop the classic Tic Tac Toe game.
+42. Scroll to Top Button: Add a button that scrolls the page back to the top.
+43. Balloon Popping Game: Create a game where balloons pop on click.
+44. Fruit Slicer Game: Make a simple fruit slicing game.
+45. Simple Blog: Set up a basic blog layout with posts.
+46. Weather Dashboard: Create a dashboard displaying weather for multiple locations.
+47. Interactive Story Game: Write a simple interactive story game.
+48. Light/Dark Mode Toggle: Implement a theme toggle for light and dark modes.
+49. Traffic Light Simulator: Simulate a traffic light with JavaScript.
+50. Key Event Tester: Show key code and key name when a keyboard key is pressed.
+
+
+-->
