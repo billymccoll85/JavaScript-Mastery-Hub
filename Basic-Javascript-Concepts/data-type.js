@@ -74,3 +74,27 @@ async function getData() {
         console.error(error);
     }
 }
+
+
+// Code Challenge: Print the data types of each variable
+
+console.log(typeof name); // Output: string
+console.log(typeof age); // Output: number
+console.log(typeof isStudent); // Output: boolean
+console.log(typeof fruits); // Output: object
+console.log(typeof person); // Output: object
+console.log(typeof nullValue); // Output: object
+console.log(typeof undefinedValue); // Output: undefined
+console.log(typeof id); // Output: symbol
+console.log(typeof greet); // Output: function
+console.log(typeof currentDate); // Output: object
+console.log(typeof regex); // Output: object
+console.log(typeof userMap); // Output: object
+console.log(typeof uniqueNumbers); // Output: object
+console.log(typeof bigNumber); // Output: bigint
+console.log(typeof symbol); // Output: symbol
+console.log(typeof buffer); // Output: object
+console.log(typeof view); // Output: object
+console.log(typeof typedArray); // Output: object
+console.log(typeof fetchData); // Output: function
+console.log(typeof getData); // Output: function

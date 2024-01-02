@@ -51,3 +51,17 @@ if (isLogged && hasPermission) {
 if (isPremiumUser || hasDiscount) {
     console.log("You are eligible for a special offer.");
 }
+
+
+// Code Challenge: Voting Eligibility
+// Write a function that takes an age as a parameter and returns a string indicating whether the person is eligible to vote or not.
+function checkVotingEligibility(age) {
+    if (age >= 18) {
+        return "You are eligible to vote.";
+    } else {
+        return "You are not eligible to vote yet.";
+    }
+}
+
+console.log(checkVotingEligibility(16)); // Output: You are not eligible to vote yet.
+console.log(checkVotingEligibility(21)); // Output: You are eligible to vote.

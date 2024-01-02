@@ -71,3 +71,13 @@ const logger = (function() {
 
 const loggerInstance = logger.getInstance();
 loggerInstance.logMessage();
+
+// ...
+
+// Code Challenge: Create a method in the Animal class that prints the name and type of the animal.
+Animal.prototype.printInfo = function() {
+    console.log(`Name: ${this.name}, Type: ${this.type}`);
+};
+
+dog.printInfo(); // Output: Name: Max, Type: Dog
+

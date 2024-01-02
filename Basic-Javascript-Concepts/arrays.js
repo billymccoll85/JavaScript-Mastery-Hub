@@ -71,3 +71,28 @@ const allFruitsAreLong = fruits.every((fruit) => fruit.length > 5); // Returns t
 
 // Checking if at least one array element satisfies a condition
 const hasLongFruit = fruits.some((fruit) => fruit.length > 5); // Returns true if at least one fruit has more than 5 characters
+
+
+// Challenge 1: Create a function that takes an array of numbers as input and returns the sum of all even numbers in the array.
+function sumEvenNumbers(array) {
+    let sum = 0;
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] % 2 === 0) {
+            sum += array[i];
+        }
+    }
+    return sum;
+}
+
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const evenSum = sumEvenNumbers(numbers);
+console.log('Sum of even numbers:', evenSum);
+
+// Challenge 2: Create a function that takes an array of strings as input and returns a new array with the strings sorted in descending order of their lengths.
+function sortStringsByLength(array) {
+    return array.sort((a, b) => b.length - a.length);
+}
+
+const words = ['apple', 'banana', 'orange', 'kiwi', 'pear'];
+const sortedWords = sortStringsByLength(words);
+console.log('Sorted words:', sortedWords);

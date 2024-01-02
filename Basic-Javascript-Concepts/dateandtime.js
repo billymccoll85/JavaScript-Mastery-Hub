@@ -16,3 +16,8 @@ const dayOfWeek = daysOfWeek[currentDate.getDay()]; // Get the current day of th
 // Display the current date, time, and day of the week
 console.log(`Current Date and Time: ${year}-${month}-${day} ${hours}:${minutes}:${seconds}`);
 console.log(`Current Day of the Week: ${dayOfWeek}`);
+
+// Calculate the number of days remaining in the current month
+const lastDayOfMonth = new Date(year, month, 0).getDate();
+const daysRemaining = lastDayOfMonth - day;
+console.log(`Days Remaining in the Month: ${daysRemaining}`);

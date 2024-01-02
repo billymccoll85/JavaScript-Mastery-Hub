@@ -29,3 +29,11 @@ do {
     count++; // Increments 'count' by 1 after each iteration
 } while (count <= 5);
 
+// For Loop Challenge 1
+for (let i = 2; i <= 10; i += 2) {
+    console.log(`For Loop Challenge 1: ${i}`); // Prints even numbers from 2 to 10
+}
+// For Loop Example - Reverse Order
+for (let i = 5; i >= 1; i--) {
+    console.log(`For Loop: ${i}`); // Prints numbers from 5 to 1
+}
