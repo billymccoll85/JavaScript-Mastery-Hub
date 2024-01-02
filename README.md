@@ -1,5 +1,3 @@
-# javascript-fundimentals
-
 # JavaScript Fundamentals
 
 This repository contains code examples and explanations for JavaScript fundamentals.
