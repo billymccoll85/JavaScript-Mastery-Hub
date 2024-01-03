@@ -1,0 +1,62 @@
+[
+  {
+    "id": "1",
+    "name": "New York",
+    "country": "United States",
+    "population": 8537673
+  },
+  {
+    "id": "2",
+    "name": "London",
+    "country": "United Kingdom",
+    "population": 8982000
+  },
+  {
+    "id": "3",
+    "name": "Tokyo",
+    "country": "Japan",
+    "population": 13929286
+  },
+  {
+    "id": "4",
+    "name": "Paris",
+    "country": "France",
+    "population": 2140526
+  },
+  {
+    "id": "5",
+    "name": "Berlin",
+    "country": "Germany",
+    "population": 3769495
+  },
+  {
+    "id": "6",
+    "name": "Sydney",
+    "country": "Australia",
+    "population": 5312000
+  },
+  {
+    "id": "7",
+    "name": "Rome",
+    "country": "Italy",
+    "population": 2870500
+  },
+  {
+    "id": "8",
+    "name": "Toronto",
+    "country": "Canada",
+    "population": 2731571
+  },
+  {
+    "id": "9",
+    "name": "Mumbai",
+    "country": "India",
+    "population": 18414288
+  },
+  {
+    "id": "10",
+    "name": "Cairo",
+    "country": "Egypt",
+    "population": 20484965
+  }
+]
