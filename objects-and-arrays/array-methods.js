@@ -1,110 +1,84 @@
-// Example using map method
-const numbers = [1, 2, 3, 4, 5];
-const doubledNumbers = numbers.map(num => num * 2);
-console.log(doubledNumbers); // Output: [2, 4, 6, 8, 10]
+// Define a variable
+let x;
 
-// Example using filter method
-const words = ['apple', 'banana', 'cherry', 'date', 'elderberry'];
-const filteredWords = words.filter(word => word.length > 5);
-console.log(filteredWords); // Output: ['banana', 'cherry', 'elderberry']
+// Create an array
+const arr = [28, 38, 44, 29, 109];
 
-// Example using reduce method
-const values = [10, 20, 30, 40, 50];
-const sum = values.reduce((acc, curr) => acc + curr, 0);
-console.log(sum); // Output: 150
+// push() - Add a value to the end of the array
+arr.push(100);
 
-// Example using forEach method
-const fruits = ['apple', 'banana', 'cherry'];
-fruits.forEach(fruit => console.log(fruit)); // Output: 'apple', 'banana', 'cherry'
+// pop() - Remove the last value from the array
+arr.pop();
 
-// Example using find method
-const ages = [25, 30, 35, 40, 45];
-const foundAge = ages.find(age => age > 35);
-console.log(foundAge); // Output: 40
+// unshift() - Add a value to the beginning of the array
+arr.unshift(99);
 
-// Example using some method
-const numbers = [1, 2, 3, 4, 5];
-const hasEvenNumber = numbers.some(num => num % 2 === 0);
-console.log(hasEvenNumber); // Output: true
+// shift() - Remove the first value from the array
+arr.shift();
 
-// Example using every method
-const grades = [80, 85, 90, 95, 100];
-const allPassing = grades.every(grade => grade >= 70);
-console.log(allPassing); // Output: true
+// reverse() - Reverse the order of the array elements
+arr.reverse();
 
-// Example using includes method
-const fruits = ['apple', 'banana', 'cherry'];
-const hasBanana = fruits.includes('banana');
-console.log(hasBanana); // Output: true
+// includes() - Check if a value is present in the array
+x = arr.includes(445);
 
-// Example using sort method
-const names = ['John', 'Alice', 'Bob', 'David'];
-names.sort();
-console.log(names); // Output: ['Alice', 'Bob', 'David', 'John']
+// indexOf() - Find the index of the first occurrence of a value in the array
+x = arr.indexOf(28);
 
-// Example using reverse method
-const numbers = [1, 2, 3, 4, 5];
-numbers.reverse();
-console.log(numbers); // Output: [5, 4, 3, 2, 1]
+// Convert the array to a string
+x = arr.toString();
+x = arr.join();
 
-// Array shift()
-console.log(numbers.shift()); // Output: 5
-console.log(numbers); // Output: [4, 3, 2, 1]
+// slice() - Create a new array with selected elements from the original array
+x = arr.slice(1, 4);
 
-// Array unshift()
-numbers.unshift(6);
-console.log(numbers); // Output: [6, 4, 3, 2, 1]
+// splice() - Remove or replace elements in the array
+x = arr.splice(1, 4);
 
-// Array delete()
-delete numbers[2];
-console.log(numbers); // Output: [6, 4, empty, 2, 1]
+// Remove a single element from the array
+x = arr.splice(4, 1);
 
-// Array concat()
-const moreNumbers = [7, 8, 9];
-const combinedNumbers = numbers.concat(moreNumbers);
-console.log(combinedNumbers); // Output: [6, 4, empty, 2, 1, 7, 8, 9]
+// Chaining methods - Combine multiple array methods together
+x = arr.slice(1, 4).reverse().toString().charAt(0);
 
-// Array copyWithin()
-numbers.copyWithin(1, 0, 2);
-console.log(numbers); // Output: [6, 6, empty, 2, 1]
+console.log(x);
 
-// Array flat()
-const nestedArray = [1, [2, 3], [4, [5, 6]]];
-const flattenedArray = nestedArray.flat();
-console.log(flattenedArray); // Output: [1, 2, 3, 4, [5, 6]]
+// Real-world example for each method:
 
-// Array splice()
-const fruits = ['apple', 'banana', 'cherry', 'date'];
-fruits.splice(2, 1, 'grape');
-console.log(fruits); // Output: ['apple', 'banana', 'grape', 'date']
+// push() - Adding a new item to a shopping cart
+const shoppingCart = ['apple', 'banana', 'orange'];
+shoppingCart.push('grapes');
 
-// Array toSpliced()
-const splicedFruits = fruits.splice(1, 2);
-console.log(splicedFruits); // Output: ['banana', 'grape']
-console.log(fruits); // Output: ['apple', 'date']
+// pop() - Removing the last item from a shopping cart
+shoppingCart.pop();
 
-// Array slice()
-const slicedFruits = fruits.slice(1, 3);
-console.log(slicedFruits); // Output: ['date']
-const numbers = [1, 2, 3, 4, 5];
-numbers.reverse();
-console.log(numbers); // Output: [5, 4, 3, 2, 1]
+// unshift() - Adding a new item to the beginning of a to-do list
+const toDoList = ['Buy groceries', 'Pay bills', 'Clean the house'];
+toDoList.unshift('Walk the dog');
 
-// Array length
-console.log(numbers.length); // Output: 5
+// shift() - Removing the first item from a to-do list
+toDoList.shift();
 
-// Array toString()
-console.log(numbers.toString()); // Output: "1,2,3,4,5"
+// reverse() - Reversing the order of a playlist
+const playlist = ['song1', 'song2', 'song3'];
+playlist.reverse();
 
-// Array at()
-console.log(numbers[2]); // Output: 3
+// includes() - Checking if a username is taken
+const usernames = ['john', 'mary', 'alex'];
+const isTaken = usernames.includes('alex');
 
-// Array join()
-console.log(numbers.join('-')); // Output: "1-2-3-4-5"
+// indexOf() - Finding the index of a specific book in a library catalog
+const libraryCatalog = ['book1', 'book2', 'book3'];
+const bookIndex = libraryCatalog.indexOf('book2');
 
-// Array pop()
-console.log(numbers.pop()); // Output: 5
+// slice() - Creating a new array with selected items from a menu
+const menu = ['pizza', 'burger', 'salad', 'pasta'];
+const selectedItems = menu.slice(1, 3);
 
-// Array push()
-numbers.push(6);
-console.log(numbers); // Output: [1, 2, 3, 4, 6]
+// splice() - Removing or replacing items in a shopping list
+const shoppingList = ['milk', 'bread', 'eggs', 'butter'];
+shoppingList.splice(2, 1);
+
+// Convert the array to a string
+const stringArray = ['Hello', 'World'];
+const string = stringArray.toString();

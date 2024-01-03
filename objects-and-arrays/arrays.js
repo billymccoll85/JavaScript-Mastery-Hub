@@ -1,98 +1,35 @@
-// Creating an empty array
-const emptyArray = [];
+// Declare a variable
+let x;
 
-// Creating an array with initial values
-const fruits = ['apple', 'banana', 'orange'];
+// Array Literal
+const numbers = [100, 200, 300, 400, 500];
+const mixed = [100, 'World', true, undefined];
 
-// Accessing array elements using index
-const firstFruit = fruits[0]; // Retrieves the first element 'apple'
+// Array Constructor
+const fruits = new Array('banana', 'apple', 'orange');
 
-// Modifying array elements using index
-fruits[1] = 'grape'; // Changes the second element to 'grape'
+// Get value by index
+x = numbers[1]; // Assign the value at index 1 of the numbers array to x
 
-// Adding elements to the end of an array
-fruits.push('kiwi'); // Adds 'kiwi' to the end of the array
+x = numbers[1] + numbers[3]; // Assign the sum of values at index 1 and 3 of the numbers array to x
 
-// Removing the last element from an array
-const lastFruit = fruits.pop(); // Removes and returns 'kiwi'
+x = `My favorite fruit is a ${fruits[0]}`; // Assign a string with the first fruit from the fruits array to x
 
-// Adding elements to the beginning of an array
-fruits.unshift('pear'); // Adds 'pear' to the beginning of the array
+x = numbers.length; // Assign the length of the numbers array to x
 
-// Removing the first element from an array
-const firstElement = fruits.shift(); // Removes and returns 'pear'
+fruits[0] = 'kiwi'; // Update the value at index 0 of the fruits array to 'kiwi'
 
-// Finding the index of an element in an array
-const index = fruits.indexOf('banana'); // Returns the index of 'banana' (1)
+// fruits.length = 2; // Uncomment this line to truncate the fruits array to a length of 2
 
-// Checking if an element exists in an array
-const hasOrange = fruits.includes('orange'); // Returns true if 'orange' exists in the array
+fruits[3] = 'strawberry'; // Add 'strawberry' at index 3 of the fruits array
 
-// Removing elements from an array by index
-const removedFruit = fruits.splice(1, 1); // Removes 1 element at index 1 ('banana')
+// Using the length as the index will always add to the end
+fruits[fruits.length] = 'blueberry'; // Add 'blueberry' at the end of the fruits array
+fruits[fruits.length] = 'peach'; // Add 'peach' at the end of the fruits array
 
-// Slicing an array to create a new array
-const slicedFruits = fruits.slice(1, 3); // Creates a new array with elements at index 1 and 2 ('grape', 'orange')
+x = fruits; // Assign the fruits array to x
 
-// Concatenating arrays
-const moreFruits = ['mango', 'pineapple'];
-const allFruits = fruits.concat(moreFruits); // Combines the two arrays
+console.log(x); // Output the value of x
 
-// Sorting an array
-fruits.sort(); // Sorts the array in alphabetical order
-
-// Reversing the order of elements in an array
-fruits.reverse(); // Reverses the order of elements in the array
-
-// Checking the length of an array
-const arrayLength = fruits.length; // Returns the number of elements in the array
-
-// Iterating over array elements using a loop
-for (let i = 0; i < fruits.length; i++) {
-    console.log(fruits[i]); // Prints each element of the array
-}
-
-// Iterating over array elements using forEach method
-fruits.forEach((fruit) => {
-    console.log(fruit); // Prints each element of the array
-});
-
-// Mapping array elements to a new array
-const uppercasedFruits = fruits.map((fruit) => fruit.toUpperCase()); // Creates a new array with uppercased elements
-
-// Filtering array elements based on a condition
-const filteredFruits = fruits.filter((fruit) => fruit.length > 5); // Creates a new array with fruits having more than 5 characters
-
-// Reducing array elements to a single value
-const totalLength = fruits.reduce((acc, fruit) => acc + fruit.length, 0); // Calculates the total length of all fruits
-
-// Checking if all array elements satisfy a condition
-const allFruitsAreLong = fruits.every((fruit) => fruit.length > 5); // Returns true if all fruits have more than 5 characters
-
-// Checking if at least one array element satisfies a condition
-const hasLongFruit = fruits.some((fruit) => fruit.length > 5); // Returns true if at least one fruit has more than 5 characters
-
-
-// Challenge 1: Create a function that takes an array of numbers as input and returns the sum of all even numbers in the array.
-function sumEvenNumbers(array) {
-    let sum = 0;
-    for (let i = 0; i < array.length; i++) {
-        if (array[i] % 2 === 0) {
-            sum += array[i];
-        }
-    }
-    return sum;
-}
-
-const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-const evenSum = sumEvenNumbers(numbers);
-console.log('Sum of even numbers:', evenSum);
-
-// Challenge 2: Create a function that takes an array of strings as input and returns a new array with the strings sorted in descending order of their lengths.
-function sortStringsByLength(array) {
-    return array.sort((a, b) => b.length - a.length);
-}
-
-const words = ['apple', 'banana', 'orange', 'kiwi', 'pear'];
-const sortedWords = sortStringsByLength(words);
-console.log('Sorted words:', sortedWords);
+const names = ['John', 'Jane', 'Mike', 'Emily'];
+console.log(names); // Output: ['John', 'Jane', 'Mike', 'Emily']
