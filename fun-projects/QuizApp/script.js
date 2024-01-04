@@ -120,3 +120,82 @@
 // - Offer rewards or points for completing daily challenges
 
 // These functionalities utilize different aspects of the PokéAPI, providing varied and engaging content for users.
+
+let askedQuestions = [];
+let score = localStorage.getItem('score') ? parseInt(localStorage.getItem('score')) : 0;
+let progress = localStorage.getItem('progress') ? parseInt(localStorage.getItem('progress')) : 0;
+let totalQuestionsAsked = 0;
+
+// Function fetchNewQuestion():
+function fetchNewQuestion() {
+    showLoader(true);
+
+    // Fetch 151 Pokémon from the Pokémon API
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
+        .then(response => response.json())
+        .then(data => {
+            // Select a random Pokémon that has not been asked before
+            let randomPokemon;
+            do {
+                randomPokemon = data.results[Math.floor(Math.random() * data.results.length)];
+            } while (askedQuestions.includes(randomPokemon.name));
+
+            // Fetch detailed data of the selected Pokémon
+            fetch(randomPokemon.url)
+                .then(response => response.json())
+                .then(pokemonData => {
+                    // Generate and display the question and image of the Pokémon
+                    const question = `What is the name of this Pokémon?`;
+                    const imageUrl = pokemonData.sprites.front_default;
+                    displayQuestion(question, imageUrl);
+
+                    // Generate four choices, including the correct answer
+                    const choices = generateChoices(data.results, randomPokemon.name);
+
+                    // Randomize the order of choices and display them
+                    const randomizedChoices = randomizeChoices(choices);
+                    displayChoices(randomizedChoices);
+
+                    // Add the index of the asked question to the askedQuestions array
+                    askedQuestions.push(randomPokemon.name);
+
+                    // Increment totalQuestionsAsked
+                    totalQuestionsAsked++;
+
+                    // If all questions have been asked, call handleQuizCompletion()
+                    if (totalQuestionsAsked === data.results.length) {
+                        handleQuizCompletion();
+                    } else {
+                        // Else, hide the loader
+                        showLoader(false);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching Pokémon data:', error);
+                    showLoader(false);
+                });
+        })
+        .catch(error => {
+            console.error('Error fetching Pokémon list:', error);
+            showLoader(false);
+        });
+}
+
+// Function showLoader(isLoading):
+function showLoader(isLoading) {
+    const loader = document.getElementById('loader');
+    if (isLoading) {
+        loader.style.display = 'block';
+    } else {
+        loader.style.display = 'none';
+    }
+}
+
+// Function updateScoreAndProgress():
+function updateScoreAndProgress() {
+    const scoreElement = document.getElementById('score');
+    const progressElement = document.getElementById('progress');
+    
+    scoreElement.textContent = `Score: ${score}`;
+    progressElement.textContent = `Progress: ${progress}%`;
+}
