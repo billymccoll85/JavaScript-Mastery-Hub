@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Pokemon Quiz</h1>
+    </header>
+
+    <main>
+        <section id="quiz-section">
+            <h2 id="question">Loading question...</h2>
+            <div id="loader" style="display: none;">Loading...</div>
+            <div id="choices">
+                <!-- Choices will be populated here -->
+            </div>
+            <button id="next">Next</button>
+        </section>
+
+        <section id="result-section" style="display: none;">
+            <h2>Your Score:</h2>
+            <p id="score"></p>
+
+            <div class="progress-bar-container">
+                <span>Progress:</span>
+                <div id="progress-bar"></div>
+            </div>
+            <p id="score-counter">Score: 0</p>
+            <button id="restart">Restart Quiz</button>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
