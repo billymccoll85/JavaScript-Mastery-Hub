@@ -120,17 +120,3 @@
 // - Offer rewards or points for completing daily challenges
 
 // These functionalities utilize different aspects of the PokéAPI, providing varied and engaging content for users.
-
-let askedQuestions = [];
-let score = localStorage.getItem('score') ? parseInt(localStorage.getItem('score')) : 0;
-let progress = localStorage.getItem('progress') ? parseInt(localStorage.getItem('progress')) : 0;
-let totalQuestionsAsked = 0;
-
-fetch('https://pokeapi.co/api/v2/pokemon?limit=9999')
-    .then(response => response.json())
-    .then(data => {
-        console.log(data.results);
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
