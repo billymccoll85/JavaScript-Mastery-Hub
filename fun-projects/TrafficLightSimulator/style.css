@@ -1,0 +1,42 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.traffic-light {
+    width: 100px;
+    height: 300px;
+    background-color: #333;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+}
+
+.light {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#red.active {
+    background-color: #f00;
+}
+
+#yellow.active {
+    background-color: #ff0;
+}
+
+#green.active {
+    background-color: #0f0;
+}
