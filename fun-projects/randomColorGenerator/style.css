@@ -1,0 +1,18 @@
+.color-box {
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    margin: 5px;
+    position: relative;
+    cursor: pointer;
+}
+
+.color-box-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px black;
+}
