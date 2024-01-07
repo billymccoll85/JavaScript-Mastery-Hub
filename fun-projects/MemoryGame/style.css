@@ -1,0 +1,73 @@
+/* Base Styles */
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #f2f2f2;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Center the game board */
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Main title */
+  h1 {
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+  }
+  
+  /* Description */
+  p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: #555;
+  }
+  
+  /* Game board layout */
+  .game-board {
+    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+  }
+  
+  /* Card styles */
+  .card {
+    width: 100%;
+    aspect-ratio: 1/1;
+    background-color: #007aff;
+    color: #ffffff;
+    font-size: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+  }
+  
+  .card.flipped {
+    background-color: #ffffff;
+    color: #007aff;
+    transform: scale(1.1);
+  }
+  
+  /* Hide cards that are matched */
+  .card.matched {
+    visibility: hidden;
+  }
+  
+  /* Success message styling */
+  #message {
+    font-size: 2em;
+    margin-top: 1em;
+    transition: opacity 0.5s ease;
+    opacity: 0;
+  }
+  
