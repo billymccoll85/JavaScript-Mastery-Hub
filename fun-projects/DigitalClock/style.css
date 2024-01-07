@@ -1,0 +1,18 @@
+/* Clock container */
+.clock {
+    font-size: 72px;
+    text-align: center;
+    margin-top: 50px;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Time elements */
+  .time {
+    padding: 10px;
+  }
+  
+  /* Accessibility: High contrast for readability */
+  span {
+    color: #333;
+  }
+  
