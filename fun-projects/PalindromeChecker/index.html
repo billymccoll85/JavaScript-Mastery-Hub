@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>palindrome checker</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="flex items-center justify-center h-screen bg-gray-200">
+        <div class="w-full max-w-md">
+            <h2 class="text-center text-2xl font-bold mb-4">Palindrome Checker</h2>
+            <p class="text-center mb-4">A palindrome is a word, phrase, number, or other sequence of characters that reads the same forward and backward.</p>
+            <p class="text-center mb-4">Example: "racecar"</p>
+            <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="word">
+                        Enter a word:
+                    </label>
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="word" type="text" placeholder="Word">
+                </div>
+                <div class="flex items-center justify-between">
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" id="check">
+                        Check Palindrome
+                    </button>
+                </div>
+                <p class="text-center mt-4" id="result"></p>
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
