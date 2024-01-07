@@ -1,0 +1,57 @@
+/* Base Styles */
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    background-color: #f2f2f2;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Centered Content */
+.container {
+    text-align: center;
+    margin: auto;
+    max-width: 600px;
+    padding: 2em;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 6px #aaa;
+}
+
+/* Main title */
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+}
+
+/* Description */
+p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* Enhanced Button Styles */
+.choices button {
+    font-size: 2em;
+    padding: 1em 2em;
+    margin: 1em;
+    border: 2px solid #007aff;
+    border-radius: 50%;  /* Circular buttons */
+    background-color: #007aff;
+    color: #007aff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.choices button:hover {
+    background-color: #007aff;
+    color: #ffffff;
+}
+
+/* Result Display */
+.result-container p {
+    font-size: 1.5em;
+    margin-top: 1em;
+    transition: color 0.3s ease;
+}
+  
