@@ -1,3 +1,28 @@
+/* 
+Comparison operators are used to compare values and return a boolean result, either true or false. They are commonly used in conditional statements and loops to make decisions based on the comparison result.
+
+Here are the different comparison operators and their explanations:
+
+Equality Operator (==): The equality operator compares two values and returns true if they are equal, regardless of their data types. For example, 5 == 5 would return true.
+
+Strict Equality Operator (===): The strict equality operator also compares two values for equality, but it considers both the values and their data types. It returns true only if both the values and their types are the same. For example, 5 === 5 would return true, but 5 === '5' would return false.
+
+Inequality Operator (!=): The inequality operator checks if two values are not equal and returns true if they are not equal, regardless of their data types. For example, 5 != 10 would return true.
+
+Strict Inequality Operator (!==): The strict inequality operator compares two values and returns true if they are not equal, considering both the values and their data types. For example, 5 !== '5' would return true, but 5 !== 5 would return false.
+
+Less Than Operator (<): The less than operator compares two values and returns true if the left operand is less than the right operand. For example, 3 < 8 would return true.
+
+Greater Than Operator (>): The greater than operator compares two values and returns true if the left operand is greater than the right operand. For example, 10 > 5 would return true.
+
+Less Than or Equal To Operator (<=): The less than or equal to operator compares two values and returns true if the left operand is less than or equal to the right operand. For example, 4 <= 6 would return true.
+
+Greater Than or Equal To Operator (>=): The greater than or equal to operator compares two values and returns true if the left operand is greater than or equal to the right operand. For example, 7 >= 7 would return true.
+
+These comparison operators are fundamental in programming and are used to make decisions and perform comparisons in various scenarios.
+*/
+
+
 // Arithmetic Operators
 // Perform mathematical calculations
 const addition = 5 + 3; // Adds two numbers: 5 + 3 = 8

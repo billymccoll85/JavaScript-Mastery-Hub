@@ -1,3 +1,25 @@
+/*
+The if statement is a fundamental control flow statement in JavaScript. It allows you to execute a block of code only if a certain condition is true. Here's how it works:
+
+The if keyword is followed by a set of parentheses (). Inside the parentheses, you specify the condition that you want to evaluate. This condition should be an expression that results in a boolean value (true or false).
+
+After the closing parenthesis, you open a block of code using curly braces {}. This block of code contains the statements that will be executed if the condition is true.
+
+If the condition inside the parentheses is true, the block of code inside the curly braces will be executed. If the condition is false, the block of code will be skipped, and the program will continue to the next statement after the if block.
+
+Here's an example:
+let age = 20;
+
+if (age >= 18) {
+    console.log("You are eligible to vote.");
+}
+
+In this example, the condition age >= 18 is evaluated. If the value of age is greater than or equal to 18, the message "You are eligible to vote." will be printed to the console. Otherwise, nothing will happen.
+
+It's important to note that the block of code inside the if statement can contain multiple statements, separated by semicolons. You can also nest if statements inside each other to create more complex conditional logic.
+*/
+
+
 // If Statement
 // Use case: Execute a block of code if a condition is true
 if (age >= 18) {
@@ -22,24 +44,6 @@ if (score >= 90) {
     console.log("You need to improve your score.");
 }
 
-// Switch Statement
-// Use case: Execute different blocks of code based on the value of a variable
-switch (dayOfWeek) {
-    case "Monday":
-        console.log("It's the start of the week.");
-        break;
-    case "Friday":
-        console.log("It's the end of the week.");
-        break;
-    default:
-        console.log("It's a regular day.");
-}
-
-// Ternary Operator (Shorthand for if-else)
-// Use case: Assign a value or execute a block of code based on a condition in a concise way
-const message = isMorning ? "Good morning!" : "Good day!";
-console.log(message);
-
 // Logical AND (&&) Short-circuit Evaluation (Shorthand)
 // Use case: Execute a block of code if multiple conditions are true
 if (isLogged && hasPermission) {
@@ -51,7 +55,6 @@ if (isLogged && hasPermission) {
 if (isPremiumUser || hasDiscount) {
     console.log("You are eligible for a special offer.");
 }
-
 
 // Code Challenge: Voting Eligibility
 // Write a function that takes an age as a parameter and returns a string indicating whether the person is eligible to vote or not.
