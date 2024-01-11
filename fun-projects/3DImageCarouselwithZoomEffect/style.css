@@ -1,63 +1,114 @@
+/* General styling */
 body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: #333;
-    margin: 0 20px;
-}
-
-.title {
-    text-align: center;
-    color: white;
-    font-family: Arial, sans-serif;
-}
-
-.clock {
+    margin: 0;
+    background: #484848;  /* Airbnb's dark gray */
+    user-select: none;
+    font-family: 'Helvetica Neue', sans-serif;  /* Airbnb's font */
+  }
+  
+  /* Slider container */
+  #slider {
     position: relative;
-    width: 200px;
-    height: 200px;
-    border: 16px solid white;
-    border-radius: 50%;
-    background: black;
-}
-
-.hour-hand, .minute-hand, .second-hand, .center-dot {
-    position: absolute;
-    bottom: 50%;
+    width: 50%;
+    height: 32vw;
+    margin: 150px auto;
+    perspective: 1400px;
+    transform-style: preserve-3d;
+    border-radius: 12px;  /* Rounded corners */
+  }
+  
+  /* Radio buttons for slide control */
+  input[type=radio] {
+    position: relative;
+    top: 108%;
     left: 50%;
-    transform-origin: bottom;
-}
-
-.hour-hand {
-    width: 0;
-    height: 50px;
-    border: 1px solid white;
-    transform: translateX(-50%);
-}
-
-.minute-hand {
-    width: 0;
-    height: 70px;
-    border: 1px solid white;
-    transform: translateX(-50%);
-}
-
-.second-hand {
-    width: 0;
-    height: 90px;
-    border: 1px solid red;
-    transform: translateX(-50%);
-}
-
-.center-dot {
+    width: 20px;  /* Slightly larger */
+    height: 20px;  /* Slightly larger */
+    margin: 0 15px 0 0;
+    background: #ccc;  /* Light gray */
+    border: 2px solid #ccc;  /* Light gray */
+    border-radius: 50%;  /* Rounded corners */
+    cursor: pointer;
+    transform: translateX(-83px);
+    transition: background 300ms ease, border 300ms ease;  /* Smooth transition */
+  }
+  
+  input[type=radio]:checked {
+    background: #FF5A5F;  /* Airbnb's coral red */
+    border: 2px solid #FF5A5F;  /* Airbnb's coral red */
+  }
+  
+  /* Labels and images */
+  #slider label,
+  #slider label img {
     position: absolute;
-    bottom: 50%;
-    left: 50%;
-    width: 12px;
-    height: 12px;
-    background: white;
-    border-radius: 50%;
-    transform: translate(-50%, 50%);
-}
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    border-radius: 12px;  /* Rounded corners */
+    transition: transform 400ms ease, opacity 400ms ease;  /* Added opacity transition */
+  }
+  
+  /* New addition for Zoom Effect */
+  .zoom-container {
+    overflow: hidden; /* Hide the part of the image that extends outside the div */
+  }
+  
+  /* Zoom effect */
+  .zoom-container:hover {
+    cursor: default; /* Change cursor to zoom-in icon */
+  }
+  
+  .zoom-container.can-zoom:hover img {
+    transform: scale(1.4); /* Zoom level */
+    transition: transform .5s ease-in-out;
+  }
+  
+  
+  /* Existing transition rules */
+  #s1:checked ~ #slide1, 
+  #s2:checked ~ #slide2, 
+  #s3:checked ~ #slide3, 
+  #s4:checked ~ #slide4, 
+  #s5:checked ~ #slide5 {
+    box-shadow: 0 13px 26px rgba(0,0,0, 0.3), 0 12px 6px rgba(0,0,0, 0.2);
+    transform: translate3d(0%, 0, 0px);
+  }
+  
+  #s1:checked ~ #slide2, 
+  #s2:checked ~ #slide3, 
+  #s3:checked ~ #slide4, 
+  #s4:checked ~ #slide5, 
+  #s5:checked ~ #slide1 {
+    box-shadow: 0 6px 10px rgba(0,0,0, 0.3), 0 2px 2px rgba(0,0,0, 0.2);
+    transform: translate3d(20%, 0, -100px);
+  }
+  
+  #s1:checked ~ #slide3,
+  #s2:checked ~ #slide4,
+  #s3:checked ~ #slide5,
+  #s4:checked ~ #slide1,
+  #s5:checked ~ #slide2 {
+    box-shadow: 0 1px 4px rgba(0,0,0, 0.4);
+    transform: translate3d(40%, 0, -250px);
+  }
+  
+  #s1:checked ~ #slide4,
+  #s2:checked ~ #slide5,
+  #s3:checked ~ #slide1,
+  #s4:checked ~ #slide2,
+  #s5:checked ~ #slide3 {
+    box-shadow: 0 1px 4px rgba(0,0,0, 0.4);
+    transform: translate3d(-40%, 0, -250px);
+  }
+  
+  #s1:checked ~ #slide5,
+  #s2:checked ~ #slide1,
+  #s3:checked ~ #slide2,
+  #s4:checked ~ #slide3,
+  #s5:checked ~ #slide4 {
+    box-shadow: 0 6px 10px rgba(0,0,0, 0.3), 0 2px 2px rgba(0,0,0, 0.2);
+    transform: translate3d(-20%, 0, -100px);
+  }
+  

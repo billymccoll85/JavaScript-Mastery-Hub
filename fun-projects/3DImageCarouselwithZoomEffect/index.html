@@ -1,19 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Analog Clock</title>
+  <meta charset="UTF-8">
+  <title>3D Image Carousel</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1 class="title">My Analog Clock</h1>
-    <div class="clock">
-        <div class="hour-hand"></div>
-        <div class="minute-hand"></div>
-        <div class="second-hand"></div>
-        <div class="center-dot"></div>
-    </div>
-    <script src="script.js"></script>
+  <section id="slider">
+    <input type="radio" name="slider" id="s1" data-slide="1" checked>
+    <input type="radio" name="slider" id="s2" data-slide="2">
+    <input type="radio" name="slider" id="s3" data-slide="3">
+    <input type="radio" name="slider" id="s4" data-slide="4">
+    <input type="radio" name="slider" id="s5" data-slide="5">
+    <label for="s1" id="slide1">
+      <div class="zoom-container" data-slide="1">
+        <img src="https://source.unsplash.com/random/800x600?sig=1" alt="Image 1">
+      </div>
+    </label>
+    <label for="s2" id="slide2">
+      <div class="zoom-container" data-slide="2">
+        <img src="https://source.unsplash.com/random/800x600?sig=2" alt="Image 2">
+      </div>
+    </label>
+    <label for="s3" id="slide3">
+      <div class="zoom-container" data-slide="3">
+        <img src="https://source.unsplash.com/random/800x600?sig=3" alt="Image 3">
+      </div>
+    </label>
+    <label for="s4" id="slide4">
+      <div class="zoom-container" data-slide="4">
+        <img src="https://source.unsplash.com/random/800x600?sig=4" alt="Image 4">
+      </div>
+    </label>
+    <label for="s5" id="slide5">
+      <div class="zoom-container" data-slide="5">
+        <img src="https://source.unsplash.com/random/800x600?sig=5" alt="Image 5">
+      </div>
+    </label>
+  </section>
+  <script src="script.js"></script>
 </body>
 </html>
