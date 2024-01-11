@@ -1,0 +1,64 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+  }
+  
+  #container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  }
+  
+  #facts-container {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    text-align: center;
+  }
+  
+  #fact-display h3 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  #fact-display p {
+    font-size: 18px;
+    color: #555;
+  }
+  
+  .pagination-dot {
+    display: inline-block;
+    margin: 5px;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    box-sizing: border-box;
+  }
+  
+  .pagination-dot:hover {
+    background-color: #eee;
+  }
+  
+  .pagination-dot.active {
+    background-color: #FF385C;
+    color: #fff;
+    border: 1px solid #FF385C;
+  }
+  
+  #prev-arrow, #next-arrow {
+    margin: 5px;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
