@@ -1,0 +1,164 @@
+
+html, body{
+    font-size:16px;
+  }
+  
+  .wrapper{
+    height:100vh;
+    width:100vw;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient:vertical;
+    -webkit-box-direction:normal;
+        -ms-flex-flow:column;
+            flex-flow:column;
+    -webkit-box-pack:center;
+        -ms-flex-pack:center;
+            justify-content:center;
+    -webkit-box-align:center;
+        -ms-flex-align:center;
+            align-items:center;
+    background-color: #b9ccc4;
+  }
+  
+  .dice-wrapper {
+    height: 5rem;
+    width: 5rem;
+    border-radius: 20px;
+    overflow: hidden;
+    -webkit-box-shadow: -7px 10px 12px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: -7px 10px 12px 0px rgba(0, 0, 0, 0.75);
+    margin: 0.5rem;
+  }
+  
+  .dice {
+    height: 100%;
+    width:  100%;
+    background: -o-linear-gradient(305deg, #dcf3e9, #b9ccc4);
+    background: linear-gradient(145deg, #dcf3e9, #b9ccc4);
+    -webkit-box-shadow: 8px 8px 16px #a9bab3, -8px -8px 16px #f3ffff;
+            box-shadow: 8px 8px 16px #a9bab3, -8px -8px 16px #f3ffff;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  
+  .dice-face {
+    height: 4rem;
+    width: 4rem;
+    border-radius: 65px;
+    background: #cee3da;
+    -webkit-box-shadow: 8px 8px 16px #a9bab3, -8px -8px 16px #f3ffff;
+            box-shadow: 8px 8px 16px #a9bab3, -8px -8px 16px #f3ffff;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  
+    .dot-wrapper {
+      height: 2.5rem;
+      width: 2.5rem;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+              justify-content: space-between;
+    }
+  
+  .dot{
+  width: 11px;
+  height: 11px;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  background: #cee3da;
+  -webkit-box-shadow: inset 8px 8px 16px #357e83, inset -8px -8px 16px #f3ffff;
+          box-shadow: inset 8px 8px 16px #357e83, inset -8px -8px 16px #f3ffff;
+  }
+  
+  .dot-column {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  
+  @-webkit-keyframes rollAnimation {
+    from {
+      -ms-transform: rotateY(0deg);
+      -webkit-transform: rotateY(0deg);
+              transform: rotateY(0deg);
+    }
+    to {
+      -ms-transform: rotateY(-360deg);
+      -webkit-transform: rotateY(-360deg);
+              transform: rotateY(-360deg);
+    }
+  }
+  
+  @keyframes rollAnimation {
+    from {
+      -ms-transform: rotateY(0deg);
+      -webkit-transform: rotateY(0deg);
+              transform: rotateY(0deg);
+    }
+    to {
+      -ms-transform: rotateY(-360deg);
+      -webkit-transform: rotateY(-360deg);
+              transform: rotateY(-360deg);
+    }
+  }
+  
+  .rolling {
+    -webkit-animation-name: rollAnimation;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-duration: 0.5s;
+  
+    animation-name: rollAnimation;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-duration: 0.5s;
+  
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+  }
+  
+  .button{
+    margin: 10px;
+    font-size: 1.5rem;
+    font-family: 'Helvetica';
+    color: #E7F7F4;
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .button:hover{
+    cursor: pointer;
+    -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+            transform: scale(1.1);
+  }
