@@ -1,27 +1,54 @@
-// Select the clock and its hands from the DOM
-const clockContainer = document.querySelector('.clock');
-const hourHand = document.querySelector('.hour-hand');
-const minuteHand = document.querySelector('.minute-hand');
-const secondHand = document.querySelector('.second-hand');
+let currentSlide = 1;
+let isPaused = false; // Variable to check if the slideshow is paused
 
-// Function to rotate the clock hands
-function rotateClockHands() {
-    // Get the current date and time
-    const currentDate = new Date();
-    const hours = currentDate.getHours();
-    const minutes = currentDate.getMinutes();
-    const seconds = currentDate.getSeconds();
+// Function to change the slide
+const changeSlide = () => {
+  if (!isPaused) {
+    // Remove 'can-zoom' class from all slides
+    document.querySelectorAll('.zoom-container').forEach((container) => {
+      container.classList.remove('can-zoom');
+    });
 
-    // Calculate the rotation for each hand
-    const hourRotation = (hours * 30) + (minutes / 2); // Each hour represents 30 degrees
-    const minuteRotation = (minutes * 6) + (seconds / 10); // Each minute represents 6 degrees
-    const secondRotation = seconds * 6; // Each second represents 6 degrees
+    // Set the active slide
+    const activeSlide = document.getElementById(`s${currentSlide}`);
+    activeSlide.checked = true;
 
-    // Apply the rotation to each hand
-    hourHand.style.transform = `rotate(${hourRotation}deg)`;
-    minuteHand.style.transform = `rotate(${minuteRotation}deg)`;
-    secondHand.style.transform = `rotate(${secondRotation}deg)`;
-}
+    // Add 'can-zoom' class to the active slide
+    const activeContainer = document.querySelector(`.zoom-container[data-slide="${currentSlide}"]`);
+    if (activeContainer) {
+      activeContainer.classList.add('can-zoom');
+    }
 
-// Call the rotateClockHands function every 1000ms (1 second)
-setInterval(rotateClockHands, 1000);
+    // Move to the next slide
+    currentSlide++;
+    if (currentSlide > 5) {
+      currentSlide = 1;
+    }
+  }
+};
+
+// Start the auto-scroll
+let slideInterval = setInterval(changeSlide, 5000);
+
+// Function to pause the auto-scroll
+const pauseSlide = () => {
+  isPaused = true;
+};
+
+// Function to resume the auto-scroll
+const resumeSlide = () => {
+  isPaused = false;
+};
+
+// Adding event listeners to pause and resume auto-scroll on hover
+document.querySelectorAll('.zoom-container').forEach((container) => {
+  container.addEventListener('mouseover', () => {
+    if (!container.classList.contains('can-zoom')) {
+      return;
+    }
+    pauseSlide();
+  });
+  container.addEventListener('mouseout', () => {
+    resumeSlide();
+  });
+});
