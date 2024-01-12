@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Drawing app</title>
+</head>
+<body>
+
+    <div class="controls">
+        <h3>Shape:</h3>
+        <div class='lightBorder' >
+        <p><input type="radio" name="shape" value="line" checked="checked"> Line</p>
+        <p><input type="radio" name="shape" value="rect"> Rectangle</p>
+        <p><input type="radio" name="shape" value="circle"> Circle</p>
+        <p><input type="radio" name="shape" value="square"> Square</p>
+        <p><input type="radio" name="shape" value="ellipse"> Ellipse</p>
+        <p><input type="radio" name="shape" value="polygon"> Polygon</p>
+      </div>
+        <h3>Line Type:</h3>
+        <div class='lightBorder'>
+        <p><label>Line Width: <input id='lineWidth' type='range' step='1' min="1" max="200" value="4"></label></p>
+        Line End:
+        <p><input name="lineCap" value="round" type='radio' checked="checked">round</p>
+        <p><input name="lineCap" value="square" type='radio'>square</p>
+        <p><input name="lineCap" value="butt" type='radio'>butt</p>
+    
+      </div>
+      <h3>Colors:</h3>
+        <div class='lightBorder'>
+    
+        <!-- color -->
+        <p><label>Fill Color: <input id='fillColor' type='color' step='1' value="#24B0D5"></label></p>
+        <p><label>Stroke Color: <input id='strokeColor' type='color' step='1'> </label></p>
+        <p><label>Background Color:<input id='backgroundColor' type='color' step='1' value="#ffffff"></label></p>
+        *changing background will delete image!
+      </div>
+        <div class='lightBorder'>
+        <!-- polygon sides -->
+        <p><label>Polygon Sides: <input id='polygonSides' type='range' step='1' min="3" max="12"></label></p>
+    
+      </div>
+    
+      <form>
+      <h3>Input Text:</h3> <input type="text" id="textInput"/>
+      </form>
+    
+        <!-- fill or no fill, you decide -->
+        <p><label>Fill: <input id='fillBox' type='checkbox' checked='checked'></label></p>
+        <p><label style="font-size:12px;">XOR: <input id='xor' type='checkbox'></label></p>
+    
+        <button type="button" class="button-error pure-button" id="clearCanvas" name="button">Clear Canvas</button>
+      </div>
+    
+    
+      <canvas id="canvas" width="650" height="800"></canvas>
+      <script src="script.js"></script>
+    </body>
+</html>
