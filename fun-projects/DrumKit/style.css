@@ -1,0 +1,98 @@
+html {
+    font-size: 10px;
+    background: -webkit-linear-gradient(45deg, #fdc76a, #ef4d9e);
+    background-color: #1d1f21;
+    background-size: cover;
+  }
+  body,html {
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .masthead {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 10rem 0 0;
+  }
+  
+  h1 {
+    text-align: center;
+    font-size: 4rem;
+    margin: 0;
+    line-height: 3rem;
+  }
+  
+  .masthead p {
+    font-size: 2rem;
+    color: rgba(0, 0, 0, 0.6);
+  }
+  
+  .keys {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .key {
+    border-radius: .5rem;
+    margin: 1rem;
+    font-size: 1.5rem;
+    padding: 2.5rem .5rem;
+    transition: all .07s ease;
+    width: 10rem;
+    text-align: center;
+    color: white;
+    background: rgba(255, 255, 255, 0.2);
+  }
+  
+  .playing {
+    transform: scale(1.1);
+    border-color: #ffc600;
+    box-shadow: 0 0 1rem #ffc600;
+  }
+  
+  kbd {
+    display: block;
+    font-size: 4rem;
+  }
+  
+  .sound {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+    color: rgba(0, 0, 0, 0.6);
+  }
+  
+  .colophon {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 4rem 0;
+  }
+  
+  .colophon p {
+    font-size: 1.6rem;
+    color: rgba(0, 0, 0, 0.6);
+  }
+  
+  .colophon a {
+    align-self: flex-end;
+    color: #212121;
+    background: #ffc600;
+    transition: all .2s ease;
+  }
+  
+  .colophon a:hover {
+    background: #fff;
+  }
+  
