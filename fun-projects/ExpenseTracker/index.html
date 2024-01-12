@@ -36,17 +36,24 @@
       <form id="form">
         <div class="form-control">
           <label for="text">Text</label>
-          <input type="text" id="text" placeholder="Enter text..." />
+          <input type="text" id="text" placeholder="Enter text...">
         </div>
         <div class="form-control">
-          <label for="amount"
-            >Amount <br />
-            (negative - expense, positive - income)</label
-          >
-          <input type="number" id="amount" placeholder="Enter amount..." />
+          <label for="amount">Amount</label>
+          <input type="number" id="amount" placeholder="Enter amount...">
+        </div>
+        <div class="form-control">
+          <label>Transaction Type</label>
+          <div>
+            <input type="radio" id="income" name="transaction_type" value="income" checked>
+            <label for="income">Income</label>
+            <input type="radio" id="expense" name="transaction_type" value="expense">
+            <label for="expense">Expense</label>
+          </div>
         </div>
         <button class="btn">Add transaction</button>
       </form>
+      
     </div>
 
     <script src="script.js"></script>
