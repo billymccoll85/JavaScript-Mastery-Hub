@@ -1,39 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokemon Quiz</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header>
-        <h1>Pokemon Quiz</h1>
-    </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Quiz App</title>
+  </head>
+  <body>
+    <div class="quiz-container" id="quiz">
+      <div class="quiz-header">
+        <h2 id="question">Question text</h2>
+        <ul>
+          <li>
+            <input type="radio" name="answer" id="a" class="answer">
+            <label for="a" id="a_text">Question</label>
+          </li>
 
-    <main>
-        <section id="quiz-section">
-            <h2 id="question">Loading question...</h2>
-            <div id="loader" style="display: none;">Loading...</div>
-            <div id="choices">
-                <!-- Choices will be populated here -->
-            </div>
-            <button id="next">Next</button>
-        </section>
+          <li>
+            <input type="radio" name="answer" id="b" class="answer">
+            <label for="b" id="b_text">Question</label>
+          </li>
 
-        <section id="result-section" style="display: none;">
-            <h2>Your Score:</h2>
-            <p id="score"></p>
+          <li>
+            <input type="radio" name="answer" id="c" class="answer">
+            <label for="c" id="c_text">Question</label>
+          </li>
 
-            <div class="progress-bar-container">
-                <span>Progress:</span>
-                <div id="progress-bar"></div>
-            </div>
-            <p id="score-counter">Score: 0</p>
-            <button id="restart">Restart Quiz</button>
-        </section>
-    </main>
-
+          <li>
+            <input type="radio" name="answer" id="d" class="answer">
+            <label for="d" id="d_text">Question</label>
+          </li>
+        </ul>
+      </div>
+      <button id="submit">Submit</button>
+    </div>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
