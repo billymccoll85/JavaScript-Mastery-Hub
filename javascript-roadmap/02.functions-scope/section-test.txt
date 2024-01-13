@@ -1,0 +1,89 @@
+
+**JavaScript Functions Test**
+
+1. **What is a function in JavaScript?**
+   - a) A set of instructions that performs a task or calculates a value
+   - b) A data type used to store multiple values
+   - c) A variable that holds numbers
+   - d) A method to iterate over arrays
+
+2. **How do you define a function in JavaScript?**
+   - a) `function myFunc() {}`
+   - b) `new Function myFunc()`
+   - c) `create myFunc()`
+   - d) `myFunc function() {}`
+
+3. **Which keyword is used to call a function named `myFunction`?**
+   - a) run
+   - b) execute
+   - c) call
+   - d) myFunction()
+
+4. **True or False: Functions in JavaScript always return a value.**
+
+5. **What is a parameter in a JavaScript function?**
+   - a) A variable inside a function
+   - b) A value returned by the function
+   - c) An input specified when the function is called
+   - d) An external library
+
+6. **Consider the following code:**
+   ```javascript
+   function add(a, b) {
+       return a + b;
+   }
+   let result = add(5, 3);
+   console.log(result);
+   ```
+   **What is output to the console?**
+   - a) 8
+   - b) 53
+   - c) undefined
+   - d) Error
+
+7. **What is an anonymous function in JavaScript?**
+   - a) A function without a name
+   - b) A function named "anonymous"
+   - c) A function with one parameter
+   - d) A function that is not called
+
+8. **True or False: Arrow functions in JavaScript do not have their own `this` context.**
+
+9. **What is the main difference between a `function declaration` and a `function expression`?**
+   - a) The syntax
+   - b) The way they handle parameters
+   - c) Function declarations are hoisted, but function expressions are not
+   - d) The return value
+
+10. **Which is the correct syntax for an arrow function in JavaScript?**
+    - a) `let myFunc = function() {};`
+    - b) `function myFunc() {};`
+    - c) `let myFunc => {};`
+    - d) `let myFunc = () => {};`
+
+11. **True or False: A function in JavaScript can be passed as an argument to another function.**
+
+12. **What is a 'callback function'?**
+    - a) A function that calls itself
+    - b) A function passed into another function as an argument
+    - c) A function that is written inside an object
+    - d) A function that is available globally
+
+13. **How can you create a function that accepts an unlimited number of arguments?**
+    - a) Using
+
+the `arguments` object
+    - b) By declaring all possible parameters
+    - c) Functions cannot accept an unlimited number of arguments
+    - d) Using the spread operator `...`
+
+14. **What does the following function expression do?**
+    ```javascript
+    const greet = name => `Hello, ${name}!`;
+    ```
+    - a) Prints `Hello, name!` to the console
+    - b) Returns a greeting string with the given name
+    - c) Throws an error
+    - d) Loops through an array of names
+
+15. **Write a simple function in JavaScript that takes two numbers as arguments and returns their sum.**
