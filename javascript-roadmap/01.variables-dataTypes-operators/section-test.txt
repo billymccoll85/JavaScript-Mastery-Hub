@@ -1,0 +1,85 @@
+
+**JavaScript Variables, Data Types, and Operators Test**
+
+1. **What is a variable in JavaScript?**
+   - a) A function that performs an action
+   - b) A storage location for data
+   - c) A type of JavaScript data
+   - d) A condition in a loop
+
+2. **Which of the following declares a constant variable in JavaScript?**
+   - a) `let constantVar;`
+   - b) `const constantVar;`
+   - c) `var constantVar;`
+   - d) `constant constantVar;`
+
+3. **Which data type is used for textual data in JavaScript?**
+   - a) String
+   - b) Boolean
+   - c) Object
+   - d) Number
+
+4. **Which operator is used to assign a value to a variable?**
+   - a) ==
+   - b) =
+   - c) ===
+   - d) ->
+
+5. **What will be the output of `console.log(typeof 42);`?**
+   - a) 'number'
+   - b) 'integer'
+   - c) 'Numeric'
+   - d) 'float'
+
+6. **True or False: In JavaScript, `null` is an object.**
+
+7. **What is the result of `"10" + 20` in JavaScript?**
+   - a) 30
+   - b) '1020'
+   - c) '30'
+   - d) An error
+
+8. **Which operator checks for both value and type equality?**
+   - a) ==
+   - b) =
+   - c) ===
+   - d) !=
+
+9. **What will be the output of `console.log(typeof null);`?**
+   - a) 'null'
+   - b) 'undefined'
+   - c) 'object'
+   - d) 'NaN'
+
+10. **Which is NOT a primitive data type in JavaScript?**
+    - a) String
+    - b) Boolean
+    - c) Object
+    - d) Symbol
+
+11. **True or False: `const` variables can be reassigned in JavaScript.**
+
+12. **What will be the output of the following code?**
+    ```javascript
+    let a = 3;
+    let b = '3';
+    console.log(a == b);
+    ```
+    - a) true
+    - b) false
+    - c) undefined
+    - d) Error
+
+13. **Fill in the blank: `undefined` in JavaScript is a(n) _______.**
+    - a) Error
+    - b) Data type
+    - c) Variable
+    - d) Operator
+
+14. **What will be the output of `console.log(5 > 3 && 2 || 0);`?**
+    - a) 2
+    - b) true
+    - c) 5
+    - d) 0
+
+15. **Write a JavaScript statement to declare a variable `userName` and assign it the value 'Alice'.**

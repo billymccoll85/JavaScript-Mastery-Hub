@@ -1,48 +1,46 @@
 const numbers = [1, 2, 3, 4, 5];
 
-// 1. Array mapping
-const doubledNumbers = numbers.map((num) => num * 2);
-console.log(doubledNumbers); // [2, 4, 6, 8, 10]
+// Array mapping
+const doubledNumbers = numbers.map(num => num * 2);
+console.log(`Doubled Numbers: ${doubledNumbers}`);
 
-// 2. Array filtering
-const evenNumbers = numbers.filter((num) => num % 2 === 0);
-console.log(evenNumbers); // [2, 4]
+// Array filtering
+const evenNumbers = numbers.filter(num => num % 2 === 0);
+console.log(`Even Numbers: ${evenNumbers}`);
 
-// 3. Array reducing
+// Array reducing
 const sum = numbers.reduce((acc, num) => acc + num, 0);
-console.log(sum); // 15
+console.log(`Sum: ${sum}`);
 
-// 4. Object property shorthand
+// Object property shorthand
 const name = "John";
 const age = 30;
 const person = { name, age };
-console.log(person); // { name: 'John', age: 30 }
+console.log(`Person: ${JSON.stringify(person)}`);
 
-// 5. Implicit return
+// Implicit return
 const multiply = (a, b) => a * b;
-console.log(multiply(2, 3)); // 6
+console.log(`Multiply: ${multiply(2, 3)}`);
 
-// 6. Lexical this
+// Lexical this in arrow functions
 function Counter() {
     this.count = 0;
     setInterval(() => {
         this.count++;
-        console.log(this.count);
+        console.log(`Count: ${this.count}`);
     }, 1000);
 }
 
-// 7. Callback functions
+// Callback functions
 const fetchData = (callback) => {
     // Fetch data from API
     const data = { name: "John", age: 30 };
     callback(data);
 };
 
-fetchData((data) => {
-    console.log(data); // { name: 'John', age: 30 }
-});
+fetchData(data => console.log(`Fetched Data: ${JSON.stringify(data)}`));
 
-// 8. Promises
+// Promises
 const fetchDataPromise = () => {
     return new Promise((resolve, reject) => {
         // Fetch data from API
@@ -51,21 +49,12 @@ const fetchDataPromise = () => {
     });
 };
 
-fetchDataPromise().then((data) => {
-    console.log(data); // { name: 'John', age: 30 }
-});
+fetchDataPromise().then(data => console.log(`Data from Promise: ${JSON.stringify(data)}`));
 
-// 9. Event listeners
-document.addEventListener("click", () => {
-    console.log("Clicked!");
-});
+// Event listeners
+document.addEventListener("click", () => console.log("Clicked!"));
 
-// 10. Higher-order functions
-const higherOrderFunction = (callback) => {
-    // Do something
-    callback();
-};
+// Higher-order functions
+const higherOrderFunction = (callback) => callback();
 
-higherOrderFunction(() => {
-    console.log("Callback function called");
-});
+higherOrderFunction(() => console.log("Callback function called"));
