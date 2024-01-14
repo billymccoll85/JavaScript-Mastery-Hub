@@ -17,48 +17,67 @@
 import React, { useState, useEffect } from "react";
 import { fetchCurrentWeather } from "../api/WeatherService";
 
-const WeatherCard = ({ city }) => {
-  // useState to manage weather data and error states
+const WeatherCard = () => {
+  const [city, setCity] = useState("London");
   const [weatherData, setWeatherData] = useState(null);
   const [error, setError] = useState(null);
 
-  // useEffect to fetch weather data when the component mounts or the city changes
   useEffect(() => {
-    fetchCurrentWeather(city)
-      .then((data) => {
-        setWeatherData(data); // Update the weather data state
-        setError(null); // Reset the error state
-      })
-      .catch((err) => setError(err.message)); // Set the error state if there's an error
-  }, [city]); // The effect depends on the city variable
+    if (city.length > 0) {
+      fetchCurrentWeather(city)
+        .then((data) => {
+          setWeatherData(data);
+          setError(null);
+        })
+        .catch((err) => setError(err.message));
+    } else {
+      setError(null);
+      setWeatherData(null);
+    }
+  }, [city]);
 
-  // Render error message if there is an error
-  if (error) {
-    return (
-      <div className="text-red-600 text-center font-bold p-4">
-        Error: {error}
-      </div>
-    );
-  }
+  const handleCityChange = (event) => {
+    setCity(event.target.value);
+  };
 
-  // Render loading state if weather data is not yet fetched
-  if (!weatherData) {
-    return <div className="text-gray-500 text-center p-4">Loading...</div>;
-  }
+  const roundedTemp = weatherData?.main.temp && Math.round(weatherData.main.temp);
+  const feelsLike = weatherData?.main.feels_like && Math.round(weatherData.main.feels_like);
+  const humidity = weatherData?.main.humidity;
 
-  // Round temperature values to the nearest integer for
-  //   better readability
-  const roundedTemp = Math.round(weatherData.main.temp);
-  const feelsLike = Math.round(weatherData.main.feels_like);
-  const humidity = weatherData.main.humidity;
-
-  // Render the weather card with weather data
   return (
     <div className="max-w-sm mx-auto my-4 bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 ease-in-out">
-      <h2 className="text-xl font-bold text-center mb-2">{weatherData.name}</h2>
-      <p className="text-3xl font-semibold text-center">{roundedTemp}°C</p>
-      <p className="text-md text-center">Feels like: {feelsLike}°C</p>
-      <p className="text-md text-center">Humidity: {humidity}%</p>
+      <div className="p-4">
+        <input
+          type="text"
+          value={city}
+          onChange={handleCityChange}
+          className="border-2 border-gray-300 p-2 rounded w-full mb-4"
+          placeholder="Enter city name"
+        />
+        {error && city.length === 0 && (
+          <div className="text-red-600 text-center font-bold mb-4">
+            Please enter a city name.
+          </div>
+        )}
+        {weatherData ? (
+          <>
+            <h2 className="text-xl font-bold text-center mb-2">
+              {weatherData.name}
+            </h2>
+            <p
+              className="text-3xl font
+
+-semibold text-center"
+            >
+              {roundedTemp}°C
+            </p>
+            <p className="text-md text-center">Feels like: {feelsLike}°C</p>
+            <p className="text-md text-center">Humidity: {humidity}%</p>
+          </>
+        ) : (
+          !error && <div className="text-gray-500 text-center">Loading...</div>
+        )}
+      </div>
     </div>
   );
 };
