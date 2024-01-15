@@ -48,7 +48,7 @@ const WeatherCard = () => {
   const weatherDescription = weatherData?.weather[0].description;
 
   return (
-    <div className="max-w-sm mx-auto my-4 bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 ease-in-out">
+    <div className="max-w-sm mx-auto bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 ease-in-out">
       <div className="p-4">
         <input
           type="text"
