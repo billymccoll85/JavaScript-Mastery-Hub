@@ -40,12 +40,12 @@ const WeatherCard = () => {
     setCity(event.target.value);
   };
 
+  //going to refactor this later
   const roundedTemp = weatherData?.main.temp && Math.round(weatherData.main.temp);
   const feelsLike = weatherData?.main.feels_like && Math.round(weatherData.main.feels_like);
   const humidity = weatherData?.main.humidity;
   const windSpeed = weatherData?.wind.speed && Math.round(weatherData.wind.speed);
   const weatherDescription = weatherData?.weather[0].description;
-
 
   return (
     <div className="max-w-sm mx-auto my-4 bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 ease-in-out">
