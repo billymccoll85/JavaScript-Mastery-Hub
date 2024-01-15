@@ -1,10 +1,11 @@
-import React from "react";
-import WeatherCard from "./components/WeatherCard";
+import React from 'react';
+import Dashboard from './components/Dashboard';
+
 
 function App() {
   return (
     <div className="App">
-      <WeatherCard />
+      <Dashboard />
     </div>
   );
 }
