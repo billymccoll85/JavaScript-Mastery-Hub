@@ -43,6 +43,9 @@ const WeatherCard = () => {
   const roundedTemp = weatherData?.main.temp && Math.round(weatherData.main.temp);
   const feelsLike = weatherData?.main.feels_like && Math.round(weatherData.main.feels_like);
   const humidity = weatherData?.main.humidity;
+  const windSpeed = weatherData?.wind.speed && Math.round(weatherData.wind.speed);
+  const weatherDescription = weatherData?.weather[0].description;
+
 
   return (
     <div className="max-w-sm mx-auto my-4 bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 ease-in-out">
@@ -65,14 +68,14 @@ const WeatherCard = () => {
               {weatherData.name}
             </h2>
             <p
-              className="text-3xl font
-
--semibold text-center"
+              className="text-3xl font-semibold text-center"
             >
               {roundedTemp}°C
             </p>
             <p className="text-md text-center">Feels like: {feelsLike}°C</p>
             <p className="text-md text-center">Humidity: {humidity}%</p>
+            <p className="text-md text-center">Wind Speed: {windSpeed} mph</p>
+            <p className="text-md text-center">Weather: {weatherDescription}</p>
           </>
         ) : (
           !error && <div className="text-gray-500 text-center">Loading...</div>
