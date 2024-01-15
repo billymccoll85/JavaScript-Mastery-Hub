@@ -48,13 +48,13 @@ const WeatherCard = () => {
   const weatherDescription = weatherData?.weather[0].description;
 
   return (
-    <div className="max-w-sm mx-auto bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 ease-in-out">
+    <div className="max-w-100 mt-12 mx-auto bg-indigo-700 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 ease-in-out">
       <div className="p-4">
         <input
           type="text"
           value={city}
           onChange={handleCityChange}
-          className="border-2 border-gray-300 p-2 rounded w-full mb-4"
+          className="border-2 border-gray-100 p-2 rounded w-full mb-4 bg-transparent"
           placeholder="Enter city name"
         />
         {error && city.length === 0 && (
