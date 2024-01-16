@@ -40,15 +40,16 @@ const WeatherCard = () => {
     setCity(event.target.value);
   };
 
-  //going to refactor this later
   const roundedTemp = weatherData?.main.temp && Math.round(weatherData.main.temp);
   const feelsLike = weatherData?.main.feels_like && Math.round(weatherData.main.feels_like);
   const humidity = weatherData?.main.humidity;
   const windSpeed = weatherData?.wind.speed && Math.round(weatherData.wind.speed);
   const weatherDescription = weatherData?.weather[0].description;
+  const iconCode = weatherData?.weather[0].icon;
+  const iconUrl = iconCode ? `http://openweathermap.org/img/wn/${iconCode}.png` : '';
 
   return (
-    <div className="max-w-100 mt-12 mx-auto bg-indigo-700 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 ease-in-out">
+    <div className="max-w-lg mt-12 mx-auto bg-indigo-700 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 ease-in-out">
       <div className="p-4">
         <input
           type="text"
@@ -67,9 +68,7 @@ const WeatherCard = () => {
             <h2 className="text-xl font-bold text-center mb-2">
               {weatherData.name}
             </h2>
-            <p
-              className="text-3xl font-semibold text-center"
-            >
+            <p className="text-3xl font-semibold text-center">
               {roundedTemp}°C
             </p>
             <p className="text-md text-center">Feels like: {feelsLike}°C</p>
@@ -86,3 +85,4 @@ const WeatherCard = () => {
 };
 
 export default WeatherCard;
+
