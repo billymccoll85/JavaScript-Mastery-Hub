@@ -3,8 +3,8 @@ import CurrentWeatherCard from './CurrentWeatherCard';
 import FiveDayForecast from './FiveDayForecast';
 
 const Dashboard = () => {
-  // State for selected city
-  const [selectedCity, setSelectedCity] = useState('');
+  // State for selected city, default to 'London'
+  const [selectedCity, setSelectedCity] = useState('London');
 
   // Callback function to update the selected city from CurrentWeatherCard
   const handleCityChange = (city) => {
