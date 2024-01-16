@@ -17,8 +17,7 @@
 import React, { useState, useEffect } from "react";
 import { fetchCurrentWeather } from "../api/WeatherService";
 
-const WeatherCard = () => {
-  const [city, setCity] = useState("London");
+const WeatherCard = ({ city, onCityChange }) => {
   const [weatherData, setWeatherData] = useState(null);
   const [error, setError] = useState(null);
 
@@ -37,7 +36,7 @@ const WeatherCard = () => {
   }, [city]);
 
   const handleCityChange = (event) => {
-    setCity(event.target.value);
+    onCityChange(event.target.value);
   };
 
   const roundedTemp = weatherData?.main.temp && Math.round(weatherData.main.temp);
