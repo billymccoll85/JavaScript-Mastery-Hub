@@ -49,13 +49,13 @@ const WeatherCard = () => {
   const iconUrl = iconCode ? `http://openweathermap.org/img/wn/${iconCode}.png` : '';
 
   return (
-    <div className="max-w-lg mt-12 mx-auto bg-indigo-700 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 ease-in-out">
+    <div className="max-w-lg mt-12 mx-auto bg-sky-200 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 ease-in-out">
       <div className="p-4">
         <input
           type="text"
           value={city}
           onChange={handleCityChange}
-          className="border-2 border-gray-100 p-2 rounded w-full mb-4 bg-transparent"
+          className="border-2 border-sky-500 p-2 rounded w-full mb-4 bg-transparent"
           placeholder="Enter city name"
         />
         {error && city.length === 0 && (
@@ -68,9 +68,10 @@ const WeatherCard = () => {
             <h2 className="text-xl font-bold text-center mb-2">
               {weatherData.name}
             </h2>
-            <p className="text-3xl font-semibold text-center">
-              {roundedTemp}°C
-            </p>
+            <div className="flex justify-center items-center">
+              {iconUrl && <img src={iconUrl} alt="Weather icon" />}
+              <p className="text-4xl font-semibold">{roundedTemp}°C</p>
+            </div>
             <p className="text-md text-center">Feels like: {feelsLike}°C</p>
             <p className="text-md text-center">Humidity: {humidity}%</p>
             <p className="text-md text-center">Wind Speed: {windSpeed} mph</p>
