@@ -12,17 +12,18 @@ const Dashboard = () => {
   };
 
   return (
-    <div className='dashboard-layout flex flex-col justify-start'>
+    <div className='main-container flex flex-col justify-start'>
+      {/* Container for CurrentWeatherCard */}
       <div className="weather-widget-container mx-auto">
         {/* Pass the selectedCity and handleCityChange as props to CurrentWeatherCard */}
         <CurrentWeatherCard city={selectedCity} onCityChange={handleCityChange} />
       </div>
-      <div className="container forecast-container mt-4 flex flex-row justify-center items-center">
-        {/* Separate container for FiveDayForecast to run along the bottom */}
+      {/* Container for FiveDayForecast */}
+      <div className="forecast-container mx-auto mt-4">
+        {/* Separate row container for FiveDayForecast */}
         {/* Pass the selectedCity as a prop to FiveDayForecast */}
         <FiveDayForecast city={selectedCity}/>
       </div>
-
     </div>
   );
 };

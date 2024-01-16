@@ -2,3 +2,7 @@
   background-color: #191B1F;
   height: 100vh;
 }
+
+.forecast-container {
+  display: flex;
+}
