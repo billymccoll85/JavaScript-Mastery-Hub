@@ -1,31 +1,15 @@
-// In this `WeatherCard` component:
-
-// 1. **useState** is used to create `weatherData` and `error` state variables. `weatherData` stores the weather information fetched from the API, and `error` stores any error messages if the API request fails.
-
-// 2. **useEffect** is used to perform the side effect of fetching weather data. When the `city` prop changes, the effect will run again, fetching new weather data for the updated city. Inside this hook:
-//    - `fetchCurrentWeather(city)` is called to fetch the weather data.
-//    - If successful, `setWeatherData` updates the `weatherData` state with the fetched data, and `setError(null)` clears any previous errors.
-//    - If there's an error, `setError(err.message)` updates the `error` state with the error message.
-
-// 3. The component conditionally renders:
-//    - An error message if there is an error.
-//    - A loading message if the weather data is not yet available.
-//    - The weather card with the current weather data, including temperature, "feels like" temperature, and humidity, if the data is available.
-
-// The use of `useState` and `useEffect` here allows for a clean and efficient way to manage state and side effects in the `WeatherCard` component, providing a dynamic and responsive user experience.
-
 import React, { useState, useEffect } from "react";
 import { fetchCurrentWeather } from "../api/WeatherService";
 
-const WeatherCard = ({ city, onCityChange }) => {
+const WeatherCard = ({ lat, lon }) => {
   const [weatherData, setWeatherData] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (city.length > 0) {
-      fetchCurrentWeather(city)
+    if (lat && lon) {
+      fetchCurrentWeather(lat, lon)
         .then((data) => {
-          setWeatherData(data);
+          setWeatherData(data.current); // Access the current weather data
           setError(null);
         })
         .catch((err) => setError(err.message));
@@ -33,16 +17,12 @@ const WeatherCard = ({ city, onCityChange }) => {
       setError(null);
       setWeatherData(null);
     }
-  }, [city]);
+  }, [lat, lon]);
 
-  const handleCityChange = (event) => {
-    onCityChange(event.target.value);
-  };
-
-  const roundedTemp = weatherData?.main.temp && Math.round(weatherData.main.temp);
-  const feelsLike = weatherData?.main.feels_like && Math.round(weatherData.main.feels_like);
-  const humidity = weatherData?.main.humidity;
-  const windSpeed = weatherData?.wind.speed && Math.round(weatherData.wind.speed);
+  const roundedTemp = weatherData?.temp && Math.round(weatherData.temp);
+  const feelsLike = weatherData?.feels_like && Math.round(weatherData.feels_like);
+  const humidity = weatherData?.humidity;
+  const windSpeed = weatherData?.wind_speed && Math.round(weatherData.wind_speed);
   const weatherDescription = weatherData?.weather[0].description;
   const iconCode = weatherData?.weather[0].icon;
   const iconUrl = iconCode ? `http://openweathermap.org/img/wn/${iconCode}.png` : '';
@@ -50,34 +30,27 @@ const WeatherCard = ({ city, onCityChange }) => {
   return (
     <div className="max-w-lg mt-12 mx-auto bg-sky-200 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 ease-in-out">
       <div className="p-4">
-        <input
-          type="text"
-          value={city}
-          onChange={handleCityChange}
-          className="border-2 border-sky-500 p-2 rounded w-full mb-4 bg-transparent"
-          placeholder="Enter city name"
-        />
-        {error && city.length === 0 && (
+        {error && (
           <div className="text-red-600 text-center font-bold mb-4">
-            Please enter a city name.
+            Error: {error}
           </div>
         )}
         {weatherData ? (
           <>
             <h2 className="text-xl font-bold text-center mb-2">
-              {weatherData.name}
+              Current Weather
             </h2>
             <div className="flex justify-center items-center">
-              {iconUrl && <img src={iconUrl} alt="Weather icon" />}
-              <p className="text-4xl font-semibold">{roundedTemp}°C</p>
+              {iconUrl && <img src={iconUrl} alt="Weather icon" className="w-20 h-20" />}
+              <p className="text-4xl font-semibold ml-2">{roundedTemp}°C</p>
             </div>
             <p className="text-md text-center">Feels like: {feelsLike}°C</p>
             <p className="text-md text-center">Humidity: {humidity}%</p>
-            <p className="text-md text-center">Wind Speed: {windSpeed} mph</p>
-            <p className="text-md text-center">Weather: {weatherDescription}</p>
+            <p className="text-md text-center">Wind Speed: {windSpeed} m/s</p>
+            <p className="text-md text-center">{weatherDescription}</p>
           </>
         ) : (
-          !error && <div className="text-gray-500 text-center">Loading...</div>
+          <div className="text-gray-500 text-center">Loading...</div>
         )}
       </div>
     </div>
@@ -85,4 +58,3 @@ const WeatherCard = ({ city, onCityChange }) => {
 };
 
 export default WeatherCard;
-

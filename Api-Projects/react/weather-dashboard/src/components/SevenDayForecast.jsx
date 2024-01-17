@@ -3,71 +3,70 @@ import { fetchSevenDayForecast } from "../api/WeatherService";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 
-const SevenDayForecast = ({ city }) => {
+const SevenDayForecast = ({ lat, lon }) => {
   const [forecastData, setForecastData] = useState(null);
   const [error, setError] = useState(null);
-  const [openDay, setOpenDay] = useState(null);
+  const [openDayIndex, setOpenDayIndex] = useState(null);
 
   useEffect(() => {
-    if (city) {
-      fetchSevenDayForecast(city)
-        .then((data) => {
-          setForecastData(data);
+    if (lat && lon) {
+      fetchSevenDayForecast(lat, lon)
+        .then(data => {
+          setForecastData(data.daily); // Access the daily forecast data
           setError(null);
         })
-        .catch((err) => {
-          console.error("Error fetching 7-day forecast:", err);
+        .catch(err => {
           setError(err.message);
         });
     }
-  }, [city]);
+  }, [lat, lon]);
 
   const toggleDay = (index) => {
-    setOpenDay(openDay === index ? null : index);
+    setOpenDayIndex(openDayIndex === index ? null : index);
   };
 
-  if (!city) {
-    return <p className="text-center text-gray-600">Please select a city to view the forecast.</p>;
+  if (!lat || !lon) {
+    return <p>Please provide latitude and longitude to view the forecast.</p>;
   }
 
   if (error) {
-    return <p className="text-center text-red-500">Error fetching forecast: {error}</p>;
+    return <p>Error fetching forecast: {error}</p>;
   }
 
   if (!forecastData) {
-    return <p className="text-center text-gray-500">Loading...</p>;
+    return <p>Loading...</p>;
   }
 
   return (
-    <div className="max-w-4xl mx-auto my-8 p-4 bg-white rounded-xl shadow-md">
-      <h2 className="text-2xl font-semibold text-center mb-4">7-Day Forecast for {city}</h2>
-      <div className="forecast-container space-y-2">
-        {forecastData.daily.map((day, index) => {
-          const date = new Date(day.dt * 1000);
-          const dayString = date.toLocaleDateString(undefined, { weekday: 'long', month: 'short', day: 'numeric' });
-          const iconCode = day.weather[0].icon;
-          const temp = Math.round(day.temp.day);
+    <div className="seven-day-forecast max-w-4xl mx-auto my-8 p-4 bg-white rounded-xl shadow-md">
+      <h2 className="text-2xl font-semibold text-center mb-4">7-Day Forecast</h2>
+      {forecastData.map((day, index) => {
+        const date = new Date(day.dt * 1000);
+        const dayString = date.toLocaleDateString(undefined, { weekday: 'long', month: 'short', day: 'numeric' });
+        const tempMax = Math.round(day.temp.max);
+        const tempMin = Math.round(day.temp.min);
+        const iconCode = day.weather[0].icon;
+        const weatherMain = day.weather[0].main;
 
-          return (
-            <div key={index} className="forecast-day">
-              <div className="forecast-header flex items-center justify-between p-3 bg-indigo-500 text-white rounded cursor-pointer" onClick={() => toggleDay(index)}>
-                <div className="flex items-center space-x-3">
-                  <img src={`http://openweathermap.org/img/wn/${iconCode}.png`} alt="Weather icon" className="w-10 h-10" />
-                  <p>{dayString}</p>
-                  <p className="font-semibold">{temp}°C</p>
-                  <p>{day.weather[0].main}</p>
-                </div>
-                <FontAwesomeIcon icon={openDay === index ? faChevronUp : faChevronDown} />
+        return (
+          <div key={index} className="mb-2">
+            <div className="flex justify-between items-center bg-blue-500 text-white p-3 rounded cursor-pointer" onClick={() => toggleDay(index)}>
+              <div className="flex items-center space-x-2">
+                <span>{dayString}</span>
+                <img src={`http://openweathermap.org/img/wn/${iconCode}.png`} alt="Weather icon" className="w-6 h-6" />
+                <span>{tempMax}°C / {tempMin}°C</span>
+                <span>{weatherMain}</span>
               </div>
-              {openDay === index && (
-                <div className="forecast-body p-3 bg-gray-100 rounded">
-                  {/* Add additional day details here */}
-                </div>
-              )}
+              <FontAwesomeIcon icon={openDayIndex === index ? faChevronUp : faChevronDown} />
             </div>
-          );
-        })}
-      </div>
+            {openDayIndex === index && (
+              <div className="p-3 bg-gray-100 rounded">
+                {/* Additional details for each day can be added here */}
+              </div>
+            )}
+          </div>
+        );
+      })}
     </div>
   );
 };
