@@ -1,33 +1,17 @@
-const API_BASE_URL = "https://api.openweathermap.org/data/3.0";
-
-export const fetchCurrentWeather = async (lat, lon) => {
-  const apiKey = process.env.REACT_APP_OPENWEATHER_API_KEY;
-  const url = `${API_BASE_URL}/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,daily,alerts&appid=${apiKey}&units=metric`;
-
+const getCurrentWeather = async (lat, lon) => {
   try {
+    const apiKey = process.env.REACT_APP_OPENWEATHER_API_KEY;
+    // Using One Call API endpoint (version 3)
+    const url = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,daily,alerts&appid=${apiKey}`;
+
     const response = await fetch(url);
     if (!response.ok) {
-      throw new Error("Current weather data could not be fetched.");
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
-    return await response.json();
-  } catch (error) {
-    console.error("Error fetching current weather data:", error);
-    throw error;
-  }
-};
 
-export const fetchSevenDayForecast = async (lat, lon) => {
-  const apiKey = process.env.REACT_APP_OPENWEATHER_API_KEY;
-  const url = `${API_BASE_URL}/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&appid=${apiKey}&units=metric`;
-
-  try {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error("7-day forecast data could not be fetched.");
-    }
-    return await response.json();
+    const data = await response.json();
+    return data.current; // Accessing the 'current' property for current weather data
   } catch (error) {
-    console.error("Error fetching 7-day forecast data:", error);
-    throw error;
+    console.error("There was an error fetching the weather data:", error);
   }
 };
