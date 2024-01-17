@@ -15,3 +15,4 @@ const getCurrentWeather = async (lat, lon) => {
     console.error("There was an error fetching the weather data:", error);
   }
 };
+export default getCurrentWeather

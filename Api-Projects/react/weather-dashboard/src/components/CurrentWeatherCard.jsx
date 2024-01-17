@@ -1,33 +1,26 @@
 import React, { useState, useEffect } from "react";
-import { fetchCurrentWeather } from "../api/WeatherService";
+import getCurrentWeather from "../api/WeatherService"; // Ensure this matches your export method
 
-const WeatherCard = () => {
-  const [city, setCity] = useState("London");
+const CurrentWeatherCard = () => {
+  // Coordinates for London, UK (as an example)
+  const [lat, lon] = [51.5074, -0.1278];
   const [weatherData, setWeatherData] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (city.length > 0) {
-      fetchCurrentWeather(city)
-        .then((data) => {
-          setWeatherData(data);
-          setError(null);
-        })
-        .catch((err) => setError(err.message));
-    } else {
-      setError(null);
-      setWeatherData(null);
-    }
-  }, [city]);
+    getCurrentWeather(lat, lon)
+      .then((data) => {
+        setWeatherData(data);
+        setError(null);
+      })
+      .catch((err) => setError(err.message));
+  }, [lat, lon]);
 
-  const handleCityChange = (event) => {
-    setCity(event.target.value);
-  };
-
-  const roundedTemp = weatherData?.main.temp && Math.round(weatherData.main.temp);
-  const feelsLike = weatherData?.main.feels_like && Math.round(weatherData.main.feels_like);
-  const humidity = weatherData?.main.humidity;
-  const windSpeed = weatherData?.wind.speed && Math.round(weatherData.wind.speed);
+  // Processing the data for display
+  const roundedTemp = weatherData?.temp && Math.round(weatherData.temp);
+  const feelsLike = weatherData?.feels_like && Math.round(weatherData.feels_like);
+  const humidity = weatherData?.humidity;
+  const windSpeed = weatherData?.wind_speed && Math.round(weatherData.wind_speed);
   const weatherDescription = weatherData?.weather[0].description;
   const iconCode = weatherData?.weather[0].icon;
   const iconUrl = iconCode ? `http://openweathermap.org/img/wn/${iconCode}.png` : '';
@@ -35,22 +28,15 @@ const WeatherCard = () => {
   return (
     <div className="max-w-lg mt-12 mx-auto bg-sky-200 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 ease-in-out">
       <div className="p-4">
-        <input
-          type="text"
-          value={city}
-          onChange={handleCityChange}
-          className="border-2 border-sky-500 p-2 rounded w-full mb-4 bg-transparent"
-          placeholder="Enter city name"
-        />
-        {error && city.length === 0 && (
+        {error && (
           <div className="text-red-600 text-center font-bold mb-4">
-            Please enter a city name.
+            {error}
           </div>
         )}
         {weatherData ? (
           <>
             <h2 className="text-xl font-bold text-center mb-2">
-              {weatherData.name}
+              Weather in London
             </h2>
             <div className="flex justify-center items-center">
               {iconUrl && <img src={iconUrl} alt="Weather icon" />}
@@ -69,4 +55,4 @@ const WeatherCard = () => {
   );
 };
 
-export default WeatherCard;
+export default CurrentWeatherCard;
