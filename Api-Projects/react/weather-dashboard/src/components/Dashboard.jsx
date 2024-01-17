@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import CurrentWeatherCard from './CurrentWeatherCard';
-import FiveDayForecast from './FiveDayForecast';
+import SevenDayForecast from './SevenDayForecast';
 
 const Dashboard = () => {
   // State for selected city, default to 'London'
@@ -18,11 +18,11 @@ const Dashboard = () => {
         {/* Pass the selectedCity and handleCityChange as props to CurrentWeatherCard */}
         <CurrentWeatherCard city={selectedCity} onCityChange={handleCityChange} />
       </div>
-      {/* Container for FiveDayForecast */}
+      {/* Container for SevenDayForecast */}
       <div className="forecast-container mx-auto mt-4">
-        {/* Separate row container for FiveDayForecast */}
-        {/* Pass the selectedCity as a prop to FiveDayForecast */}
-        <FiveDayForecast city={selectedCity}/>
+        {/* Separate row container for SevenDayForecast */}
+        {/* Pass the selectedCity as a prop to SevenDayForecast */}
+        <SevenDayForecast city={selectedCity}/>
       </div>
     </div>
   );

@@ -17,20 +17,29 @@ export const fetchCurrentWeather = async (city) => {
 };
 
 
-// 5 day forcast 
-export const fetchFiveDayForecast = async (city) => {
+// 7 day forcast 
+export const fetchSevenDayForecast = async (city) => {
   const apiKey = process.env.REACT_APP_OPENWEATHER_API_KEY;
-  // Using the 5-day forecast endpoint
-  const url = `${API_BASE_URL}/forecast?q=${city}&appid=${apiKey}&units=metric`;
 
+  // First, fetch the coordinates (latitude & longitude) for the city
+  let coordsUrl = `${API_BASE_URL}/weather?q=${city}&appid=${apiKey}`;
   try {
-    const response = await fetch(url);
+    let response = await fetch(coordsUrl);
     if (!response.ok) {
-      throw new Error("5-day forecast data could not be fetched. Please enter a valid city");
+      throw new Error("Could not fetch coordinates for the city.");
+    }
+    const { coord } = await response.json();
+    
+    // Then, use those coordinates to fetch the 7-day forecast
+    const url = `${API_BASE_URL}/onecall?lat=${coord.lat}&lon=${coord.lon}&exclude=minutely,hourly,alerts&appid=${apiKey}&units=metric`;
+    response = await fetch(url);
+    if (!response.ok) {
+      throw new Error("7-day forecast data could not be fetched.");
     }
     return await response.json();
   } catch (error) {
-    console.error("Error fetching 5-day forecast data:", error);
+    console.error("Error fetching 7-day forecast data:", error);
     throw error;
   }
 };
+
