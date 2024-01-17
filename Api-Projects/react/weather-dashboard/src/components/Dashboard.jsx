@@ -3,7 +3,7 @@ import CurrentWeatherCard from './CurrentWeatherCard';
 
 const Dashboard = () => {
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-slate-950">
       <header className="bg-white shadow">
         {/* Header content (if any) */}
       </header>
