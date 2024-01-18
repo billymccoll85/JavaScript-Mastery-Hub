@@ -30,7 +30,7 @@ const CurrentWeatherCard = () => {
   const iconUrl = `http://openweathermap.org/img/wn/${weather[0].icon}.png`;
 
   return (
-    <div className="max-w-lg mt-12 mx-auto bg-sky-200 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 ease-in-out">
+    <div className="bg-sky-200 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 ease-in-out">
       <div className="p-4">
         <h2 className="text-xl font-bold text-center mb-2">Weather in London</h2>
         <div className="flex justify-center items-center">

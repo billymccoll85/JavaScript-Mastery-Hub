@@ -8,13 +8,20 @@ const Dashboard = () => {
       <header className="bg-white shadow">
         {/* Header content (if any) */}
       </header>
-
       <main>
-        <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-          <CurrentWeatherCard />
-        </div>
-        <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-          <WeeklyWeather />
+        <div className="container mx-auto">
+          <div className="flex flex-row p-8 justify-around">
+            <div className="basis-1/7">
+              <div>
+                <CurrentWeatherCard />
+              </div>
+            </div>
+            <div className="basis-3/5">
+              <div>
+                <WeeklyWeather />
+              </div>
+            </div>
+          </div>
         </div>
       </main>
     </div>
