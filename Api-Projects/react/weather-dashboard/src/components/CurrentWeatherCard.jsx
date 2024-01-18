@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import getCurrentWeather from "../api/WeatherService"; // Ensure this is correctly importing your API call function
+import { getCurrentWeather } from "../api/WeatherService"; // Ensure this is correctly importing your API call function
 
 const CurrentWeatherCard = () => {
   const [lat, lon] = [51.5074, -0.1278]; // Coordinates for London, UK
