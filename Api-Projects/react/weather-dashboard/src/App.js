@@ -1,12 +1,14 @@
 import React from 'react';
+import { CityProvider } from './context/CityContext';
 import Dashboard from './components/Dashboard';
-
 
 function App() {
   return (
-    <div className="App">
-      <Dashboard />
-    </div>
+    <CityProvider>
+      <div className="App">
+        <Dashboard />
+      </div>
+    </CityProvider>
   );
 }
 

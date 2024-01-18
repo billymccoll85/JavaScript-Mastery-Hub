@@ -1,15 +1,16 @@
 import React from 'react';
 import CurrentWeatherCard from './CurrentWeatherCard';
 import WeeklyWeather from './WeeklyWeather';
+import CitySelector from './CitySelector'; // Import CitySelector
 
 const Dashboard = () => {
   return (
     <div className="min-h-screen bg-slate-950">
-      <header className="bg-white shadow">
-        {/* Header content (if any) */}
-      </header>
       <main>
         <div className="container mx-auto">
+          <div className='flex justify-center py-8'>
+              <CitySelector />
+          </div>
           <div className="flex flex-row p-8 justify-center">
             <div className="basis-1/3">
               <div className='mr-8'>
@@ -29,4 +30,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-
