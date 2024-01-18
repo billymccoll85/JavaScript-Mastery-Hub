@@ -8,6 +8,8 @@ Calculator: A basic calculator to get more familiar with state and event handlin
 Timer/Stopwatch: Build a timer or a stopwatch to learn about lifecycle methods and state updates based on time.
 Recipe Finder: Use an API to fetch recipes based on user input, focusing on API calls and state management.
 Quiz App: A simple quiz application to handle user input and state changes based on selections.
+
+// medium with state managment
 Note Taking App: An app to create, edit, and delete notes, which helps in understanding CRUD operations in React.
 Portfolio Site: Create a personal portfolio site, a great way to learn about routing with React Router.
 Markdown Previewer: Implement a simple text input that provides a real-time markdown preview.
@@ -18,6 +20,8 @@ Social Media Dashboard: Create a dashboard with user posts and likes, using Redu
 Task Manager: Similar to a Todo list, but with more features like categorizing tasks, due dates, etc., utilizing Redux for complex state.
 Music Player: A basic music player app that handles playlists and track states.
 Hard/Expert Projects
+
+//  hard / expert
 Full-Fledged Blog Platform with User Authentication: Delve into backend integration, routing, and advanced state management using Redux or Context API.
 Real-time Collaborative Drawing App: Implement a real-time collaborative drawing tool, which involves complex state management and possibly using WebSockets.
 Multiplayer Game (e.g., Chess, Tic-Tac-Toe): Create a multiplayer game with live updates, focusing on complex state management, real-time updates, and possibly using WebSockets.
