@@ -26,16 +26,23 @@ const CitySelector = () => {
     }
   };
 
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      handleCityChange();
+    }
+  };
+
   return (
     <div>
       <input 
         type="text" 
         value={inputValue} 
-        onChange={handleInputChange} 
+        onChange={handleInputChange}
+        onKeyDown={handleKeyDown}
         placeholder="Enter city name" 
-        className="p-2 border rounded"
+        className="p-2 border rounded w-80"
       />
-      <button onClick={handleCityChange} className="ml-2 p-2 border rounded bg-blue-500 text-white">
+      <button onClick={handleCityChange} className="ml-2 py-2 px-8 border rounded bg-indigo-700 text-white">
         Set City
       </button>
       {error && <div className="text-red-600">{error}</div>}
