@@ -1,34 +1,30 @@
+import axios from 'axios';
+
+const apiClient = axios.create({
+  baseURL: 'https://api.openweathermap.org/data/3.0/onecall',
+  params: {
+    appid: process.env.REACT_APP_OPENWEATHER_API_KEY,
+    units: 'metric',
+  },
+});
+
 const getCurrentWeather = async (lat, lon) => {
   try {
-    const apiKey = process.env.REACT_APP_OPENWEATHER_API_KEY;
-    const url = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,daily,alerts&units=metric&appid=${apiKey}`;
-
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const data = await response.json();
-    return data.current; // Accessing the 'current' property for current weather data
+    const response = await apiClient.get('', { params: { lat, lon, exclude: 'minutely,hourly,daily,alerts' } });
+    return response.data.current;
   } catch (error) {
-    console.error("There was an error fetching the weather data:", error);
+    console.error("Error fetching current weather data:", error);
+    throw error;
   }
 };
 
 const getWeeklyWeather = async (lat, lon) => {
   try {
-    const apiKey = process.env.REACT_APP_OPENWEATHER_API_KEY;
-    const url = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&units=metric&appid=${apiKey}`;
-
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const data = await response.json();
-    return data.daily; // Accessing the 'daily' property for weekly weather data
+    const response = await apiClient.get('', { params: { lat, lon, exclude: 'current,minutely,hourly,alerts' } });
+    return response.data.daily;
   } catch (error) {
-    console.error("There was an error fetching the weekly weather data:", error);
+    console.error("Error fetching weekly weather data:", error);
+    throw error;
   }
 };
 
