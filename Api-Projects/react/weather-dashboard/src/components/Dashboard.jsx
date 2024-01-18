@@ -10,13 +10,13 @@ const Dashboard = () => {
       </header>
       <main>
         <div className="container mx-auto">
-          <div className="flex flex-row p-8 justify-around">
-            <div className="basis-1/7">
-              <div>
+          <div className="flex flex-row p-8 justify-center">
+            <div className="basis-1/3">
+              <div className='mr-8'>
                 <CurrentWeatherCard />
               </div>
             </div>
-            <div className="basis-3/5">
+            <div className="basis-1/3">
               <div>
                 <WeeklyWeather />
               </div>

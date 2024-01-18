@@ -29,12 +29,12 @@ const WeeklyWeather = () => {
     if (!weeklyData.length) {
         return <div className="text-gray-500 text-center">Loading...</div>;
     }
-
+    
     return (
         <div className="bg-sky-200 rounded-xl shadow-md overflow-hidden">
             <div className="p-4">
                 <h2 className="text-xl font-semibold text-center mb-4">Weekly Weather Forecast</h2>
-                <ul>
+                <ul className='flex flex-col items-center'>
                     {weeklyData.map((day, index) => (
                         <li key={index} className="my-2">
                             <span>{formatDate(day.dt)}</span>
