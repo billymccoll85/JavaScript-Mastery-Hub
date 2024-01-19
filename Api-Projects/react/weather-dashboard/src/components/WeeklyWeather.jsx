@@ -58,7 +58,7 @@ const WeeklyWeather = () => {
                                         />
                                     )}
                                     {/* Temperature */}
-                                    <span>{Math.round(day.temp.max)}°C / {Math.round(day.temp.min)}°C</span>
+                                    <span>{Math.round(day.temp.max)} / {Math.round(day.temp.min)}°C</span>
                                 </div>
 
                                 <span className="ml-2">{day.weather[0].main}</span>
