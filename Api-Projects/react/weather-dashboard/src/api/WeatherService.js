@@ -50,5 +50,30 @@ const getCityCoordinates = async (cityName) => {
   }
 };
 
+const getHourlyWeather = async (lat, lon) => {
+  try {
+    const apiKey = process.env.REACT_APP_OPENWEATHER_API_KEY;
+    const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,daily,alerts&appid=${apiKey}&units=metric`;
 
-export { getCurrentWeather, getWeeklyWeather, getCityCoordinates };
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    const currentTime = new Date().getTime();
+
+    // Filter out hourly data for the current day
+    const hourlyDataForToday = data.hourly.filter(hour => {
+      const hourTime = new Date(hour.dt * 1000);
+      return hourTime.getDate() === new Date(currentTime).getDate();
+    });
+
+    return hourlyDataForToday;
+  } catch (error) {
+    console.error("There was an error fetching the hourly weather data:", error);
+    throw error;
+  }
+};
+
+export { getCurrentWeather, getWeeklyWeather, getCityCoordinates, getHourlyWeather };
