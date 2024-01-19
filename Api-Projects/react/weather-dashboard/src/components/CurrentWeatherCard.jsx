@@ -1,22 +1,37 @@
 import React, { useState, useEffect } from "react";
 import { getCurrentWeather } from "../api/WeatherService";
-import { useCity } from '../context/CityContext'; // Import useCity hook
+import { useCity } from '../context/CityContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThermometerHalf, faCloud } from '@fortawesome/free-solid-svg-icons';
 
 const CurrentWeatherCard = () => {
-  const { city } = useCity(); // Use the city from context
+  const { city } = useCity();
   const [weatherData, setWeatherData] = useState(null);
   const [error, setError] = useState(null);
+  const [currentDateTime, setCurrentDateTime] = useState('');
 
   useEffect(() => {
-    getCurrentWeather(city.lat, city.lon) // Use city coordinates from context
+    getCurrentWeather(city.lat, city.lon)
       .then((data) => {
         setWeatherData(data);
         setError(null);
       })
       .catch((err) => setError(err.message));
-  }, [city]); // Rerun the effect when city changes
+
+    const interval = setInterval(() => {
+      const now = new Date();
+      const formattedDateTime = now.toLocaleString('en-GB', {
+        month: 'short', 
+        day: 'numeric', 
+        hour: 'numeric', 
+        minute: '2-digit', 
+        hour24: true 
+      });
+      setCurrentDateTime(formattedDateTime);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [city]);
 
   if (error) {
     return <div className="text-red-600 text-center font-bold mb-4">{error}</div>;
@@ -37,7 +52,10 @@ const CurrentWeatherCard = () => {
   return (
     <div className="bg-sky-200 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 ease-in-out">
       <div className="p-4">
-        <h2 className="text-xl font-bold mb-2">Weather in {city.name}</h2> {/* Display the selected city name */}
+        <div className="text-center font-semibold">
+          {currentDateTime} {/* Display current date and time */}
+        </div>
+        <h2 className="text-xl font-bold text-center mb-2">Weather in {city.name}</h2>
         <div className="flex justify-start items-center">
           <img src={iconUrl} alt="Weather icon" />
           <p className="text-4xl font-semibold">{Math.round(temp)}°C</p>
