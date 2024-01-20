@@ -21,6 +21,15 @@ const WeeklyWeather = () => {
             .catch((err) => setError(err.message));
     }, [city]);
 
+    if (error) {
+        // Display the error message
+        return (
+            <div className="text-red-600 text-center font-bold mb-4">
+                Error: {error}
+            </div>
+        );
+    }
+
     const formatDate = (unixTime) => {
         const date = new Date(unixTime * 1000);
         const day = date.toLocaleString('default', { weekday: 'short' });
