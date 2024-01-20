@@ -18,7 +18,7 @@ const Dashboard = () => {
                 <CurrentWeatherCard />
               </div>
             </div>
-            <div className="basis-1/3">
+            <div className="basis-1/2">
               <div>
                 <WeeklyWeather />
               </div>

@@ -36,12 +36,35 @@ const WeeklyWeather = () => {
         return Math.round(speed * 2.23694); // Conversion from m/s to mph
     };
 
-    if (error) {
-        return <div className="text-red-600 text-center font-bold mb-4">{error}</div>;
-    }
+    const capitalizeFirstLetter = (string) => {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    };
 
-    if (!weeklyData.length) {
-        return <div className="text-gray-500 text-center">Loading...</div>;
+    function windDirection(degree) {
+        const sectors = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'];
+        degree += 11.25;
+        if (degree < 0) {
+            degree = 360 - Math.abs(degree) % 360;
+        } else {
+            degree = degree % 360;
+        }
+        const which = parseInt(degree / 22.5, 10);
+        return sectors[which];
+    }
+    
+    function beaufortScale(windSpeedMph) {
+        const descriptions = [
+          "Calm", "Light Air", "Light Breeze", "Gentle Breeze",
+          "Moderate Breeze", "Fresh Breeze", "Strong Breeze",
+          "Moderate or Near Gale", "Gale or Fresh Gale",
+          "Strong Gale", "Whole Gale or Storm", "Violent Storm", 
+          "Hurricane"
+        ];
+      
+        const thresholds = [1, 4, 8, 13, 19, 25, 32, 39, 47, 55, 64, 73];
+      
+        const index = thresholds.findIndex(threshold => windSpeedMph < threshold);
+        return descriptions[index !== -1 ? index : descriptions.length - 1];
     }
 
     return (
@@ -52,7 +75,7 @@ const WeeklyWeather = () => {
                     {weeklyData.map((day, index) => (
                         <li key={index} className="w-full">
                             <div onClick={() => toggleDay(index)} 
-                                 className={`cursor-pointer flex justify-between items-center px-3 ${openDayIndex === index ? 'rounded-xl bg-sky-400' : ''}`}>
+                                 className={`cursor-pointer flex justify-between items-center px-3 ${openDayIndex === index ? 'rounded-xl bg-sky-300' : ''}`}>
                                 <span>{formatDate(day.dt)}</span>
                                 <div className="flex items-center">
                                     {day.weather[0].icon && (
@@ -68,21 +91,39 @@ const WeeklyWeather = () => {
                                 <FontAwesomeIcon icon={openDayIndex === index ? faChevronUp : faChevronDown} />
                             </div>
                             {openDayIndex === index && (
-                                <div className="accordion-body flex flex-col gap-4 p-4 text-xs">
-                                    <div>
-                                        <p>{day.weather[0].description}. {day.weather[0].main}.</p>
-                                        <p>Highs of {Math.round(day.temp.max)}°C, with lows of {Math.round(day.temp.min)}°C.</p>
-                                    </div>
-                                    <div className='flex-row'>
-                                        <p>Precipitation: {day.pop * 100}%</p>
-                                        <div className="flex items-center">
-                                            <WindDirection windDeg={day.wind_deg} />
-                                            <p className="ml-2">Wind: {metersPerSecondToMilesPerHour(day.wind_speed)} mph {windDirection(day.wind_deg)}</p>
+                                <div className="accordion-body flex flex-col gap-4 p-4">
+                                    <div className='flex flex-row'>
+                                        {day.weather[0].icon && (
+                                            <img 
+                                                src={`http://openweathermap.org/img/wn/${day.weather[0].icon}.png`} 
+                                                alt={day.weather[0].main} 
+                                                className="inline-block mr-1 weeklyWeatherIcon"
+                                            />
+                                        )}
+                                        <div>
+                                            <p className='font-bold text-md'>
+                                                {capitalizeFirstLetter(day.weather[0].description)}.{' '}
+                                                {beaufortScale(metersPerSecondToMilesPerHour(day.wind_speed))}
+                                            </p>
+                                            <p className='text-sm'>Highs {Math.round(day.temp.max)}°C, Lows {Math.round(day.temp.min)}°C.</p>
                                         </div>
-                                        <p>Pressure: {day.pressure} hPa</p>
-                                        <p>Humidity: {day.humidity}%</p>
-                                        <p>UV Index: {day.uvi}</p>
-                                        <p>Dew point: {Math.round(day.dew_point)}°C</p>
+                                    </div>
+                                    <div className='flex flex-row justify-between text-sm'>
+                                        <div>
+                                            <p>Precipitation: {day.pop * 100}%</p>
+                                            <div className="flex items-center">
+                                                <WindDirection windDeg={day.wind_deg} />
+                                                <p className="ml-1">{windDirection(day.wind_deg)} Wind: {metersPerSecondToMilesPerHour(day.wind_speed)} mphh</p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <p>Pressure: {day.pressure} hPa</p>
+                                            <p>Humidity: {day.humidity}%</p>
+                                        </div>
+                                        <div>
+                                            <p>UV Index: {day.uvi}</p>
+                                            <p>Dew point: {Math.round(day.dew_point)}°C</p>
+                                        </div>
                                     </div>
                                 </div>
                             )}
@@ -93,17 +134,5 @@ const WeeklyWeather = () => {
         </div>
     );
 };
-
-function windDirection(degree) {
-    const sectors = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
-    degree += 22.5;
-    if (degree < 0) {
-        degree = 360 - Math.abs(degree) % 360;
-    } else {
-        degree = degree % 360;
-    }
-    const which = parseInt(degree / 45, 10);
-    return sectors[which];
-}
 
 export default WeeklyWeather;
