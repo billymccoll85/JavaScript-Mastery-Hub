@@ -56,12 +56,12 @@ const CurrentWeatherCard = () => {
   return (
     <div className="bg-sky-200 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 ease-in-out">
       <div className="p-4">
-        <div className="font-semibold">
+        <div className="text-rose-500">
           {currentDateTime} {/* Display current date and time */}
         </div>
         <h2 className="text-xl font-bold mb-2">Weather in {city.name}</h2>
         <div className="flex justify-start items-center">
-          <img src={iconUrl} alt="Weather icon" />
+          <img src={iconUrl} alt="Weather icon currentWeatherIcon" />
           <p className="text-4xl font-semibold">{Math.round(temp)}°C</p>
         </div>
         <div className="flex my-2 font-bold">
@@ -72,7 +72,7 @@ const CurrentWeatherCard = () => {
             <FontAwesomeIcon icon={faCloud} /> {capitalizeFirstLetter(weather[0].description)}
           </p>
         </div>
-        <div className="grid grid-cols-2 gap-4 text-center">
+        <div className="grid grid-cols-2 gap-4">
           <div>Humidity: {humidity}%</div>
           <div>Pressure: {pressure} hPa</div>
           <div>Cloudiness: {clouds}%</div>
