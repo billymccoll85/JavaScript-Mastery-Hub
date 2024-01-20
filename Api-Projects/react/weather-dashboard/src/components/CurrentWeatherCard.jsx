@@ -61,7 +61,7 @@ const CurrentWeatherCard = () => {
         </div>
         <h2 className="text-xl font-bold mb-2">Weather in {city.name}</h2>
         <div className="flex justify-start items-center">
-          <img src={iconUrl} alt="Weather icon currentWeatherIcon" />
+          <img src={iconUrl} alt="Weather icon currentWeatherIcon" className="currentWeatherIcon"/>
           <p className="text-4xl font-semibold">{Math.round(temp)}°C</p>
         </div>
         <div className="flex my-2 font-bold">
