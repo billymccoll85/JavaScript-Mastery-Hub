@@ -72,7 +72,7 @@ const CurrentWeatherCard = () => {
             <FontAwesomeIcon icon={faCloud} /> {capitalizeFirstLetter(weather[0].description)}
           </p>
         </div>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-1 text-sm">
           <div>Humidity: {humidity}%</div>
           <div>Pressure: {pressure} hPa</div>
           <div>Cloudiness: {clouds}%</div>
