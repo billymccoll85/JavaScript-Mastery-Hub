@@ -1,8 +1,10 @@
+// WeeklyWeather.jsx
 import React, { useState, useEffect } from 'react';
 import { getWeeklyWeather } from '../api/WeatherService';
 import { useCity } from '../context/CityContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import WindDirection from './WindDirection';
 
 const WeeklyWeather = () => {
     const { city } = useCity();
@@ -49,7 +51,8 @@ const WeeklyWeather = () => {
                 <ul className='flex flex-col items-center'>
                     {weeklyData.map((day, index) => (
                         <li key={index} className="w-full">
-                            <div onClick={() => toggleDay(index)} className="cursor-pointer flex justify-between items-center">
+                            <div onClick={() => toggleDay(index)} 
+                                 className={`cursor-pointer flex justify-between items-center px-3 ${openDayIndex === index ? 'rounded-xl bg-sky-400' : ''}`}>
                                 <span>{formatDate(day.dt)}</span>
                                 <div className="flex items-center">
                                     {day.weather[0].icon && (
@@ -72,7 +75,10 @@ const WeeklyWeather = () => {
                                     </div>
                                     <div className='flex-row'>
                                         <p>Precipitation: {day.pop * 100}%</p>
-                                        <p>Wind: {metersPerSecondToMilesPerHour(day.wind_speed)} mph {windDirection(day.wind_deg)}</p>
+                                        <div className="flex items-center">
+                                            <WindDirection windDeg={day.wind_deg} />
+                                            <p className="ml-2">Wind: {metersPerSecondToMilesPerHour(day.wind_speed)} mph {windDirection(day.wind_deg)}</p>
+                                        </div>
                                         <p>Pressure: {day.pressure} hPa</p>
                                         <p>Humidity: {day.humidity}%</p>
                                         <p>UV Index: {day.uvi}</p>
