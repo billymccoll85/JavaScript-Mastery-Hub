@@ -5,11 +5,11 @@ const getAlertButtonColorClass = (event) => {
   
   switch (firstWord) {
     case 'red':
-      return 'bg-red-600 hover:bg-red-400';
+      return 'bg-red-600 hover:bg-red-700';
     case 'amber':
-      return 'bg-amber-500 hover:bg-amber-400';
+      return 'bg-amber-600 hover:bg-amber-800';
     case 'yellow':
-      return 'bg-yellow-400 hover:bg-yellow-300';
+      return 'bg-yellow-500 hover:bg-yellow-600';
     default:
       return 'bg-blue-600 hover:bg-blue-400'; // Default color
   }
@@ -57,20 +57,20 @@ const AlertsComponent = ({ alerts }) => {
 
   return (
     <>
-      <button onClick={handleOpenModal} className={`text-white font-bold py-2 px-4 my-2 rounded ${alertButtonColor}`}>
+      <button onClick={handleOpenModal} className={`alertsBtn text-sky-50 text-md font-bold py-1 px-4 my-2 rounded ${alertButtonColor}`}>
         {alerts.length > 0 ? `${alerts[0].event}` : 'No Alerts'}
       </button>
 
       {isModalOpen && (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full" id="modal-overlay">
-          <div className="relative top-20 mx-auto p-5 border shadow-lg rounded-md bg-white w-1/2">
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center" id="modal-overlay">
+          <div className="relative p-5 border shadow-lg rounded-md bg-white w-1/2 h-4/6 overflow-y-auto">
+            <button onClick={handleCloseModal} className="mb-4 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                X
+            </button>
             <div className="modal-content">
-              <button onClick={handleCloseModal} className="mb-4 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-                Close
-              </button>
               {alerts.map((alert, index) => (
                 <div key={index} className="mb-4">
-                  <h3 className="text-2xl font-bold text-red-600 my-4">{alert.event}</h3>
+                  <h3 className="text-2xl font-bold text-gray-700 my-4">{alert.event}</h3>
                   <p className='text-sm text-gray-700 pb-1'>Starts {formatDate(alert.start)} - Ends {formatDate(alert.end)}</p>
                   <hr className='mb-6' />
                   {formatDescription(alert.description)}

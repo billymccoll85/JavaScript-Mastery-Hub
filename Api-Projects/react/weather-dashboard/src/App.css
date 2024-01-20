@@ -12,3 +12,7 @@
 .currentWeatherIcon {
   margin-left: -8px;
 }
+
+.alertsBtn {
+  cursor: pointer;
+}
