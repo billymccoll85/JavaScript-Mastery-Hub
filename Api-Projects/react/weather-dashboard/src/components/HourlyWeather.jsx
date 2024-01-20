@@ -12,7 +12,6 @@ const HourlyForecast = ({ date }) => {
     useEffect(() => {
         getHourlyWeather(city.lat, city.lon)
             .then(data => {
-                // Select the first 12 hours from the data
                 const twelveHoursData = data.slice(0, 12);
                 setHourlyData(twelveHoursData);
                 setError(null);
@@ -20,70 +19,61 @@ const HourlyForecast = ({ date }) => {
             .catch(err => setError(err.message));
     }, [city]);
 
+    // Assuming API returns wind speed in km/h and needs to be converted to mph
+    const convertToMph = speedKmh => Math.round(speedKmh * 0.621371);
+
     const chartData = {
         labels: hourlyData.map(hour => new Date(hour.dt * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })),
         datasets: [
             {
                 label: 'Temperature (°C)',
-                data: hourlyData.map(hour => Math.round(hour.temp)),
+                data: hourlyData.map(hour => hour.temp),
                 borderColor: 'rgb(255, 99, 132)',
                 backgroundColor: 'rgba(255, 99, 132, 0.5)',
                 yAxisID: 'y-temp',
-                type: 'line',
-                fill: false,
             },
             {
                 label: 'Wind Speed (mph)',
-                data: hourlyData.map(hour => Math.round(hour.wind_speed * 2.237)),
+                data: hourlyData.map(hour => convertToMph(hour.wind_speed)),
                 borderColor: 'rgb(54, 162, 235)',
                 backgroundColor: 'rgba(54, 162, 235, 0.5)',
                 yAxisID: 'y-wind',
-                type: 'line',
-                fill: false,
             }
         ],
     };
 
     const chartOptions = {
         scales: {
-            y: {
-                type: 'linear',
-                display: true,
-                position: 'left',
-                id: 'y-temp',
-                title: {
-                    display: true,
-                    text: 'Temperature (°C)'
-                },
-                ticks: {
-                    stepSize: 5,
-                    callback: function(value) {
-                        return Number.isInteger(value) ? value : null;
-                    }
-                }
-            },
-            y2: {
-                type: 'linear',
-                display: true,
-                position: 'right',
-                id: 'y-wind',
-                grid: {
-                    drawOnChartArea: false,
-                },
-                title: {
-                    display: true,
-                    text: 'Wind Speed (mph)'
-                },
-                ticks: {
-                    stepSize: 2,
-                    precision: 0
-                }
-            },
             x: {
                 position: 'top',
                 title: {
                     display: true,
                     text: 'Time'
+                },
+            },
+            'y-temp': {
+                type: 'linear',
+                position: 'left',
+                title: {
+                    display: true,
+                    text: 'Temperature (°C)'
+                },
+                ticks: {
+                    stepSize: 1, // Ensure whole number steps for temperature
+                },
+            },
+            'y-wind': {
+                type: 'linear',
+                position: 'right',
+                title: {
+                    display: true,
+                    text: 'Wind Speed (mph)'
+                },
+                ticks: {
+                    precision: 0, // Round to the nearest whole number
+                },
+                grid: {
+                    drawOnChartArea: false,
                 },
             }
         },

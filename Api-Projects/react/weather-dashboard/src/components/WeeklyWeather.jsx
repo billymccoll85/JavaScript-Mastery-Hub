@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { getWeeklyWeather } from '../api/WeatherService';
 import { useCity } from '../context/CityContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 const WeeklyWeather = () => {
     const { city } = useCity();
     const [weeklyData, setWeeklyData] = useState([]);
+    const [openDayIndex, setOpenDayIndex] = useState(null);
     const [error, setError] = useState(null);
-    const [openDayIndex, setOpenDayIndex] = useState(null); // Track which day is open
 
     useEffect(() => {
         getWeeklyWeather(city.lat, city.lon)
@@ -27,7 +27,11 @@ const WeeklyWeather = () => {
     };
 
     const toggleDay = (index) => {
-        setOpenDayIndex(openDayIndex === index ? null : index); // Toggle the day
+        setOpenDayIndex(openDayIndex === index ? null : index);
+    };
+
+    const metersPerSecondToMilesPerHour = (speed) => {
+        return Math.round(speed * 2.23694); // Conversion from m/s to mph
     };
 
     if (error) {
@@ -37,19 +41,17 @@ const WeeklyWeather = () => {
     if (!weeklyData.length) {
         return <div className="text-gray-500 text-center">Loading...</div>;
     }
-    
+
     return (
         <div className="bg-sky-200 rounded-xl shadow-md overflow-hidden">
             <div className="p-4">
                 <h2 className="text-xl font-semibold text-center mb-4">Weekly Weather Forecast for {city.name}</h2>
                 <ul className='flex flex-col items-center'>
-                     {weeklyData.map((day, index) => (
-                        <li key={index} className="my-2 w-full">
+                    {weeklyData.map((day, index) => (
+                        <li key={index} className="w-full">
                             <div onClick={() => toggleDay(index)} className="cursor-pointer flex justify-between items-center">
                                 <span>{formatDate(day.dt)}</span>
-                                
                                 <div className="flex items-center">
-                                    {/* Weather Icon */}
                                     {day.weather[0].icon && (
                                         <img 
                                             src={`http://openweathermap.org/img/wn/${day.weather[0].icon}.png`} 
@@ -57,16 +59,25 @@ const WeeklyWeather = () => {
                                             className="mr-2"
                                         />
                                     )}
-                                    {/* Temperature */}
                                     <span>{Math.round(day.temp.max)} / {Math.round(day.temp.min)}°C</span>
                                 </div>
-
                                 <span className="ml-2">{day.weather[0].main}</span>
                                 <FontAwesomeIcon icon={openDayIndex === index ? faChevronUp : faChevronDown} />
                             </div>
                             {openDayIndex === index && (
-                                <div className="mt-2">
-                                    {/* Additional details can be added here */}
+                                <div className="accordion-body flex flex-col gap-4 p-4 text-xs">
+                                    <div>
+                                        <p>{day.weather[0].description}. {day.weather[0].main}.</p>
+                                        <p>Highs of {Math.round(day.temp.max)}°C, with lows of {Math.round(day.temp.min)}°C.</p>
+                                    </div>
+                                    <div className='flex-row'>
+                                        <p>Precipitation: {day.pop * 100}%</p>
+                                        <p>Wind: {metersPerSecondToMilesPerHour(day.wind_speed)} mph {windDirection(day.wind_deg)}</p>
+                                        <p>Pressure: {day.pressure} hPa</p>
+                                        <p>Humidity: {day.humidity}%</p>
+                                        <p>UV Index: {day.uvi}</p>
+                                        <p>Dew point: {Math.round(day.dew_point)}°C</p>
+                                    </div>
                                 </div>
                             )}
                         </li>
@@ -76,5 +87,17 @@ const WeeklyWeather = () => {
         </div>
     );
 };
+
+function windDirection(degree) {
+    const sectors = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
+    degree += 22.5;
+    if (degree < 0) {
+        degree = 360 - Math.abs(degree) % 360;
+    } else {
+        degree = degree % 360;
+    }
+    const which = parseInt(degree / 45, 10);
+    return sectors[which];
+}
 
 export default WeeklyWeather;

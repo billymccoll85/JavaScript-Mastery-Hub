@@ -15,22 +15,26 @@ const CurrentWeatherCard = () => {
       .then((data) => {
         setWeatherData(data);
         setError(null);
+
+        // Update local time every second
+        const interval = setInterval(() => {
+          const now = new Date();
+          // Adjust for the city's time zone
+          const timezoneOffset = data.timezone_offset || 0; // Fallback to 0 if not provided
+          const localTime = new Date(now.getTime() + timezoneOffset * 1000);
+          const formattedDateTime = localTime.toLocaleString('en-GB', {
+            month: 'short', 
+            day: 'numeric', 
+            hour: 'numeric', 
+            minute: '2-digit', 
+            hour24: true 
+          });
+          setCurrentDateTime(formattedDateTime);
+        }, 1000);
+
+        return () => clearInterval(interval);
       })
       .catch((err) => setError(err.message));
-
-    const interval = setInterval(() => {
-      const now = new Date();
-      const formattedDateTime = now.toLocaleString('en-GB', {
-        month: 'short', 
-        day: 'numeric', 
-        hour: 'numeric', 
-        minute: '2-digit', 
-        hour24: true 
-      });
-      setCurrentDateTime(formattedDateTime);
-    }, 1000);
-
-    return () => clearInterval(interval);
   }, [city]);
 
   if (error) {
