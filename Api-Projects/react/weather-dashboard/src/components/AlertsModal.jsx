@@ -17,17 +17,27 @@ const getAlertButtonColorClass = (event) => {
 
 const formatDate = (timestamp) => {
   const date = new Date(timestamp * 1000);
-  return date.toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short' });
+  return date.toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short', hour12: false });
 };
 
 const formatDescription = (description) => {
-  // Replace illegal characters and add line breaks for better readability
+  const urlRegex = new RegExp('(\\bhttps?://[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])', 'gi');
   return description
     .replace(/â€™/g, "'") // Replace curly apostrophes
     .replace(/â€œ|â€/g, '"') // Replace curly quotes
-    .split('\n').map((item, index) => (
-      <p key={index} className="mb-4">{item}</p>
-    ));
+    .split('\n')
+    .map((item, index) => {
+      const parts = item.split(urlRegex);
+      return (
+        <p key={index} className="mb-4">
+          {parts.map((part, i) => 
+            urlRegex.test(part) ? 
+              <a key={i} href={part} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{part}</a> 
+              : part
+          )}
+        </p>
+      );
+    });
 };
 
 const AlertsComponent = ({ alerts }) => {
@@ -48,13 +58,13 @@ const AlertsComponent = ({ alerts }) => {
   return (
     <>
       <button onClick={handleOpenModal} className={`text-white font-bold py-2 px-4 my-2 rounded ${alertButtonColor}`}>
-        {alerts.length > 0 ? `${alerts[0].event} Alert` : 'No Alerts'}
+        {alerts.length > 0 ? `${alerts[0].event}` : 'No Alerts'}
       </button>
 
       {isModalOpen && (
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full" id="modal-overlay">
-          <div className="relative top-20 mx-auto border w-96 shadow-lg rounded-md bg-white w-1/2">
-            <div className="modal-content p-5">
+          <div className="relative top-20 mx-auto p-5 border shadow-lg rounded-md bg-white w-1/2">
+            <div className="modal-content">
               <button onClick={handleCloseModal} className="mb-4 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
                 Close
               </button>
