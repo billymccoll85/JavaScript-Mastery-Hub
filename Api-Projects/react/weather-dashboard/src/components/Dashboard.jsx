@@ -24,7 +24,7 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-          <div>
+          <div className='mx-auto w-3/4 pb-40'>
             <HourlyForecast />
           </div>
         </div>
