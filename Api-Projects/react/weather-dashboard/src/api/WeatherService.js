@@ -22,6 +22,7 @@ const getCurrentWeather = async (lat, lon) => {
   }
 };
 
+// Function to get weekly weather data with caching.
 const getWeeklyWeather = async (lat, lon) => {
   const cacheKey = `weeklyWeather-${lat}-${lon}`;
   const cachedData = localStorage.getItem(cacheKey);
@@ -47,11 +48,18 @@ const getWeeklyWeather = async (lat, lon) => {
   }
 };
 
-
 // Function to get city coordinates and timezone offset.
-const getCityCoordinates = async (cityName) => {
+const getCityCoordinates = async (cityName, lat = null, lon = null) => {
   try {
-    const url = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${process.env.REACT_APP_OPENWEATHER_API_KEY}`;
+    let url;
+    if (lat !== null && lon !== null) {
+      // Use latitude and longitude for reverse geocoding
+      url = `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=${process.env.REACT_APP_OPENWEATHER_API_KEY}`;
+    } else {
+      // Use city name for direct geocoding
+      url = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${process.env.REACT_APP_OPENWEATHER_API_KEY}`;
+    }
+
     const response = await axios.get(url);
     const data = response.data;
 
@@ -77,6 +85,7 @@ const getCityCoordinates = async (cityName) => {
   }
 };
 
+// Function to get hourly weather data with caching.
 const getHourlyWeather = async (lat, lon) => {
   const cacheKey = `hourlyWeather-${lat}-${lon}`;
   const cachedData = localStorage.getItem(cacheKey);
@@ -101,7 +110,6 @@ const getHourlyWeather = async (lat, lon) => {
     throw error;
   }
 };
-
 
 // Function to get weather alerts.
 const getWeatherAlerts = async (lat, lon) => {

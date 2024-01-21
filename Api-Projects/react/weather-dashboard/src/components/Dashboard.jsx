@@ -1,10 +1,24 @@
 import React from 'react';
+import { LoadingProvider, useLoading } from '../context/LoadingContext'; // Import Loading Context
 import CurrentWeatherCard from './CurrentWeatherCard';
 import WeeklyWeather from './WeeklyWeather';
-import CitySelector from './CitySelector'; // Import CitySelector
+import CitySelector from './CitySelector';
 import HourlyForecast from './HourlyWeather';
 
-const Dashboard = () => {
+const DashboardContent = () => {
+  const { isLoading } = useLoading(); // Get the isLoading state
+
+  if (isLoading) {
+    return (
+      <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-25">
+        <div className="loader text-white">
+          <svg className="animate-spin rounded-full h-12 w-12 border-4 border-blue-500 border-t-transparent" viewBox="0 0 24 24"></svg>
+          <span className="ml-2"></span>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-slate-950">
       <main>
@@ -30,6 +44,14 @@ const Dashboard = () => {
         </div>
       </main>
     </div>
+  );
+};
+
+const Dashboard = () => {
+  return (
+    <LoadingProvider>
+      <DashboardContent />
+    </LoadingProvider>
   );
 };
 
