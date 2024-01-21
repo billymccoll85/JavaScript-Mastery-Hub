@@ -12,28 +12,46 @@ const HourlyForecast = () => {
     useEffect(() => {
         getHourlyWeather(city.lat, city.lon)
             .then(data => {
-                setHourlyData(data);
+                const currentHour = new Date().getHours();
+                const currentIndex = data.findIndex(hour => 
+                    new Date(hour.dt * 1000).getHours() === currentHour
+                );
+
+                const start = Math.max(0, currentIndex - 2);
+                const end = start + 12; // 2 previous + 10 future hoursP
+                const selectedData = data.slice(start, end).map(hour => ({
+                    time: formatTime(hour.dt),
+                    temp: Math.round(hour.temp)
+                }));
+
+                setHourlyData(selectedData);
                 setError(null);
             })
             .catch(err => setError(err.message));
     }, [city]);
 
-    // Assuming you want to show forecast for next few hours
-    const temperatures = hourlyData.map(hour => Math.round(hour.temp));
-    const labels = hourlyData.map(hour => new Date(hour.dt * 1000).toLocaleTimeString('en-GB'));
+    const formatTime = (unixTime) => {
+        const date = new Date(unixTime * 1000);
+        if (date.getHours() === 0 || date.getHours() === 12) {
+            return date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' }) + 
+                   ' ' + date.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: true });
+        }
+        return date.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: true });
+    };
+    
 
+    const temperatures = hourlyData.map(hour => hour.temp);
     const minTemperature = Math.min(...temperatures);
     const maxTemperature = Math.max(...temperatures);
 
     const chartData = {
-        labels: labels,
+        labels: hourlyData.map(hour => hour.time),
         datasets: [
             {
                 label: 'Temperature (°C)',
                 data: temperatures,
-                borderColor: 'red',
-                backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                fill: false,
+                borderColor: 'rgb(75, 192, 192)',
+                backgroundColor: 'rgba(75, 192, 192, 0.5)',
             }
         ],
     };
@@ -42,10 +60,9 @@ const HourlyForecast = () => {
         scales: {
             y: {
                 beginAtZero: false,
-                suggestedMin: minTemperature - 5, // provide some padding
-                suggestedMax: maxTemperature + 5,
-                stepSize: 1,
-                position: 'left',
+                min: Math.floor(minTemperature / 5) * 5,
+                max: Math.ceil(maxTemperature / 5) * 5,
+                stepSize: 5,
                 title: {
                     display: true,
                     text: 'Temperature (°C)'
@@ -61,21 +78,14 @@ const HourlyForecast = () => {
         },
         plugins: {
             legend: {
-                display: true,
+                display: false,
             },
             title: {
                 display: true,
-                text: `Hourly Forecast for ${city.name}`,
-            },
-            tooltip: {
-                enabled: true,
+                text: `Hourly Temperature Forecast for ${city.name}`,
             },
         },
-        elements: {
-            line: {
-                borderWidth: 2,
-            },
-        },
+        responsive: true,
         maintainAspectRatio: false,
     };
 
@@ -89,6 +99,7 @@ const HourlyForecast = () => {
 
     return (
         <div className="bg-sky-200 rounded-xl shadow-md overflow-hidden p-4">
+            <h2 className="text-xl font-semibold text-center mb-4">Hourly Weather Forecast for {city.name}</h2>
             <div style={{ height: '400px' }}>
                 <Line data={chartData} options={chartOptions} />
             </div>
