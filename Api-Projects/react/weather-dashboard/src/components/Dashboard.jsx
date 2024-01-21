@@ -26,19 +26,15 @@ const DashboardContent = () => {
           <div className='flex justify-center py-8'>
               <CitySelector />
           </div>
-          <div className="flex flex-row p-8 justify-center">
-            <div className="basis-1/3">
-              <div className='mr-8 ml-0'>
-                <CurrentWeatherCard />
-              </div>
+          <div className="flex flex-col md:flex-row p-8 justify-center gap-8">
+            <div className="md:basis-1/3 w-full">
+              <CurrentWeatherCard />
             </div>
-            <div className="basis-1/2">
-              <div>
-                <WeeklyWeather />
-              </div>
+            <div className="md:basis-1/2 w-full">
+              <WeeklyWeather />
             </div>
           </div>
-          <div className='mx-auto w-10/12 pb-40'>
+          <div className='mx-auto w-full md:w-10/12 pb-40'>
             <HourlyForecast />
           </div>
         </div>

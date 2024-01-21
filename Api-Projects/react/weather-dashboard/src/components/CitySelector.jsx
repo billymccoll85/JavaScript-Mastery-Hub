@@ -84,7 +84,7 @@ const CitySelector = () => {
         disabled={isLoading}
       />
       <button onClick={handleCityChange} disabled={isLoading} className="ml-2 py-2 px-8 border rounded bg-indigo-700 text-white">
-        {isLoading ? <FontAwesomeIcon icon={faSpinner} spin /> : 'Set City'}
+        {isLoading ? <FontAwesomeIcon icon={faSpinner} spin /> : 'Submit'}
       </button>
       <button onClick={getCurrentLocation} disabled={isLoading} className="ml-2 py-2 px-8 border rounded bg-red-700 text-white">
         <FontAwesomeIcon icon={faLocationArrow} /> My Location
