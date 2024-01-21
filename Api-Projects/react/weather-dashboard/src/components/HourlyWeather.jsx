@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { getHourlyWeather } from '../api/WeatherService';
 import { useCity } from '../context/CityContext';
 import { Line } from 'react-chartjs-2';
@@ -9,26 +9,32 @@ const HourlyForecast = () => {
     const [hourlyData, setHourlyData] = useState([]);
     const [error, setError] = useState(null);
 
+    // Memoize the rounded current hour calculation
+    const roundedCurrentHour = useMemo(() => {
+        const now = new Date();
+        return new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours() + (now.getMinutes() >= 30 ? 1 : 0));
+    }, []); // Dependencies array is empty, so this runs once on mount
+
     useEffect(() => {
         getHourlyWeather(city.lat, city.lon)
             .then(data => {
-                const currentHour = new Date().getHours();
                 const currentIndex = data.findIndex(hour => 
-                    new Date(hour.dt * 1000).getHours() === currentHour
+                    new Date(hour.dt * 1000).getHours() === roundedCurrentHour.getHours()
                 );
 
+                // Ensure the previous two hours are included
                 const start = Math.max(0, currentIndex - 2);
-                const end = start + 12; // 2 previous + 10 future hours
+                const end = Math.min(data.length, start + 12); // 2 previous + 10 future hours
                 const selectedData = data.slice(start, end).map(hour => ({
                     time: formatTime(hour.dt),
-                    temp: Math.round(hour.temp) // Round to nearest whole number
+                    temp: Math.round(hour.temp)
                 }));
 
                 setHourlyData(selectedData);
                 setError(null);
             })
             .catch(err => setError(err.message));
-    }, [city]);
+    }, [city, roundedCurrentHour]);
 
     const formatTime = (unixTime) => {
         const date = new Date(unixTime * 1000);
