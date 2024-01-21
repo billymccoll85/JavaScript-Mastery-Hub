@@ -2,7 +2,7 @@ import React from 'react';
 import CurrentWeatherCard from './CurrentWeatherCard';
 import WeeklyWeather from './WeeklyWeather';
 import CitySelector from './CitySelector'; // Import CitySelector
-// import HourlyForecast from './HourlyWeather';
+import HourlyForecast from './HourlyWeather';
 
 const Dashboard = () => {
   return (
@@ -25,7 +25,7 @@ const Dashboard = () => {
             </div>
           </div>
           <div>
-            {/* <HourlyForecast /> */}
+            <HourlyForecast />
           </div>
         </div>
       </main>

@@ -22,13 +22,30 @@ const getCurrentWeather = async (lat, lon) => {
   }
 };
 
-// Function to get weekly weather data.
+// Function to get weekly weather data with caching.
 const getWeeklyWeather = async (lat, lon) => {
   try {
+    // Check if cached data exists and is not expired
+    const cachedData = JSON.parse(localStorage.getItem('weeklyWeatherData'));
+    if (cachedData && Date.now() - cachedData.timestamp < 23 * 60 * 60 * 1000) {
+      return cachedData.data;
+    }
+
+    // If no cached data or expired, make a new API request
     const response = await apiClient.get('', { 
       params: { lat, lon, exclude: 'current,minutely,hourly,alerts' } 
     });
-    return response.data.daily;
+
+    const data = response.data;
+
+    // Cache the new data
+    const newCachedData = {
+      timestamp: Date.now(),
+      data: data.daily,
+    };
+    localStorage.setItem('weeklyWeatherData', JSON.stringify(newCachedData));
+
+    return data.daily;
   } catch (error) {
     console.error("Error fetching weekly weather data:", error);
     throw error;
@@ -53,21 +70,30 @@ const getCityCoordinates = async (cityName) => {
   }
 };
 
-// Function to get hourly weather data.
+// Function to get hourly weather data with caching.
 const getHourlyWeather = async (lat, lon) => {
   try {
+    // Check if cached data exists and is not expired
+    const cachedData = JSON.parse(localStorage.getItem('hourlyWeatherData'));
+    if (cachedData && Date.now() - cachedData.timestamp < 23 * 60 * 60 * 1000) {
+      return cachedData.data;
+    }
+
+    // If no cached data or expired, make a new API request
     const response = await apiClient.get('', { 
       params: { lat, lon, exclude: 'current,minutely,daily,alerts' } 
     });
 
     const data = response.data;
-    const currentTime = new Date().getTime();
 
-    // Filter out hourly data for the current day
-    return data.hourly.filter(hour => {
-      const hourTime = new Date(hour.dt * 1000);
-      return hourTime.getDate() === new Date(currentTime).getDate();
-    });
+    // Cache the new data
+    const newCachedData = {
+      timestamp: Date.now(),
+      data: data.hourly,
+    };
+    localStorage.setItem('hourlyWeatherData', JSON.stringify(newCachedData));
+
+    return data.hourly;
   } catch (error) {
     console.error("Error fetching hourly weather data:", error);
     throw error;
