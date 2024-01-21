@@ -14,7 +14,7 @@ const Dashboard = () => {
           </div>
           <div className="flex flex-row p-8 justify-center">
             <div className="basis-1/3">
-              <div className='mr-8'>
+              <div className='mr-8 ml-0'>
                 <CurrentWeatherCard />
               </div>
             </div>
@@ -24,7 +24,7 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-          <div className='mx-auto w-3/4 pb-40'>
+          <div className='mx-auto w-10/12 pb-40'>
             <HourlyForecast />
           </div>
         </div>

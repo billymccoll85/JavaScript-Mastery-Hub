@@ -18,9 +18,8 @@ const CurrentWeatherCard = () => {
         const weatherData = await getCurrentWeather(city.lat, city.lon);
         setWeatherData(weatherData);
 
-        const timezoneOffset = weatherData.timezone_offset || 0;
-        const now = new Date();
-        const localTime = new Date(now.getTime() + timezoneOffset * 1000);
+        // Adjust local time using the timezone offset
+        const localTime = new Date((new Date().getTime()) + city.timezoneOffset * 1000);
         setCurrentDateTime(localTime.toLocaleString('en-GB', {
           month: 'short', 
           day: 'numeric', 
@@ -37,7 +36,7 @@ const CurrentWeatherCard = () => {
     };
 
     fetchData();
-  }, [city]);
+  }, [city]); 
 
   if (error) {
     return <div className="text-red-600 text-center font-bold mb-4">{error}</div>;

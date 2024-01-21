@@ -17,10 +17,15 @@ const CitySelector = () => {
       setError('Please enter a city name');
       return;
     }
-
+  
     try {
       const cityData = await getCityCoordinates(inputValue);
-      setCity(cityData);
+      setCity({
+        lat: cityData.lat,
+        lon: cityData.lon,
+        name: cityData.name,
+        timezoneOffset: cityData.timezoneOffset // Include the timezone offset
+      });
     } catch (error) {
       setError(error.message);
     }
