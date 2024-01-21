@@ -54,7 +54,7 @@ const CurrentWeatherCard = () => {
     <div className="bg-sky-200 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 ease-in-out">
       <div className="p-4">
         <div className="text-rose-500">{currentDateTime}</div>
-        <h2 className="text-xl font-bold mb-2">Weather in {city.name}</h2>
+        <h2 className="text-xl font-bold mb-2">{city.name}</h2>
         <div className="flex justify-start items-center">
           <img src={iconUrl} alt="Weather icon" className="currentWeatherIcon"/>
           <p className="text-4xl font-semibold">{Math.round(temp)}°C</p>
