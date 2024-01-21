@@ -18,10 +18,10 @@ const HourlyForecast = () => {
                 );
 
                 const start = Math.max(0, currentIndex - 2);
-                const end = start + 12; // 2 previous + 10 future hoursP
+                const end = start + 12; // 2 previous + 10 future hours
                 const selectedData = data.slice(start, end).map(hour => ({
                     time: formatTime(hour.dt),
-                    temp: Math.round(hour.temp)
+                    temp: Math.round(hour.temp) // Round to nearest whole number
                 }));
 
                 setHourlyData(selectedData);
@@ -32,26 +32,29 @@ const HourlyForecast = () => {
 
     const formatTime = (unixTime) => {
         const date = new Date(unixTime * 1000);
-        if (date.getHours() === 0 || date.getHours() === 12) {
-            return date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' }) + 
-                   ' ' + date.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: true });
+        if (date.getHours() === 0) {
+            return date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
         }
-        return date.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: true });
+        const hours = date.getHours();
+        const suffix = hours >= 12 ? 'PM' : 'AM';
+        const formattedHour = hours % 12 || 12; // Convert to 12-hour format
+        return `${formattedHour} ${suffix}`;
     };
-    
 
-    const temperatures = hourlyData.map(hour => hour.temp);
-    const minTemperature = Math.min(...temperatures);
-    const maxTemperature = Math.max(...temperatures);
+    // Find max and min temperature for dynamic y-axis scaling
+    const maxTemp = Math.max(...hourlyData.map(hour => hour.temp));
+    const minTemp = Math.min(...hourlyData.map(hour => hour.temp));
+    const yAxisMin = Math.floor(minTemp / 5) * 5 - 15;
+    const yAxisMax = Math.ceil(maxTemp / 5) * 5 + 15;
 
     const chartData = {
         labels: hourlyData.map(hour => hour.time),
         datasets: [
             {
                 label: 'Temperature (°C)',
-                data: temperatures,
-                borderColor: 'rgb(75, 192, 192)',
-                backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                data: hourlyData.map(hour => hour.temp),
+                borderColor: '#b91c1c', // Red color
+                backgroundColor: 'rgba(185, 28, 28, 0.5)',
             }
         ],
     };
@@ -60,8 +63,8 @@ const HourlyForecast = () => {
         scales: {
             y: {
                 beginAtZero: false,
-                min: Math.floor(minTemperature / 5) * 5,
-                max: Math.ceil(maxTemperature / 5) * 5,
+                min: yAxisMin,
+                max: yAxisMax,
                 stepSize: 5,
                 title: {
                     display: true,
