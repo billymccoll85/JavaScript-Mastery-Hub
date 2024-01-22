@@ -23,15 +23,14 @@ const DashboardContent = () => {
     <div className="min-h-screen bg-slate-950">
       <main>
         <div className="container mx-auto p-4">
-          <div className='flex flex-col sm:flex-row justify-center py-8 gap-4'> {/* Adjusted for stacking on mobile */}
-            <CitySelector className="w-full sm:w-auto"/> {/* Full width on mobile */}
-            {/* Add your buttons here, ensure they have className="w-full sm:w-auto" */}
+          <div className='flex flex-col sm:flex-row justify-center py-8 gap-4'>
+            <CitySelector className="w-full sm:w-auto"/>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-4">
-            <div className="col-span-1">
+          <div className="flex flex-col md:flex-row gap-4 p-4">
+            <div className="flex-grow flex-shrink md:basis-1/3">
               <CurrentWeatherCard />
             </div>
-            <div className="col-span-1 md:col-span-2 lg:col-span-1">
+            <div className="flex-grow flex-shrink md:basis-2/3">
               <WeeklyWeather />
             </div>
           </div>
