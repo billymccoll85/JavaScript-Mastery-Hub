@@ -3,7 +3,7 @@ import { useCity } from '../context/CityContext';
 import { getCityCoordinates } from '../api/WeatherService';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationArrow, faSpinner } from '@fortawesome/free-solid-svg-icons';
-import { useLoading } from '../context/LoadingContext'; // Import useLoading
+import { useLoading } from '../context/LoadingContext';
 
 const CitySelector = () => {
   const [inputValue, setInputValue] = useState('');
@@ -73,20 +73,20 @@ const CitySelector = () => {
   };
 
   return (
-    <div>
+    <div className="flex flex-col sm:flex-row items-center justify-center gap-2">
       <input 
         type="text" 
         value={inputValue} 
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
         placeholder="Enter city name" 
-        className="p-2 border rounded w-80"
+        className="p-2 border rounded w-full sm:w-80"  // Full width on mobile
         disabled={isLoading}
       />
-      <button onClick={handleCityChange} disabled={isLoading} className="ml-2 py-2 px-8 border rounded bg-indigo-700 text-white">
+      <button onClick={handleCityChange} disabled={isLoading} className="w-full sm:w-auto py-2 px-8 border rounded bg-indigo-700 text-white">
         {isLoading ? <FontAwesomeIcon icon={faSpinner} spin /> : 'Submit'}
       </button>
-      <button onClick={getCurrentLocation} disabled={isLoading} className="ml-2 py-2 px-8 border rounded bg-red-700 text-white">
+      <button onClick={getCurrentLocation} disabled={isLoading} className="w-full sm:w-auto py-2 px-8 border rounded bg-red-700 text-white">
         <FontAwesomeIcon icon={faLocationArrow} /> My Location
       </button>
       {error && <div className="text-red-600">{error}</div>}

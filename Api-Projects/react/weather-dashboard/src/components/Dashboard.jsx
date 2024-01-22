@@ -1,12 +1,12 @@
 import React from 'react';
-import { LoadingProvider, useLoading } from '../context/LoadingContext'; // Import Loading Context
+import { LoadingProvider, useLoading } from '../context/LoadingContext';
 import CurrentWeatherCard from './CurrentWeatherCard';
 import WeeklyWeather from './WeeklyWeather';
 import CitySelector from './CitySelector';
 import HourlyForecast from './HourlyWeather';
 
 const DashboardContent = () => {
-  const { isLoading } = useLoading(); // Get the isLoading state
+  const { isLoading } = useLoading();
 
   if (isLoading) {
     return (
@@ -22,15 +22,16 @@ const DashboardContent = () => {
   return (
     <div className="min-h-screen bg-slate-950">
       <main>
-        <div className="container mx-auto">
-          <div className='flex justify-center py-8'>
-              <CitySelector />
+        <div className="container mx-auto p-4">
+          <div className='flex flex-col sm:flex-row justify-center py-8 gap-4'> {/* Adjusted for stacking on mobile */}
+            <CitySelector className="w-full sm:w-auto"/> {/* Full width on mobile */}
+            {/* Add your buttons here, ensure they have className="w-full sm:w-auto" */}
           </div>
-          <div className="flex flex-col md:flex-row p-8 justify-center gap-8">
-            <div className="md:basis-1/3 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-4">
+            <div className="col-span-1">
               <CurrentWeatherCard />
             </div>
-            <div className="md:basis-1/2 w-full">
+            <div className="col-span-1 md:col-span-2 lg:col-span-1">
               <WeeklyWeather />
             </div>
           </div>
