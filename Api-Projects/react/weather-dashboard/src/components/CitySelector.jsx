@@ -40,33 +40,50 @@ const CitySelector = () => {
   };
 
   const getCurrentLocation = async (event) => {
-    event.preventDefault(); // Prevent default button click behavior
+    event.preventDefault();
     if (!navigator.geolocation) {
-      setError("Geolocation is not supported by your browser");
+      setError("Geolocation is not supported by your browser.");
       return;
     }
-
+  
     setIsLoading(true);
-    navigator.geolocation.getCurrentPosition(async (position) => {
-      const { latitude, longitude } = position.coords;
-      try {
-        const cityData = await getCityCoordinates(null, latitude, longitude);
-        setCity({
-          lat: cityData.lat,
-          lon: cityData.lon,
-          name: cityData.name,
-          timezoneOffset: cityData.timezoneOffset
-        });
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        const { latitude, longitude } = position.coords;
+        try {
+          const cityData = await getCityCoordinates(null, latitude, longitude);
+          setCity({
+            lat: cityData.lat,
+            lon: cityData.lon,
+            name: cityData.name,
+            timezoneOffset: cityData.timezoneOffset
+          });
+        } catch (error) {
+          setError("Error retrieving location data.");
+        }
         setIsLoading(false);
-      } catch (error) {
-        setError(error.message);
+      },
+      (error) => {
+        switch(error.code) {
+          case error.PERMISSION_DENIED:
+            setError("Location access denied. Please allow location access in your browser settings.");
+            break;
+          case error.POSITION_UNAVAILABLE:
+            setError("Location information is unavailable.");
+            break;
+          case error.TIMEOUT:
+            setError("The request to get user location timed out.");
+            break;
+          default:
+            setError("An unknown error occurred while accessing your location.");
+            break;
+        }
         setIsLoading(false);
-      }
-    }, () => {
-      setError("Unable to retrieve your location");
-      setIsLoading(false);
-    });
+      },
+      { timeout: 10000 } // Optional: you can set a timeout for the request
+    );
   };
+  
 
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
