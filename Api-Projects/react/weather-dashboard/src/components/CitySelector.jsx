@@ -17,7 +17,7 @@ const CitySelector = () => {
   };
 
   const handleCityChange = async (event) => {
-    event.preventDefault(); // Prevent default form submission behavior
+    event.preventDefault();
     if (!inputValue) {
       setError('Please enter a city name');
       return;
@@ -39,13 +39,20 @@ const CitySelector = () => {
     }
   };
 
+  const displayErrorForDuration = (message, duration) => {
+    setError(message);
+    setTimeout(() => {
+      setError('');
+    }, duration);
+  };
+
   const getCurrentLocation = async (event) => {
     event.preventDefault();
     if (!navigator.geolocation) {
-      setError("Geolocation is not supported by your browser.");
+      displayErrorForDuration("Geolocation is not supported by your browser.", 10000);
       return;
     }
-  
+
     setIsLoading(true);
     navigator.geolocation.getCurrentPosition(
       async (position) => {
@@ -59,36 +66,28 @@ const CitySelector = () => {
             timezoneOffset: cityData.timezoneOffset
           });
         } catch (error) {
-          setError("Error retrieving location data.");
+          displayErrorForDuration(error.message, 10000);
         }
         setIsLoading(false);
       },
       (error) => {
+        let errorMessage = "An unknown error occurred while accessing your location.";
         switch(error.code) {
           case error.PERMISSION_DENIED:
-            setError("Location access denied. Please allow location access in your browser settings.");
+            errorMessage = "Location access denied. Please allow location access in your browser settings.";
             break;
           case error.POSITION_UNAVAILABLE:
-            setError("Location information is unavailable.");
+            errorMessage = "Location information is unavailable.";
             break;
           case error.TIMEOUT:
-            setError("The request to get user location timed out.");
-            break;
-          default:
-            setError("An unknown error occurred while accessing your location.");
+            errorMessage = "The request to get user location timed out.";
             break;
         }
+        displayErrorForDuration(errorMessage, 10000);
         setIsLoading(false);
       },
-      { timeout: 10000 } // Optional: you can set a timeout for the request
+      { timeout: 10000 }
     );
-  };
-  
-
-  const handleKeyDown = (event) => {
-    if (event.key === 'Enter') {
-      handleCityChange(event);
-    }
   };
 
   return (
@@ -97,7 +96,6 @@ const CitySelector = () => {
         type="text" 
         value={inputValue} 
         onChange={handleInputChange}
-        onKeyDown={handleKeyDown}
         placeholder="Enter city name" 
         className="p-2 border rounded w-full sm:w-80"
         disabled={isLoading}
