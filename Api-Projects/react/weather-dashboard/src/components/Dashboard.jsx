@@ -22,8 +22,8 @@ const DashboardContent = () => {
   return (
     <div className="min-h-screen bg-slate-950">
       <main>
-        <div className="container mx-auto p-4">
-          <div className='flex flex-col sm:flex-row justify-center py-8 gap-4'>
+        <div className="container mx-auto">
+          <div className='flex flex-col sm:flex-row justify-center px-4 gap-4 py-8'>
             <CitySelector className="w-full sm:w-auto"/>
           </div>
           <div className="flex flex-col md:flex-row gap-4 p-4">
