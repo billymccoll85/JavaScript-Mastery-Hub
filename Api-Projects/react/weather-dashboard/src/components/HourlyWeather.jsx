@@ -91,7 +91,7 @@ const HourlyForecast = () => {
             },
             title: {
                 display: true,
-                text: `Hourly Temperature Forecast for ${city.name}`,
+                text: `Hourly Temperature For ${city.name}`,
             },
         },
         responsive: true,
@@ -107,8 +107,8 @@ const HourlyForecast = () => {
     }
 
     return (
-        <div className="bg-sky-200 rounded-xl shadow-md overflow-hidden p-4">
-            <h2 className="text-xl font-semibold text-center mb-4">Hourly Weather Forecast for {city.name}</h2>
+        <div className="bg-sky-200 rounded-xl shadow-md overflow-hidden p-4 mx-4">
+            <h2 className="text-xl font-semibold text-center text-sm md:text-base">Hourly Weather Forecast {city.name}</h2>
             <div style={{ height: '400px' }}>
                 <Line data={chartData} options={chartOptions} />
             </div>
