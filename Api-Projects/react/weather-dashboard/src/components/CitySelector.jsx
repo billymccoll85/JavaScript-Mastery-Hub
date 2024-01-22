@@ -9,19 +9,20 @@ const CitySelector = () => {
   const [inputValue, setInputValue] = useState('');
   const [error, setError] = useState('');
   const { setCity } = useCity();
-  const { isLoading, setIsLoading } = useLoading(); 
+  const { isLoading, setIsLoading } = useLoading();
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
     setError('');
   };
 
-  const handleCityChange = async () => {
+  const handleCityChange = async (event) => {
+    event.preventDefault(); // Prevent default form submission behavior
     if (!inputValue) {
       setError('Please enter a city name');
       return;
     }
-    
+
     setIsLoading(true);
     try {
       const cityData = await getCityCoordinates(inputValue);
@@ -38,7 +39,8 @@ const CitySelector = () => {
     }
   };
 
-  const getCurrentLocation = async () => {
+  const getCurrentLocation = async (event) => {
+    event.preventDefault(); // Prevent default button click behavior
     if (!navigator.geolocation) {
       setError("Geolocation is not supported by your browser");
       return;
@@ -68,7 +70,7 @@ const CitySelector = () => {
 
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
-      handleCityChange();
+      handleCityChange(event);
     }
   };
 
@@ -80,7 +82,7 @@ const CitySelector = () => {
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
         placeholder="Enter city name" 
-        className="p-2 border rounded w-full sm:w-80"  // Full width on mobile
+        className="p-2 border rounded w-full sm:w-80"
         disabled={isLoading}
       />
       <button onClick={handleCityChange} disabled={isLoading} className="w-full sm:w-auto py-2 px-8 border rounded bg-indigo-700 text-white">
