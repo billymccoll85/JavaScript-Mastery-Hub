@@ -53,18 +53,18 @@ const CurrentWeatherCard = () => {
   return (
     <div className="bg-sky-200 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 ease-in-out">
       <div className="p-4">
-        <div className="text-rose-500">{currentDateTime}</div>
-        <h2 className="text-xl font-bold mb-2">{city.name}</h2>
+        <div className="text-rose-500 text-lg font-semibold">{currentDateTime}</div>
+        <h2 className="text-3xl font-bold mb-2">{city.name}</h2>
         <div className="flex justify-start items-center">
           <img src={iconUrl} alt="Weather icon" className="currentWeatherIcon"/>
           <p className="text-4xl font-semibold">{Math.round(temp)}°C</p>
         </div>
         <AlertsModal alerts={alerts} />
-        <div className="flex my-2 font-bold">
-          <p className="text-md mr-4"><FontAwesomeIcon icon={faThermometerHalf} /> Feels like: {Math.round(feels_like)}°C </p>
-          <p className="text-md"><FontAwesomeIcon icon={faCloud} /> {capitalizeFirstLetter(weather[0].description)}</p>
+        <div className="flex my-2 font-bold justify-between">
+          <p className="text-lg mr-4"><FontAwesomeIcon icon={faThermometerHalf} /> Feels like: {Math.round(feels_like)}°C </p>
+          <p className="text-lg"><FontAwesomeIcon icon={faCloud} /> {capitalizeFirstLetter(weather[0].description)}</p>
         </div>
-        <div className="grid grid-cols-2 gap-1 text-sm">
+        <div className="grid grid-cols-2 gap-1 text-sm md:text-md">
           <div>Humidity: {humidity}%</div>
           <div>Pressure: {pressure} hPa</div>
           <div>Cloudiness: {clouds}%</div>

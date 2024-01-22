@@ -109,13 +109,13 @@ const WeeklyWeather = () => {
 
   return (
     <div className="bg-sky-200 rounded-xl shadow-md overflow-hidden">
-      <div className="p-4">
-        <h2 className="text-xl font-semibold text-center mb-4">
-          Weekly Weather Forecast for {city.name}
+      <div className="p-2 md:p-4">
+        <h2 className="text-base md:text-xl font-semibold text-center mb-4">
+          Weekly Weather Forecast {city.name}
         </h2>
         <ul className="flex flex-col items-center">
           {weeklyData.map((day, index) => (
-            <li key={index} className="w-full">
+            <li key={index} className="w-full text-sm md:text-lg">
               <div
                 onClick={() => toggleDay(index)}
                 className={`cursor-pointer flex justify-between items-center px-3 ${
@@ -141,8 +141,8 @@ const WeeklyWeather = () => {
                 />
               </div>
               {openDayIndex === index && (
-                <div className="accordion-body flex flex-col gap-4 p-4">
-                  <div className="flex flex-row">
+                <div className="accordion-body flex flex-col gap-4 p-2">
+                  <div className="flex flex-row items-center">
                     {day.weather[0].icon && (
                       <img
                         src={`http://openweathermap.org/img/wn/${day.weather[0].icon}.png`}
@@ -151,53 +151,52 @@ const WeeklyWeather = () => {
                       />
                     )}
                     <div>
-                      <p className="font-bold text-md">
+                      <p className="font-bold text-sm md:text-base">
                         {capitalizeFirstLetter(day.weather[0].description)}.{" "}
                         {beaufortScale(
                           metersPerSecondToMilesPerHour(day.wind_speed)
                         )}
                       </p>
-                      <p className="text-sm">
+                      <p className="text-xs md:text-sm">
                         Highs {Math.round(day.temp.max)}°C, Lows{" "}
                         {Math.round(day.temp.min)}°C.
                       </p>
                     </div>
                   </div>
-                  <div className="flex flex-row justify-between text-sm">
+                  <div className="flex flex-row justify-between text-xs md:text-base">
                     <div>
-                      <p>Precipitation: {day.pop * 100}%</p>
                       <div className="flex items-center">
                         <WindDirection windDeg={day.wind_deg} />
                         <p className="ml-1">
-                          {windDirection(day.wind_deg)} Wind:{" "}
-                          {metersPerSecondToMilesPerHour(day.wind_speed)} mphh
+                          {windDirection(day.wind_deg)}{" "}
+                          {metersPerSecondToMilesPerHour(day.wind_speed)}mph
                         </p>
                       </div>
                     </div>
                     <div>
-                      <p>Pressure: {day.pressure} hPa</p>
-                      <p>Humidity: {day.humidity}%</p>
+                      <p>Pressure {day.pressure} hPa</p>
+                      <p>Humidity {day.humidity}%</p>
                     </div>
                     <div>
-                      <p>UV Index: {day.uvi}</p>
-                      <p>Dew point: {Math.round(day.dew_point)}°C</p>
+                      <p>UV {day.uvi}</p>
+                      <p>Dew {Math.round(day.dew_point)}°C</p>
                     </div>
                   </div>
-                  <table className="table-auto mt-4">
+                  <table className="table-auto mt-2 text-xs md:text-base">
                     <thead>
                       <tr>
                         <th></th>
-                        <th>Morning</th>
-                        <th>Afternoon</th>
-                        <th>Evening</th>
-                        <th>Night</th>
+                        <th className="font-normal">Morning</th>
+                        <th className="font-normal">Afternoon</th>
+                        <th className="font-normal">Evening</th>
+                        <th className="font-normal">Night</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
                         <td>
                           <FontAwesomeIcon icon={faTemperatureHigh} />{" "}
-                          Temperature:
+                          Temp:
                         </td>
                         <td>{Math.round(day.temp.morn)}°C</td>
                         <td>{Math.round(day.temp.day)}°C</td>
@@ -216,11 +215,11 @@ const WeeklyWeather = () => {
                       </tr>
                     </tbody>
                   </table>
-
-                  <div className="sun-times flex justify-start">
-                    <div className="mr-10">
-                      <FontAwesomeIcon icon={faSun} /> <span>Sunrise</span>
-                      <div>
+  
+                  <div className="sun-times flex justify-between md:w-1/5 mt-2">
+                    <div>
+                      <FontAwesomeIcon icon={faSun} /> <span className="text-xs md:text-base">Sunrise:</span>
+                      <div className="text-xs md:text-sm">
                         {new Date(day.sunrise * 1000).toLocaleTimeString([], {
                           hour: "2-digit",
                           minute: "2-digit",
@@ -228,8 +227,8 @@ const WeeklyWeather = () => {
                       </div>
                     </div>
                     <div>
-                      <FontAwesomeIcon icon={faMoon} /> <span>Sunset</span>
-                      <div>
+                      <FontAwesomeIcon icon={faMoon} /> <span className="text-xs md:text-base">Sunset:</span>
+                      <div className="text-xs md:text-sm">
                         {new Date(day.sunset * 1000).toLocaleTimeString([], {
                           hour: "2-digit",
                           minute: "2-digit",
@@ -245,6 +244,7 @@ const WeeklyWeather = () => {
       </div>
     </div>
   );
+  
 };
 
 export default WeeklyWeather;
