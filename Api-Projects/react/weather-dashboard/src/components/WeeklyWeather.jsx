@@ -216,9 +216,9 @@ const WeeklyWeather = () => {
                     </tbody>
                   </table>
   
-                  <div className="sun-times flex justify-between md:w-1/5 mt-2">
+                  <div className="sun-times flex justify-between md:w-1/4 mt-2">
                     <div>
-                      <FontAwesomeIcon icon={faSun} /> <span className="text-xs md:text-base">Sunrise:</span>
+                      <FontAwesomeIcon icon={faSun} /> <span className="text-xs mr-2 md:text-base">Sunrise:</span>
                       <div className="text-xs md:text-sm">
                         {new Date(day.sunrise * 1000).toLocaleTimeString([], {
                           hour: "2-digit",
