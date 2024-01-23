@@ -26,6 +26,17 @@ const DashboardContent = () => {
           <div className='flex flex-col sm:flex-row justify-center px-4 gap-4 py-8'>
             <CitySelector className="w-full sm:w-auto"/>
           </div>
+          <div class="location-instructions w-1/2 mx-auto">
+              <h2>Enable Location Services on iOS</h2>
+              <p>To use the geolocation feature on our website, please enable location services on your iOS device:</p>
+              <ol>
+                  <li>Go to your device's <b>Settings</b>.</li>
+                  <li>Scroll down and select <b>Safari</b>.</li>
+                  <li>Tap <b>Location</b> and select <b>While Using the App</b>.</li>
+                  <li>If prompted, allow our website to access your location.</li>
+              </ol>
+          </div>
+
           <div className="flex flex-col md:flex-row gap-4 p-4">
             <div className="flex-grow flex-shrink md:basis-1/3">
               <CurrentWeatherCard />
