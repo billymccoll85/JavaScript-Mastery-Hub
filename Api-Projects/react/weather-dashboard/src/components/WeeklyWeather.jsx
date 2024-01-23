@@ -1,4 +1,8 @@
-// WeeklyWeather.jsx
+
+/**
+ * Renders a weekly weather forecast for a specific city.
+ * @returns {JSX.Element} The WeeklyWeather component.
+ */
 import React, { useState, useEffect } from "react";
 import { getWeeklyWeather } from "../api/WeatherService";
 import { useCity } from "../context/CityContext";

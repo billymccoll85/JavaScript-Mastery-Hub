@@ -1,5 +1,9 @@
 import axios from 'axios';
 
+/**
+ * Service for fetching weather data from the OpenWeather API.
+ */
+
 // Creating a single axios instance for all requests.
 const apiClient = axios.create({
   baseURL: 'https://api.openweathermap.org/data/3.0/onecall',
@@ -9,7 +13,13 @@ const apiClient = axios.create({
   },
 });
 
-// Function to get current weather data.
+/**
+ * Function to get current weather data.
+ * @param {number} lat - The latitude of the location.
+ * @param {number} lon - The longitude of the location.
+ * @returns {Promise<object>} The current weather data.
+ * @throws {Error} If there is an error fetching the data.
+ */
 const getCurrentWeather = async (lat, lon) => {
   try {
     const response = await apiClient.get('', { 
@@ -22,7 +32,13 @@ const getCurrentWeather = async (lat, lon) => {
   }
 };
 
-// Function to get weekly weather data with caching.
+/**
+ * Function to get weekly weather data with caching.
+ * @param {number} lat - The latitude of the location.
+ * @param {number} lon - The longitude of the location.
+ * @returns {Promise<object[]>} The weekly weather data.
+ * @throws {Error} If there is an error fetching the data.
+ */
 const getWeeklyWeather = async (lat, lon) => {
   const cacheKey = `weeklyWeather-${lat}-${lon}`;
   const cachedData = localStorage.getItem(cacheKey);
@@ -48,7 +64,14 @@ const getWeeklyWeather = async (lat, lon) => {
   }
 };
 
-// Function to get city coordinates and timezone offset.
+/**
+ * Function to get city coordinates and timezone offset.
+ * @param {string} cityName - The name of the city.
+ * @param {number} [lat=null] - The latitude of the location (optional).
+ * @param {number} [lon=null] - The longitude of the location (optional).
+ * @returns {Promise<object>} The city coordinates and timezone offset.
+ * @throws {Error} If there is an error fetching the data or the city is not found.
+ */
 const getCityCoordinates = async (cityName, lat = null, lon = null) => {
   try {
     let url;
@@ -85,7 +108,13 @@ const getCityCoordinates = async (cityName, lat = null, lon = null) => {
   }
 };
 
-// Function to get hourly weather data with caching.
+/**
+ * Function to get hourly weather data with caching.
+ * @param {number} lat - The latitude of the location.
+ * @param {number} lon - The longitude of the location.
+ * @returns {Promise<object[]>} The hourly weather data.
+ * @throws {Error} If there is an error fetching the data.
+ */
 const getHourlyWeather = async (lat, lon) => {
   const cacheKey = `hourlyWeather-${lat}-${lon}`;
   const cachedData = localStorage.getItem(cacheKey);
@@ -111,7 +140,13 @@ const getHourlyWeather = async (lat, lon) => {
   }
 };
 
-// Function to get weather alerts.
+/**
+ * Function to get weather alerts.
+ * @param {number} lat - The latitude of the location.
+ * @param {number} lon - The longitude of the location.
+ * @returns {Promise<object[]>} The weather alerts.
+ * @throws {Error} If there is an error fetching the data.
+ */
 const getWeatherAlerts = async (lat, lon) => {
   try {
     const response = await apiClient.get('', { 

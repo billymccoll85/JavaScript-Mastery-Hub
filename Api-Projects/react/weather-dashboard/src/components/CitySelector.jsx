@@ -5,17 +5,29 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationArrow, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { useLoading } from '../context/LoadingContext';
 
+/**
+ * Component for selecting a city and displaying weather information.
+ */
 const CitySelector = () => {
   const [inputValue, setInputValue] = useState('');
   const [error, setError] = useState('');
   const { setCity } = useCity();
   const { isLoading, setIsLoading } = useLoading();
 
+  /**
+   * Handles the change event of the input field.
+   * @param {Object} event - The change event object.
+   */
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
     setError('');
   };
 
+  /**
+   * Displays an error message for a specified duration.
+   * @param {string} message - The error message to display.
+   * @param {number} duration - The duration in milliseconds for which the error message should be displayed.
+   */
   const displayErrorForDuration = (message, duration) => {
     setError(message);
     setTimeout(() => {
@@ -23,6 +35,10 @@ const CitySelector = () => {
     }, duration);
   };
 
+  /**
+   * Handles the city change event when the submit button is clicked.
+   * @param {Object} event - The click event object.
+   */
   const handleCityChange = async (event) => {
     event.preventDefault();
     if (!inputValue) {
@@ -45,6 +61,10 @@ const CitySelector = () => {
     setIsLoading(false);
   };
 
+  /**
+   * Handles the click event when the "My Location" button is clicked.
+   * @param {Object} event - The click event object.
+   */
   const getCurrentLocation = async (event) => {
     event.preventDefault();
     if (!navigator.geolocation) {

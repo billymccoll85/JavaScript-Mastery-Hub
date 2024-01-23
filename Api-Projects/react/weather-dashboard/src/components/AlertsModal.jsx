@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
 
+/**
+ * Get the CSS class for the alert button based on the event.
+ * @param {string} event - The event name.
+ * @returns {string} - The CSS class for the alert button.
+ */
 const getAlertButtonColorClass = (event) => {
   const firstWord = event.split(' ')[0].toLowerCase();
   
@@ -15,11 +20,21 @@ const getAlertButtonColorClass = (event) => {
   }
 };
 
+/**
+ * Format the timestamp to a localized date and time string.
+ * @param {number} timestamp - The timestamp in seconds.
+ * @returns {string} - The formatted date and time string.
+ */
 const formatDate = (timestamp) => {
   const date = new Date(timestamp * 1000);
   return date.toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short', hour12: false });
 };
 
+/**
+ * Format the description text, replacing special characters and adding links.
+ * @param {string} description - The description text.
+ * @returns {JSX.Element[]} - An array of JSX elements representing the formatted description.
+ */
 const formatDescription = (description) => {
   const urlRegex = new RegExp('(\\bhttps?://[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])', 'gi');
   return description
@@ -37,6 +52,11 @@ const formatDescription = (description) => {
     ));
 };
 
+/**
+ * Component for displaying alerts.
+ * @param {Object[]} alerts - An array of alert objects.
+ * @returns {JSX.Element|null} - The JSX element representing the alerts component, or null if there are no alerts.
+ */
 const AlertsComponent = ({ alerts }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -104,4 +124,4 @@ const AlertsComponent = ({ alerts }) => {
   );
 };
 
-export default AlertsComponent; 
+export default AlertsComponent;

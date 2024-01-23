@@ -5,6 +5,11 @@ import WeeklyWeather from './WeeklyWeather';
 import CitySelector from './CitySelector';
 import HourlyForecast from './HourlyWeather';
 
+/**
+ * Renders the content of the dashboard.
+ * Displays a loading spinner if isLoading is true.
+ * Otherwise, renders the weather components.
+ */
 const DashboardContent = () => {
   const { isLoading } = useLoading();
 
@@ -54,6 +59,10 @@ const DashboardContent = () => {
   );
 };
 
+/**
+ * Renders the dashboard component.
+ * Wraps the DashboardContent component with the LoadingProvider.
+ */
 const Dashboard = () => {
   return (
     <LoadingProvider>
