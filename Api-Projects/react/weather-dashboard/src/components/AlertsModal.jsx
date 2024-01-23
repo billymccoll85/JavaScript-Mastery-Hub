@@ -26,22 +26,37 @@ const formatDescription = (description) => {
     .replace(/â€™/g, "'") // Replace curly apostrophes
     .replace(/â€œ|â€/g, '"') // Replace curly quotes
     .split('\n')
-    .map((item, index) => {
-      const parts = item.split(urlRegex);
-      return (
-        <p key={index} className="mb-4">
-          {parts.map((part, i) => 
-            urlRegex.test(part) ? 
-              <a key={i} href={part} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{part}</a> 
-              : part
-          )}
-        </p>
-      );
-    });
+    .map((item, index) => (
+      <p key={index} className="mb-4">
+        {item.split(urlRegex).map((part, i) => 
+          urlRegex.test(part) ? 
+            <a key={i} href={part} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{part}</a> 
+            : part
+        )}
+      </p>
+    ));
 };
 
 const AlertsComponent = ({ alerts }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  let touchStart = null;
+  const handleTouchStart = (e) => {
+    touchStart = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchMove = (e) => {
+    if (!touchStart) {
+      return;
+    }
+    const touchEnd = e.targetTouches[0].clientX;
+    if (touchStart - touchEnd > 50) { // Swipe left
+      setIsModalOpen(false);
+    }
+    if (touchEnd - touchStart > 50) { // Swipe right
+      setIsModalOpen(false);
+    }
+  };
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -62,8 +77,13 @@ const AlertsComponent = ({ alerts }) => {
       </button>
 
       {isModalOpen && (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center" id="modal-overlay">
-          <div className="relative p-4 border shadow-lg rounded-md bg-white md:w-1/2 w-11/12 h-4/6 overflow-y-auto">
+        <div 
+          onTouchStart={handleTouchStart} 
+          onTouchMove={handleTouchMove}
+          className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center" 
+          id="modal-overlay"
+        >
+          <div className="relative p-4 border shadow-lg rounded-md bg-white md:w-1/2 w-11/12 h-4/6 overflow-y-auto modal-content">
             <button onClick={handleCloseModal} className="absolute top-4 right-4 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
                 X
             </button>
@@ -84,4 +104,4 @@ const AlertsComponent = ({ alerts }) => {
   );
 };
 
-export default AlertsComponent;
+export default AlertsComponent; 
