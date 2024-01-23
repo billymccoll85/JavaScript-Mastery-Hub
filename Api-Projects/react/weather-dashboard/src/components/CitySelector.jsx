@@ -16,10 +16,17 @@ const CitySelector = () => {
     setError('');
   };
 
+  const displayErrorForDuration = (message, duration) => {
+    setError(message);
+    setTimeout(() => {
+      setError('');
+    }, duration);
+  };
+
   const handleCityChange = async (event) => {
     event.preventDefault();
     if (!inputValue) {
-      setError('Please enter a city name');
+      displayErrorForDuration('Please enter a city name', 10000);
       return;
     }
 
@@ -32,18 +39,10 @@ const CitySelector = () => {
         name: cityData.name,
         timezoneOffset: cityData.timezoneOffset
       });
-      setIsLoading(false);
     } catch (error) {
-      setError(error.message);
-      setIsLoading(false);
+      displayErrorForDuration(error.message, 10000);
     }
-  };
-
-  const displayErrorForDuration = (message, duration) => {
-    setError(message);
-    setTimeout(() => {
-      setError('');
-    }, duration);
+    setIsLoading(false);
   };
 
   const getCurrentLocation = async (event) => {
@@ -82,6 +81,9 @@ const CitySelector = () => {
           case error.TIMEOUT:
             errorMessage = "The request to get user location timed out.";
             break;
+            default:
+              errorMessage = "An unexpected error occurred.";
+              break;
         }
         displayErrorForDuration(errorMessage, 10000);
         setIsLoading(false);
