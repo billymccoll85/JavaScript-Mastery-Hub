@@ -35,9 +35,9 @@ const DashboardContent = () => {
               <h2>Enable Location Services on iOS</h2>
               <p>To use the geolocation feature on our website, please enable location services on your iOS device:</p>
               <ol>
-                  <li>Go to your device's <b>Settings</b>.</li>
-                  <li>Scroll down and select <b>Safari</b>.</li>
-                  <li>Tap <b>Location</b> and select <b>While Using the App</b>.</li>
+                  <li>Go to your device's <strong>Settings</strong>.</li>
+                  <li>Scroll down and select <strong>Safari</strong>.</li>
+                  <li>Tap <strong>Location</strong> and select <strong>While Using the App</strong>.</li>
                   <li>If prompted, allow our website to access your location.</li>
               </ol>
           </div>
