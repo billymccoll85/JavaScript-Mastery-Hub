@@ -13,27 +13,31 @@ const HourlyForecast = () => {
     const roundedCurrentHour = useMemo(() => {
         const now = new Date();
         return new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours() + (now.getMinutes() >= 30 ? 1 : 0));
-    }, []); // Dependencies array is empty, so this runs once on mount
+    }, []);
 
     useEffect(() => {
-        getHourlyWeather(city.lat, city.lon)
-            .then(data => {
-                const currentIndex = data.findIndex(hour => 
-                    new Date(hour.dt * 1000).getHours() === roundedCurrentHour.getHours()
-                );
+        if (city) {
+            getHourlyWeather(city.lat, city.lon)
+                .then(data => {
+                    const currentIndex = data.findIndex(hour => 
+                        new Date(hour.dt * 1000).getHours() === roundedCurrentHour.getHours()
+                    );
 
-                // Ensure the previous two hours are included
-                const start = Math.max(0, currentIndex - 2);
-                const end = Math.min(data.length, start + 12); // 2 previous + 10 future hours
-                const selectedData = data.slice(start, end).map(hour => ({
-                    time: formatTime(hour.dt),
-                    temp: Math.round(hour.temp)
-                }));
+                    // Ensure the previous two hours are included
+                    const start = Math.max(0, currentIndex - 2);
+                    const end = Math.min(data.length, start + 12); // 2 previous + 10 future hours
+                    const selectedData = data.slice(start, end).map(hour => ({
+                        time: formatTime(hour.dt),
+                        temp: Math.round(hour.temp),
+                        rain: hour.rain ? hour.rain['1h'] : 0,
+                        rainPercentage: hour.pop * 100
+                    }));
 
-                setHourlyData(selectedData);
-                setError(null);
-            })
-            .catch(err => setError(err.message));
+                    setHourlyData(selectedData);
+                    setError(null);
+                })
+                .catch(err => setError(err.message));
+        }
     }, [city, roundedCurrentHour]);
 
     const formatTime = (unixTime) => {
@@ -59,22 +63,45 @@ const HourlyForecast = () => {
             {
                 label: 'Temperature (°C)',
                 data: hourlyData.map(hour => hour.temp),
-                borderColor: '#b91c1c', // Red color
+                borderColor: '#b91c1c',
                 backgroundColor: 'rgba(185, 28, 28, 0.5)',
+                yAxisID: 'yTemp',
+            },
+            {
+                label: 'Rain (mm/h)',
+                type: 'bar',
+                data: hourlyData.map(hour => hour.rain),
+                borderColor: '#1c92d2',
+                backgroundColor: 'rgba(28, 146, 210, 0.5)',
+                yAxisID: 'yRain',
             }
         ],
     };
 
     const chartOptions = {
         scales: {
-            y: {
-                beginAtZero: false,
+            yTemp: {
+                type: 'linear',
+                display: true,
+                position: 'left',
                 min: yAxisMin,
                 max: yAxisMax,
                 stepSize: 5,
                 title: {
                     display: true,
                     text: 'Temperature (°C)'
+                },
+            },
+            yRain: {
+                type: 'linear',
+                display: true,
+                position: 'right',
+                grid: {
+                    drawOnChartArea: false,
+                },
+                title: {
+                    display: true,
+                    text: 'Rain (mm/h)'
                 },
             },
             x: {
@@ -91,7 +118,7 @@ const HourlyForecast = () => {
             },
             title: {
                 display: true,
-                text: `Hourly Temperature For ${city.name}`,
+                text: `Hourly Temperature and Rainfall for ${city.name}`,
             },
         },
         responsive: true,
@@ -108,7 +135,7 @@ const HourlyForecast = () => {
 
     return (
         <div className="bg-sky-200 rounded-xl shadow-md overflow-hidden p-4 mx-4">
-            <h2 className="text-xl font-semibold text-center text-sm md:text-base">Hourly Weather Forecast {city.name}</h2>
+            <h2 className="text-xl font-semibold text-center text-sm md:text-base">Hourly Weather Forecast for {city.name}</h2>
             <div style={{ height: '400px' }}>
                 <Line data={chartData} options={chartOptions} />
             </div>
