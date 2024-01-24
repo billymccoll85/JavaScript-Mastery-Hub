@@ -1,23 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import AddTodo from './components/AddTodo';
+import TodoList from './components/TodoList';
 
 function App() {
+  const [todos, setTodos] = useState([]);
+
+  const addTodo = (task) => {
+    setTodos([...todos, { id: Date.now(), task, completed: false }]);
+  };
+
+  const toggleComplete = (id) => {
+    setTodos(todos.map(todo => {
+      if (todo.id === id) {
+        return { ...todo, completed: !todo.completed };
+      }
+      return todo;
+    }));
+  };
+
+  const deleteTodo = (id) => {
+    setTodos(todos.filter(todo => todo.id !== id));
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app container mx-auto mt-10">
+      <h1 className="text-2xl font-bold text-center mb-6">Todo List</h1>
+      <AddTodo onAddTodo={addTodo} />
+      <TodoList 
+        todos={todos} 
+        onToggleComplete={toggleComplete} 
+        onDeleteTodo={deleteTodo} 
+      />
     </div>
   );
 }
