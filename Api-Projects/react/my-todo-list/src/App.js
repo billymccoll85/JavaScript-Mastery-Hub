@@ -1,3 +1,4 @@
+// App.js
 import React, { useState } from 'react';
 import AddTodo from './components/AddTodo';
 import TodoList from './components/TodoList';
@@ -23,8 +24,8 @@ function App() {
   };
 
   return (
-    <div className="app container mx-auto mt-10">
-      <h1 className="text-2xl font-bold text-center mb-6">Todo List</h1>
+    <div className="container mx-auto p-4">
+      <h1 className="text-2xl font-bold text-center mb-4">Todo List</h1>
       <AddTodo onAddTodo={addTodo} />
       <TodoList 
         todos={todos} 
