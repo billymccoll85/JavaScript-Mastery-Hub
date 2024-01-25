@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { evaluate } from 'mathjs';
 import CalculatorDisplay from './CalculatorDisplay';
 import CalculatorKeypad from './CalculatorKeypad';
 
@@ -11,7 +12,7 @@ const Calculator = () => {
 
     const handleCalculate = () => {
         try {
-            setInput(eval(input).toString());
+            setInput(evaluate(input).toString());
         } catch (error) {
             setInput("Error");
         }
