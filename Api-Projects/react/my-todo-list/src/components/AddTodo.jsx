@@ -21,12 +21,12 @@ function AddTodo({ onAddTodo }) {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="mb-4">
+        <form onSubmit={handleSubmit} className="mb-4 flex justify-center">
             <input
                 type="text"
                 value={task}
                 onChange={(e) => setTask(e.target.value)}
-                className="border border-gray-300 p-2 rounded-l-md"
+                className="border border-gray-300 p-2 rounded-l-md w-96"
                 placeholder="Add a new task"
             />
             <button 
