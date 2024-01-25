@@ -23,8 +23,8 @@ const Calculator = () => {
     };
 
     return (
-        <div className="flex justify-center mt-10">
-            <div className="bg-gray-200 p-5 rounded-lg shadow-xl">
+        <div className="flex justify-center pt-10">
+            <div className="bg-black p-5 rounded-2xl shadow-2xl">
                 <CalculatorDisplay value={input || "0"} />
                 <CalculatorKeypad 
                     onKeyPress={handleKeyPress} 

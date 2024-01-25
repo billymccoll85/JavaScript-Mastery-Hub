@@ -1,6 +1,6 @@
 const CalculatorDisplay = ({ value }) => {
     return (
-        <div className="bg-white p-2 rounded mb-3 text-right font-mono text-2xl">
+        <div className="bg-gray-100 text-slate-900 text-right p-4 rounded-xl text-3xl">
             {value}
         </div>
     );
