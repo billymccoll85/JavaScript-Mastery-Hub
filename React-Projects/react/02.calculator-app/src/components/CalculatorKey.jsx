@@ -1,7 +1,7 @@
 const CalculatorKey = ({ className, keyValue, onKeyPress }) => {
     return (
         <button 
-            className={`bg-blue-100 p-2 rounded ${className}`}
+            className={`bg-blue-100 p-4 rounded ${className}`}
             onClick={() => onKeyPress(keyValue)}
         >
             {keyValue}
