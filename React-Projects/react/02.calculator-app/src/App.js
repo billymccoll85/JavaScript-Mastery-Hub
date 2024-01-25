@@ -1,6 +1,6 @@
 import React from 'react';
-import './App.css'; // Assuming you have an App.css for global styles
-import Calculator from './components/Calculator'; // Update the path as per your directory structure
+import './App.css';
+import Calculator from './components/Calculator';
 
 function App() {
   return (
