@@ -1,3 +1,6 @@
+/**
+ * Creates a grid of boxes and appends them to the boxesContainer element.
+ */
 const boxesContainer = document.getElementById('boxes')
 const btn = document.getElementById('btn')
 
