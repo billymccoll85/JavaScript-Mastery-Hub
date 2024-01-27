@@ -12,7 +12,6 @@ const newGameButton = document.getElementById('new-game');
 const betAmountInput = document.getElementById('bet-amount');
 const dealButton = document.getElementById('deal');
 
-
 // Player and dealer hand
 let playerHand = [];
 let dealerHand = [];
@@ -76,10 +75,29 @@ function newGame() {
         updateGameUI();
     }
 }
+
+// Function to generate the image URL for a card
+function getCardImageUrl(card) {
+    const suitMap = {
+        'c': 'clubs',
+        'd': 'diamonds',
+        'h': 'hearts',
+        's': 'spades'
+    };
+
+    const suit = suitMap[card.suit];
+    const value = card.value;
+
+    return `img/${suit}${value}.png`;
+}
+
 // Function to update the game UI
 function updateGameUI() {
-    playerHandDiv.textContent = `Player Hand (${getHandValue(playerHand)}): ${playerHand.map(card => card.value + ' of ' + card.suit).join(', ')}`;
-    dealerHandDiv.textContent = `Dealer Hand (${getHandValue(dealerHand)}): ${dealerHand.map(card => card.value + ' of ' + card.suit).join(', ')}`;
+    const playerHandHtml = playerHand.map(card => `<img src="${getCardImageUrl(card)}" class="card-image">`).join('');
+    const dealerHandHtml = dealerHand.map(card => `<img src="${getCardImageUrl(card)}" class="card-image">`).join('');
+
+    playerHandDiv.innerHTML = `Player Hand (${getHandValue(playerHand)}): ${playerHandHtml}`;
+    dealerHandDiv.innerHTML = `Dealer Hand (${getHandValue(dealerHand)}): ${dealerHandHtml}`;
     playerBalanceDiv.textContent = `Balance: $${balance}`;
     betAmountInput.value = currentBet;
 }

@@ -9,4 +9,13 @@ body {
   }
   
   /* Add any additional custom styles below */
-  
+  .card-image {
+    transition: transform 0.3s ease;
+    transform: translateY(-20px);
+    opacity: 0;
+}
+
+.card-image.dealt {
+    transform: translateY(0);
+    opacity: 1;
+}
