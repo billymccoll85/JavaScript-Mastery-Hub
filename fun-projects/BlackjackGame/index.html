@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blackjack Game</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-800 text-white text-center">
+    <div id="game" class="container p-4">
+        <div id="player-hand" class="p-4"></div>
+        <div id="dealer-hand" class="p-4"></div>
+        <div id="game-controls" class="p-4">
+            <button id="hit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Hit</button>
+            <button id="stand" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Stand</button>
+            <button id="deal" class="deal-btn bg-red-500 over:bg-red-700 text-white font-bold py-2 px-4 rounded">Deal</button>
+
+            <div id="balance" class="p-4">Balance: $100</div>
+        </div>
+
+        <div id="bet-controls" class="p-4">
+            <input id="bet-amount" type="number" placeholder="Enter bet amount" class="text-black" />
+            <button id="bet-1" class="bet-btn">1</button>
+            <button id="bet-5" class="bet-btn">5</button>
+            <button id="bet-10" class="bet-btn">10</button>
+            <button id="bet-20" class="bet-btn">20</button>
+            <button id="bet-50" class="bet-btn">50</button>
+            <button id="bet-100" class="bet-btn">100</button>
+            <button id="bet-1000" class="bet-btn">1000</button>
+          </div>
+          <button id="new-game" class="new-game-btn">Start New Game</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

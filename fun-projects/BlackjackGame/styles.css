@@ -1,0 +1,12 @@
+/* Custom styles */
+body {
+    /* Set the background image with proper path to the image file */
+    background-image: url('assets/9999520.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100svh;
+  }
+  
+  /* Add any additional custom styles below */
+  
