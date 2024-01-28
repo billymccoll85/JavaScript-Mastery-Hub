@@ -4,7 +4,7 @@ import QuestionDisplay from './QuestionDisplay';
 import ResultDisplay from './ResultDisplay';
 
 const QuizContainer = () => {
-    // ... (existing logic)
+
 
     return (
         <div className="container mx-auto p-4">
