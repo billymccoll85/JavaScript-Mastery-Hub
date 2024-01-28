@@ -1,21 +1,19 @@
 import React from 'react';
 
-const ResultDisplay = ({ userAnswers, questions }) => {
-    // Calculate score and render results
-    const score = userAnswers.reduce((acc, answer, index) => {
-        return acc + (answer === questions[index].correctAnswer ? 1 : 0);
-    }, 0);
-
+const ResultDisplay = ({ userAnswers, questions, score }) => {
     return (
-        <div>
-            <h2>Your Score: {score}</h2>
-            {questions.map((question, index) => (
-                <div key={index}>
-                    <p>{question.text}</p>
-                    <p>Your Answer: {userAnswers[index]}</p>
-                    <p>Correct Answer: {question.correctAnswer}</p>
-                </div>
-            ))}
+        <div className="result-container">
+            <h2 className="score-heading">Your Score: {score}/{questions.length}</h2>
+            <div className="questions-review">
+                {questions.map((question, index) => (
+                    <div key={index} className="question-review">
+                        <p className="question-text">{question.text}</p>
+                        <p className="user-answer">Your Answer: {userAnswers[index]}</p>
+                        <p className="correct-answer">Correct Answer: {question.correctAnswer}</p>
+                        {/* Optionally include explanation here */}
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };

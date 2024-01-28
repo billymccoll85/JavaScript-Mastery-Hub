@@ -2,11 +2,15 @@ import React from 'react';
 
 const QuestionDisplay = ({ question, onAnswer }) => {
     return (
-        <div>
-            <h2>{question.text}</h2>
-            <div>
+        <div className="question-container">
+            <h3 className="question-text">{question.text}</h3>
+            <div className="options-container">
                 {question.options.map((option, index) => (
-                    <button key={index} onClick={() => onAnswer(option)}>
+                    <button
+                        key={index}
+                        className="option-button"
+                        onClick={() => onAnswer(option)}
+                    >
                         {option}
                     </button>
                 ))}

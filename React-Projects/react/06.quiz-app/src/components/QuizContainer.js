@@ -1,28 +1,47 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import QuestionDisplay from './QuestionDisplay';
 import ResultDisplay from './ResultDisplay';
-import { QuizContext } from '../context/QuizContext';
+import quizQuestions from '../data/quizQuestions'; // Assuming quiz questions are stored here
 
 const QuizContainer = () => {
-    const { questions, currentQuestionIndex, setCurrentQuestionIndex, userAnswers, setUserAnswers } = useContext(QuizContext);
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+    const [userAnswers, setUserAnswers] = useState([]);
+    const [score, setScore] = useState(0);
     const [quizCompleted, setQuizCompleted] = useState(false);
 
-    const handleAnswer = (answer) => {
-        // Store user's answer and move to next question
-        setUserAnswers([...userAnswers, answer]);
-        if (currentQuestionIndex < questions.length - 1) {
+    const handleAnswer = (selectedOption) => {
+        // Logic to update the score if the answer is correct
+        const correctAnswer = quizQuestions[currentQuestionIndex].correctAnswer;
+        if (selectedOption === correctAnswer) {
+            setScore(score + 1);
+        }
+
+        // Move to the next question or end the quiz
+        if (currentQuestionIndex < quizQuestions.length - 1) {
             setCurrentQuestionIndex(currentQuestionIndex + 1);
+            setUserAnswers([...userAnswers, selectedOption]);
         } else {
             setQuizCompleted(true);
+            setUserAnswers([...userAnswers, selectedOption]);
         }
     };
 
     return (
         <div>
             {!quizCompleted ? (
-                <QuestionDisplay question={questions[currentQuestionIndex]} onAnswer={handleAnswer} />
+                <div>
+                    <h2>Question {currentQuestionIndex + 1} of {quizQuestions.length}</h2>
+                    <QuestionDisplay 
+                        question={quizQuestions[currentQuestionIndex]} 
+                        onAnswer={handleAnswer} 
+                    />
+                </div>
             ) : (
-                <ResultDisplay userAnswers={userAnswers} questions={questions} />
+                <ResultDisplay 
+                    userAnswers={userAnswers} 
+                    questions={quizQuestions} 
+                    score={score} 
+                />
             )}
         </div>
     );
