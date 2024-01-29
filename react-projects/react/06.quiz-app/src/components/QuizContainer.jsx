@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { QuizContext } from '../context/QuizContext';
-import QuestionDisplay from './QuestionDisplay';
-import ResultDisplay from './ResultDisplay';
+import QuestionDisplay from './QuestionDispla';
+import ResultDisplay from './ResultsDisplay.jsx';
 
 const QuizContainer = () => {
     const {

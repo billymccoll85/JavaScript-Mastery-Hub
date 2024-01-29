@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-// Import the QuizProvider
 import { QuizProvider } from './context/QuizContext';
 import QuizContainer from './components/QuizContainer';
 
