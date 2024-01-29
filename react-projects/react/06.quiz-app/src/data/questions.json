@@ -1,0 +1,1202 @@
+[
+    {
+        "id": 1,
+        "text": "What is the output of `console.log(typeof 'Hello World')` in JavaScript?",
+        "options": ["string", "object", "undefined", "boolean"],
+        "correctAnswer": "string"
+    },
+    {
+        "id": 2,
+        "text": "How do you declare a JavaScript variable?",
+        "options": ["var myVar;", "v myVar;", "variable myVar;", "var: myVar;"],
+        "correctAnswer": "var myVar;"
+    },
+    {
+        "id": 3,
+        "text": "What does the `NaN` stand for in JavaScript?",
+        "options": ["Not a Number", "Null and None", "Negative Absolute Number", "No Available Number"],
+        "correctAnswer": "Not a Number"
+    },
+    {
+        "id": 4,
+        "text": "How can you check if a variable is an array in JavaScript?",
+        "options": ["isArray(myVariable)", "isTypeOf(myVariable, 'array')", "typeof(myVariable) === 'array'", "myVariable instanceof Array"],
+        "correctAnswer": "myVariable instanceof Array"
+    },
+    {
+        "id": 5,
+        "text": "Which method is used to add one or more elements to the end of an array in JavaScript?",
+        "options": ["push()", "append()", "addToEnd()", "insertEnd()"],
+        "correctAnswer": "push()"
+    },
+    {
+        "id": 6,
+        "text": "What is the purpose of the `JSON.parse()` method in JavaScript?",
+        "options": ["To stringify a JSON object", "To parse a JSON string into a JavaScript object", "To validate JSON data", "To convert a JavaScript object to a JSON string"],
+        "correctAnswer": "To parse a JSON string into a JavaScript object"
+    },
+    {
+        "id": 7,
+        "text": "Which operator is used for strict equality comparison in JavaScript?",
+        "options": ["==", "===", "!=", "!=="],
+        "correctAnswer": "==="
+    },
+    {
+        "id": 8,
+        "text": "What is the correct way to write a comment in JavaScript?",
+        "options": ["// This is a comment", "/* This is a comment */", "<!-- This is a comment -->", "' This is a comment"],
+        "correctAnswer": "// This is a comment"
+    },
+    {
+        "id": 9,
+        "text": "How do you declare a constant variable in JavaScript?",
+        "options": ["const myVar;", "constant myVar;", "let myVar;", "var myVar;"],
+        "correctAnswer": "const myVar;"
+    },
+    {
+        "id": 10,
+        "text": "Which built-in method is used to split a string into an array of substrings based on a specified delimiter?",
+        "options": ["split()", "splice()", "divide()", "separate()"],
+        "correctAnswer": "split()"
+    },
+    {
+        "id": 11,
+        "text": "What does the `isNaN()` function return when passed an empty string?",
+        "options": ["true", "false"],
+        "correctAnswer": "false"
+    },
+    {
+        "id": 12,
+        "text": "How do you declare a function in JavaScript?",
+        "options": ["function myFunction() {}", "def myFunction() {}", "func myFunction() {}", "fn myFunction() {}"],
+        "correctAnswer": "function myFunction() {}"
+    },
+    {
+        "id": 13,
+        "text": "What is the output of `console.log(0.1 + 0.2)` in JavaScript?",
+        "options": ["0.3", "0.30000000000000004", "0.2", "0.12"],
+        "correctAnswer": "0.30000000000000004"
+    },
+    {
+        "id": 14,
+        "text": "Which method is used to remove the last element from an array in JavaScript?",
+        "options": ["removeLast()", "pop()", "deleteLast()", "splice()"],
+        "correctAnswer": "pop()"
+    },
+    {
+        "id": 15,
+        "text": "What is the purpose of the `event.preventDefault()` method in JavaScript?",
+        "options": ["To stop the execution of the event handler", "To prevent the default behavior of an event", "To trigger a default event", "To pause the event propagation"],
+        "correctAnswer": "To prevent the default behavior of an event"
+    },
+    {
+        "id": 16,
+        "text": "What does the `setTimeout()` function do in JavaScript?",
+        "options": ["Executes a function after a specified time interval", "Sets the current time on the webpage", "Delays the loading of external resources", "Stops the execution of the script"],
+        "correctAnswer": "Executes a function after a specified time interval"
+    },
+    {
+        "id": 17,
+        "text": "How can you round a number to the nearest integer in JavaScript?",
+        "options": ["round()", "ceil()", "floor()", "int()"],
+        "correctAnswer": "round()"
+    },
+    {
+        "id": 18,
+        "text": "Which of the following is not a valid way to declare a variable in JavaScript?",
+        "options": ["let myVar;", "myVar = 10;", "var myVar;", "const myVar;"],
+        "correctAnswer": "myVar = 10;"
+    },
+    {
+        "id": 19,
+        "text": "What is the purpose of the `Array.map()` method in JavaScript?",
+        "options": ["To remove elements from an array", "To create a new array by applying a function to each element of an existing array", "To filter elements in an array", "To reverse the order of elements in an array"],
+        "correctAnswer": "To create a new array by applying a function to each element of an existing array"
+    },
+    {
+        "id": 20,
+        "text": "What is the correct way to check if a JavaScript object has a specific property?",
+        "options": ["object.hasProperty('propertyName')", "object.propertyName !== undefined", "'propertyName' in object", "object.getProperty('propertyName')"],
+        "correctAnswer": "'propertyName' in object"
+    },
+    {
+        "id": 21,
+        "text": "Which JavaScript method is used to add one or more elements to the beginning of an array and returns the new length of the array?",
+        "options": ["unshift()", "prepend()", "addToStart()", "insertStart()"],
+        "correctAnswer": "unshift()"
+    },
+    {
+        "id": 22,
+        "text": "What is the purpose of the `Array.filter()` method in JavaScript?",
+        "options": ["To sort elements in an array", "To create a new array with all elements that pass a test", "To concatenate two arrays", "To remove elements from an array"],
+        "correctAnswer": "To create a new array with all elements that pass a test"
+    },
+    {
+        "id": 23,
+        "text": "How do you convert a string to lowercase in JavaScript?",
+        "options": ["str.lowerCase()", "str.toLower()", "str.toLowerCase()", "str.makeLower()"],
+        "correctAnswer": "str.toLowerCase()"
+    },
+    {
+        "id": 24,
+        "text": "What is the correct way to include an external JavaScript file in an HTML document?",
+        "options": ["<script src=\"script.js\"></script>", "<js href=\"script.js\"></js>", "<include src=\"script.js\"></include>", "<javascript file=\"script.js\"></javascript>"],
+        "correctAnswer": "<script src=\"script.js\"></script>"
+    },
+    {
+        "id": 25,
+        "text": "Which built-in method is used to join the elements of an array into a string, with an optional separator?",
+        "options": ["join()", "merge()", "combine()", "concatenate()"],
+        "correctAnswer": "join()"
+    },
+    {
+        "id": 26,
+        "text": "What is the purpose of the `Math.random()` method in JavaScript?",
+        "options": ["To generate a random number between 1 and 100", "To generate a random number between 0 (inclusive) and 1 (exclusive)", "To generate a random integer", "To generate a random number between -1 and 1"],
+        "correctAnswer": "To generate a random number between 0 (inclusive) and 1 (exclusive)"
+    },
+    {
+        "id": 27,
+        "text": "How do you access the first element of an array in JavaScript?",
+        "options": ["array[0]", "array.first()", "array.getElement(1)", "array.firstElement()"],
+        "correctAnswer": "array[0]"
+    },
+    {
+        "id": 28,
+        "text": "What is the purpose of the `Array.reduce()` method in JavaScript?",
+        "options": ["To add elements to an array", "To multiply elements in an array", "To apply a function to each element of an array and reduce it to a single value", "To sort elements in an array"],
+        "correctAnswer": "To apply a function to each element of an array and reduce it to a single value"
+    },
+    {
+        "id": 29,
+        "text": "What does the `parseInt()` function do in JavaScript?",
+        "options": ["Converts a string to an integer", "Parses a JSON object", "Returns the floating-point representation of a number", "Converts a number to a string"],
+        "correctAnswer": "Converts a string to an integer"
+    },
+    {
+        "id": 30,
+        "text": "Which type of loop is used for iterating over the properties of an object in JavaScript?",
+        "options": ["for loop", "while loop", "for...of loop", "for...in loop"],
+        "correctAnswer": "for...in loop"
+    },
+    {
+        "id": 31,
+        "text": "What is the purpose of the `Array.forEach()` method in JavaScript?",
+        "options": ["To create a new array by applying a function to each element", "To add elements to an array", "To find the maximum value in an array", "To remove elements from an array"],
+        "correctAnswer": "To create a new array by applying a function to each element"
+    },
+    {
+        "id": 32,
+        "text": "How do you declare a global variable in JavaScript?",
+        "options": ["global myVar;", "var myVar;", "let myVar;", "const myVar;"],
+        "correctAnswer": "var myVar;"
+    },
+    {
+        "id": 33,
+        "text": "What is the purpose of the `Array.indexOf()` method in JavaScript?",
+        "options": ["To find the index of the first occurrence of a specified element in an array", "To check if an array is empty", "To add elements to the end of an array", "To sort elements in an array"],
+        "correctAnswer": "To find the index of the first occurrence of a specified element in an array"
+    },
+    {
+        "id": 34,
+        "text": "What is the output of `console.log(null == undefined)` in JavaScript?",
+        "options": ["true", "false"],
+        "correctAnswer": "true"
+    },
+    {
+        "id": 35,
+        "text": "How do you round a number down to the nearest integer in JavaScript?",
+        "options": ["roundDown()", "floor()", "ceil()", "int()"],
+        "correctAnswer": "floor()"
+    },
+    {
+        "id": 36,
+        "text": "Which built-in method is used to find the length of an array in JavaScript?",
+        "options": ["length()", "size()", "count()", "getSize()"],
+        "correctAnswer": "length()"
+    },
+    {
+        "id": 37,
+        "text": "What does the `Array.pop()` method do in JavaScript?",
+        "options": ["Adds an element to the end of an array", "Removes the first element of an array", "Removes the last element of an array", "Sorts the elements of an array"],
+        "correctAnswer": "Removes the last element of an array"
+    },
+    {
+        "id": 38,
+        "text": "What is the purpose of the `Array.unshift()` method in JavaScript?",
+        "options": ["To remove elements from the beginning of an array", "To add elements to the beginning of an array", "To reverse the elements of an array", "To sort the elements of an array"],
+        "correctAnswer": "To add elements to the beginning of an array"
+    },
+    {
+        "id": 39,
+        "text": "Which JavaScript function is used to convert a string to an integer with a specified base?",
+        "options": ["parseInt()", "parseFloat()", "toInteger()", "convertToInt()"],
+        "correctAnswer": "parseInt()"
+    },
+    {
+        "id": 40,
+        "text": "What is the purpose of the `Array.slice()` method in JavaScript?",
+        "options": ["To remove elements from an array", "To create a shallow copy of an array with selected elements", "To add elements to an array", "To sort elements in an array"],
+        "correctAnswer": "To create a shallow copy of an array with selected elements"
+    },
+    {
+        "id": 41,
+        "text": "How do you check if a variable is undefined in JavaScript?",
+        "options": ["if (myVar === null)", "if (myVar === undefined)", "if (typeof myVar === 'undefined')", "if (myVar == undefined)"],
+        "correctAnswer": "if (typeof myVar === 'undefined')"
+    },
+    {
+        "id": 42,
+        "text": "What is the purpose of the `Array.reverse()` method in JavaScript?",
+        "options": ["To add elements to an array", "To remove elements from an array", "To reverse the order of elements in an array", "To sort elements in an array"],
+        "correctAnswer": "To reverse the order of elements in an array"
+    },
+    {
+        "id": 43,
+        "text": "Which operator is used for logical OR in JavaScript?",
+        "options": ["&", "|", "&&", "||"],
+        "correctAnswer": "||"
+    },
+    {
+        "id": 44,
+        "text": "What is the purpose of the `Array.every()` method in JavaScript?",
+        "options": ["To check if at least one element in an array meets a condition", "To check if all elements in an array meet a condition", "To count the number of elements in an array", "To add elements to an array"],
+        "correctAnswer": "To check if all elements in an array meet a condition"
+    },
+    {
+        "id": 45,
+        "text": "What is the output of `console.log(typeof [])` in JavaScript?",
+        "options": ["object", "array", "undefined", "string"],
+        "correctAnswer": "object"
+    },
+    {
+        "id": 46,
+        "text": "How do you declare a block-scoped variable in JavaScript?",
+        "options": ["var myVar;", "let myVar;", "const myVar;", "block myVar;"],
+        "correctAnswer": "let myVar;"
+    },
+    {
+        "id": 47,
+        "text": "What is the purpose of the `Array.find()` method in JavaScript?",
+        "options": ["To find the index of an element in an array", "To find the first element in an array that meets a condition", "To add elements to an array", "To remove elements from an array"],
+        "correctAnswer": "To find the first element in an array that meets a condition"
+    },
+    {
+        "id": 48,
+        "text": "What is the output of `console.log(10 + '5')` in JavaScript?",
+        "options": ["15", "105", "10 + 5", "NaN"],
+        "correctAnswer": "105"
+    },
+    {
+        "id": 49,
+        "text": "How do you declare a multi-line string in JavaScript?",
+        "options": ["'This is a multi-line string'", "\"This is a multi-line string\"", "`This is a multi-line string`", "(This is a multi-line string)"],
+        "correctAnswer": "`This is a multi-line string`"
+    },
+    {
+        "id": 50,
+        "text": "What is the purpose of the `Array.includes()` method in JavaScript?",
+        "options": ["To check if an array is empty", "To add elements to an array", "To check if an array includes a specific element", "To remove elements from an array"],
+        "correctAnswer": "To check if an array includes a specific element"
+    },
+    {
+        "id": 51,
+        "text": "Which JavaScript method is used to remove the last element from an array and return that element?",
+        "options": ["removeLast()", "pop()", "deleteLast()", "splice()"],
+        "correctAnswer": "pop()"
+    },
+    {
+        "id": 52,
+        "text": "What is the purpose of the `Math.floor()` method in JavaScript?",
+        "options": ["To round a number up to the nearest integer", "To round a number down to the nearest integer", "To round a number to the nearest integer", "To generate a random number"],
+        "correctAnswer": "To round a number down to the nearest integer"
+    },
+    {
+        "id": 53,
+        "text": "What does the `Array.join()` method do in JavaScript?",
+        "options": ["Adds an element to the end of an array", "Joins all elements of an array into a single string with a specified separator", "Sorts the elements of an array", "Removes the last element of an array"],
+        "correctAnswer": "Joins all elements of an array into a single string with a specified separator"
+    },
+    {
+        "id": 54,
+        "text": "How do you check if a JavaScript array is empty?",
+        "options": ["if (array.isEmpty())", "if (array.length === 0)", "if (array === [])", "if (array.empty())"],
+        "correctAnswer": "if (array.length === 0)"
+    },
+    {
+        "id": 55,
+        "text": "What is the purpose of the `Array.reduceRight()` method in JavaScript?",
+        "options": ["To add elements to an array", "To reverse the order of elements in an array", "To apply a function to each element of an array and reduce it to a single value from right to left", "To sort elements in an array"],
+        "correctAnswer": "To apply a function to each element of an array and reduce it to a single value from right to left"
+    },
+    {
+        "id": 56,
+        "text": "What is the output of `console.log(10 / 0)` in JavaScript?",
+        "options": ["Infinity", "NaN", "0", "Error"],
+        "correctAnswer": "Infinity"
+    },
+    {
+        "id": 57,
+        "text": "How do you declare a private variable in JavaScript?",
+        "options": ["private myVar;", "_myVar;", "var myVar;", "let myVar;"],
+        "correctAnswer": "_myVar;"
+    },
+    {
+        "id": 58,
+        "text": "What is the purpose of the `Array.some()` method in JavaScript?",
+        "options": ["To check if all elements in an array meet a condition", "To find the first element in an array that meets a condition", "To check if at least one element in an array meets a condition", "To remove elements from an array"],
+        "correctAnswer": "To check if at least one element in an array meets a condition"
+    },
+    {
+        "id": 59,
+        "text": "What is the purpose of the `parseInt()` function with a radix in JavaScript?",
+        "options": ["To parse a JSON string", "To convert a string to lowercase", "To convert a number to a string", "To convert a string to an integer with a specified base"],
+        "correctAnswer": "To convert a string to an integer with a specified base"
+    },
+    {
+        "id": 60,
+        "text": "What is the output of `console.log(10 * '5')` in JavaScript?",
+        "options": ["50", "105", "10 * 5", "NaN"],
+        "correctAnswer": "50"
+    },
+    {
+        "id": 61,
+        "text": "In HTML, which element is used to create a hyperlink?",
+        "options": ["<link>", "<a>", "<href>", "<hyperlink>"],
+        "correctAnswer": "<a>"
+    },
+    {
+        "id": 62,
+        "text": "What does CSS stand for?",
+        "options": ["Cascading Style Sheet", "Computer Style Sheet", "Creative Style Sheet", "Colorful Style Sheet"],
+        "correctAnswer": "Cascading Style Sheet"
+    },
+    {
+        "id": 63,
+        "text": "Which CSS property is used to change the background color of an element?",
+        "options": ["color", "background-color", "text-color", "font-color"],
+        "correctAnswer": "background-color"
+    },
+    {
+        "id": 64,
+        "text": "What is the purpose of the 'box-sizing' property in CSS?",
+        "options": ["To change the shape of an element", "To control the shadow of an element", "To specify the size of a box", "To control the padding and border of an element"],
+        "correctAnswer": "To control the padding and border of an element"
+    },
+    {
+        "id": 65,
+        "text": "Which of the following is a JavaScript framework for building user interfaces?",
+        "options": ["Angular", "Bootstrap", "Sass", "Webpack"],
+        "correctAnswer": "Angular"
+    },
+    {
+        "id": 66,
+        "text": "What is the purpose of the 'useState' hook in React?",
+        "options": ["To handle asynchronous operations", "To manage and update component state", "To create reusable components", "To style React components"],
+        "correctAnswer": "To manage and update component state"
+    },
+    {
+        "id": 67,
+        "text": "Which HTML tag is used to include an external JavaScript file?",
+        "options": ["<script>", "<js>", "<javascript>", "<external>"],
+        "correctAnswer": "<script>"
+    },
+    {
+        "id": 68,
+        "text": "In CSS, how do you select all elements with the class 'example'?",
+        "options": [".example", "#example", "element.example", ":example"],
+        "correctAnswer": ".example"
+    },
+    {
+        "id": 69,
+        "text": "What is the purpose of the 'v-bind' directive in Vue.js?",
+        "options": ["To create a new Vue instance", "To bind a value to an HTML attribute", "To define a Vue component", "To handle routing in Vue applications"],
+        "correctAnswer": "To bind a value to an HTML attribute"
+    },
+    {
+        "id": 70,
+        "text": "Which CSS property is used to add a shadow to an element?",
+        "options": ["box-shadow", "shadow", "element-shadow", "add-shadow"],
+        "correctAnswer": "box-shadow"
+    },
+    {
+        "id": 71,
+        "text": "In React, how do you render a component conditionally based on a state variable?",
+        "options": ["<Component />", "{component}", "{component()}", "{state ? <Component /> : null}"],
+        "correctAnswer": "{state ? <Component /> : null}"
+    },
+    {
+        "id": 72,
+        "text": "What is the purpose of the 'ngFor' directive in Angular?",
+        "options": ["To define a new Angular component", "To create a new Angular module", "To iterate over a list of items in the template", "To import external libraries in Angular"],
+        "correctAnswer": "To iterate over a list of items in the template"
+    },
+    {
+        "id": 73,
+        "text": "What does the 'fetch' API in JavaScript allow you to do?",
+        "options": ["Send HTTP requests and retrieve data", "Create animations in web pages", "Access local storage", "Define CSS animations"],
+        "correctAnswer": "Send HTTP requests and retrieve data"
+    },
+    {
+        "id": 74,
+        "text": "Which CSS property is used to control the size of text in an element?",
+        "options": ["text-size", "font-size", "text-style", "font-style"],
+        "correctAnswer": "font-size"
+    },
+    {
+        "id": 75,
+        "text": "What is the purpose of the 'onClick' event handler in React?",
+        "options": ["To handle keyboard events", "To trigger an action when a button is clicked", "To manage component state", "To create navigation links"],
+        "correctAnswer": "To trigger an action when a button is clicked"
+    },
+    {
+        "id": 76,
+        "text": "In Vue.js, how do you create a two-way data binding between an input field and a data property?",
+        "options": ["v-bind", "v-model", "v-data", "v-bind-model"],
+        "correctAnswer": "v-model"
+    },
+    {
+        "id": 77,
+        "text": "What is the purpose of the 'ngIf' directive in Angular?",
+        "options": ["To define a new Angular component", "To conditionally render elements in the template", "To create a new Angular service", "To handle routing in Angular applications"],
+        "correctAnswer": "To conditionally render elements in the template"
+    },
+    {
+        "id": 78,
+        "text": "Which HTML tag is used to define the structure of an HTML document?",
+        "options": ["<head>", "<html>", "<body>", "<structure>"],
+        "correctAnswer": "<html>"
+    },
+    {
+        "id": 79,
+        "text": "What is the purpose of the 'useEffect' hook in React?",
+        "options": ["To create a new React component", "To manage and update component state", "To define event handlers", "To add CSS styles to components"],
+        "correctAnswer": "To manage and update component state"
+    },
+    {
+        "id": 80,
+        "text": "In CSS, what is the 'display' property used for?",
+        "options": ["To control the visibility of an element", "To change the font style of an element", "To specify the background color of an element", "To control the layout and rendering of an element"],
+        "correctAnswer": "To control the layout and rendering of an element"
+    },
+    {
+        "id": 81,
+        "text": "What is the purpose of the 'v-for' directive in Vue.js?",
+        "options": ["To define a new Vue instance", "To create a new Vue component", "To iterate over a list of items in the template", "To bind data to an element"],
+        "correctAnswer": "To iterate over a list of items in the template"
+    },
+    {
+        "id": 82,
+        "text": "What does the 'async' keyword do in JavaScript?",
+        "options": ["Defines a function that can be awaited", "Enables asynchronous execution of code", "Declares a variable as asynchronous", "Synchronously executes a function"],
+        "correctAnswer": "Enables asynchronous execution of code"
+    },
+    {
+        "id": 83,
+        "text": "Which HTML tag is used to include an external CSS file in an HTML document?",
+        "options": ["<style>", "<link>", "<css>", "<external-css>"],
+        "correctAnswer": "<link>"
+    },
+    {
+        "id": 84,
+        "text": "What is the purpose of the 'ngStyle' directive in Angular?",
+        "options": ["To create inline styles in Angular components", "To define routing configurations", "To manage component state", "To create new Angular services"],
+        "correctAnswer": "To create inline styles in Angular components"
+    },
+    {
+        "id": 85,
+        "text": "In React, what is the purpose of 'props'?",
+        "options": ["To manage component state", "To define component structure", "To pass data from parent to child components", "To handle user interactions"],
+        "correctAnswer": "To pass data from parent to child components"
+    },
+    {
+        "id": 86,
+        "text": "Which CSS property is used to control the spacing between elements?",
+        "options": ["margin", "padding", "border", "spacing"],
+        "correctAnswer": "margin"
+    },
+    {
+        "id": 87,
+        "text": "What is the purpose of the 'ngClass' directive in Angular?",
+        "options": ["To create a new Angular component", "To define component structure", "To conditionally apply CSS classes to elements", "To handle routing in Angular applications"],
+        "correctAnswer": "To conditionally apply CSS classes to elements"
+    },
+    {
+        "id": 88,
+        "text": "In Vue.js, what is the purpose of the 'v-bind' directive?",
+        "options": ["To bind data to an element", "To create a new Vue instance", "To define Vue components", "To manage component state"],
+        "correctAnswer": "To bind data to an element"
+    },
+    {
+        "id": 89,
+        "text": "Which JavaScript library is commonly used for DOM manipulation and AJAX requests?",
+        "options": ["jQuery", "React", "Angular", "Vue"],
+        "correctAnswer": "jQuery"
+    },
+    {
+        "id": 90,
+        "text": "What is the purpose of the 'router-outlet' element in Angular?",
+        "options": ["To create routing links in Angular applications", "To define component structure", "To display the routed components in Angular", "To handle user interactions"],
+        "correctAnswer": "To display the routed components in Angular"
+    },
+    {
+        "id": 91,
+        "text": "What is the purpose of the 'localStorage' in JavaScript?",
+        "options": ["To store session data on the server", "To store data locally on the user's device", "To store cookies", "To store data in a database"],
+        "correctAnswer": "To store data locally on the user's device"
+    },
+    {
+        "id": 92,
+        "text": "Which CSS property is used to control the order of flex items within a flex container?",
+        "options": ["flex-direction", "order", "justify-content", "align-items"],
+        "correctAnswer": "order"
+    },
+    {
+        "id": 93,
+        "text": "In React, what is the purpose of the 'key' prop when rendering a list of components?",
+        "options": ["To specify the data type of the list items", "To provide a unique identifier for each list item", "To control the styling of list items", "To add event handlers to list items"],
+        "correctAnswer": "To provide a unique identifier for each list item"
+    },
+    {
+        "id": 94,
+        "text": "What is the purpose of the 'ngModel' directive in Angular?",
+        "options": ["To create a new Angular component", "To manage component state", "To create two-way data binding for form elements", "To define routing configurations"],
+        "correctAnswer": "To create two-way data binding for form elements"
+    },
+    {
+        "id": 95,
+        "text": "In CSS, what is the 'float' property used for?",
+        "options": ["To control the positioning of an element within its container", "To make an element semi-transparent", "To change the font style of an element", "To control the size of an element"],
+        "correctAnswer": "To control the positioning of an element within its container"
+    },
+    {
+        "id": 96,
+        "text": "What is the purpose of the 'v-on' directive in Vue.js?",
+        "options": ["To bind data to an element", "To handle user events like clicks and input", "To create Vue components", "To define Vue routes"],
+        "correctAnswer": "To handle user events like clicks and input"
+    },
+    {
+        "id": 97,
+        "text": "Which HTML tag is used to create an ordered list in HTML?",
+        "options": ["<ul>", "<li>", "<ol>", "<dl>"],
+        "correctAnswer": "<ol>"
+    },
+    {
+        "id": 98,
+        "text": "In JavaScript, what is the purpose of the 'addEventListener' method?",
+        "options": ["To change the style of an element", "To add event handlers to HTML elements", "To create new HTML elements", "To create animations"],
+        "correctAnswer": "To add event handlers to HTML elements"
+    },
+    {
+        "id": 99,
+        "text": "What is the purpose of the 'v-if' directive in Vue.js?",
+        "options": ["To create a new Vue instance", "To define Vue routes", "To conditionally render elements in the template", "To manage component state"],
+        "correctAnswer": "To conditionally render elements in the template"
+    },
+    {
+        "id": 100,
+        "text": "Which CSS property is used to control the order of stacked elements in the z-axis?",
+        "options": ["z-index", "stack-order", "position", "depth"],
+        "correctAnswer": "z-index"
+    },
+    {
+        "id": 101,
+        "text": "What is the purpose of the 'localStorage' in JavaScript?",
+        "options": ["To store session data on the server", "To store data locally on the user's device", "To store cookies", "To store data in a database"],
+        "correctAnswer": "To store data locally on the user's device"
+    },
+    {
+        "id": 102,
+        "text": "In React, what is the purpose of the 'key' prop when rendering a list of components?",
+        "options": ["To specify the data type of the list items", "To provide a unique identifier for each list item", "To control the styling of list items", "To add event handlers to list items"],
+        "correctAnswer": "To provide a unique identifier for each list item"
+    },
+    {
+        "id": 103,
+        "text": "What is the purpose of the 'ngModel' directive in Angular?",
+        "options": ["To create a new Angular component", "To manage component state", "To create two-way data binding for form elements", "To define routing configurations"],
+        "correctAnswer": "To create two-way data binding for form elements"
+    },
+    {
+        "id": 104,
+        "text": "In CSS, what is the 'float' property used for?",
+        "options": ["To control the positioning of an element within its container", "To make an element semi-transparent", "To change the font style of an element", "To control the size of an element"],
+        "correctAnswer": "To control the positioning of an element within its container"
+    },
+    {
+        "id": 105,
+        "text": "What is the purpose of the 'v-on' directive in Vue.js?",
+        "options": ["To bind data to an element", "To handle user events like clicks and input", "To create Vue components", "To define Vue routes"],
+        "correctAnswer": "To handle user events like clicks and input"
+    },
+    {
+        "id": 106,
+        "text": "Which HTML tag is used to create an ordered list in HTML?",
+        "options": ["<ul>", "<li>", "<ol>", "<dl>"],
+        "correctAnswer": "<ol>"
+    },
+    {
+        "id": 107,
+        "text": "In JavaScript, what is the purpose of the 'addEventListener' method?",
+        "options": ["To change the style of an element", "To add event handlers to HTML elements", "To create new HTML elements", "To create animations"],
+        "correctAnswer": "To add event handlers to HTML elements"
+    },
+    {
+        "id": 108,
+        "text": "What is the purpose of the 'v-if' directive in Vue.js?",
+        "options": ["To create a new Vue instance", "To define Vue routes", "To conditionally render elements in the template", "To manage component state"],
+        "correctAnswer": "To conditionally render elements in the template"
+    },
+    {
+        "id": 109,
+        "text": "Which CSS property is used to control the order of stacked elements in the z-axis?",
+        "options": ["z-index", "stack-order", "position", "depth"],
+        "correctAnswer": "z-index"
+    },
+    {
+        "id": 110,
+        "text": "What is the purpose of the 'localStorage' in JavaScript?",
+        "options": ["To store session data on the server", "To store data locally on the user's device", "To store cookies", "To store data in a database"],
+        "correctAnswer": "To store data locally on the user's device"
+    },
+    {
+        "id": 111,
+        "text": "In React, what is the purpose of the 'key' prop when rendering a list of components?",
+        "options": ["To specify the data type of the list items", "To provide a unique identifier for each list item", "To control the styling of list items", "To add event handlers to list items"],
+        "correctAnswer": "To provide a unique identifier for each list item"
+    },
+    {
+        "id": 112,
+        "text": "What is the purpose of the 'ngModel' directive in Angular?",
+        "options": ["To create a new Angular component", "To manage component state", "To create two-way data binding for form elements", "To define routing configurations"],
+        "correctAnswer": "To create two-way data binding for form elements"
+    },
+    {
+        "id": 113,
+        "text": "In CSS, what is the 'float' property used for?",
+        "options": ["To control the positioning of an element within its container", "To make an element semi-transparent", "To change the font style of an element", "To control the size of an element"],
+        "correctAnswer": "To control the positioning of an element within its container"
+    },
+    {
+        "id": 114,
+        "text": "What is the purpose of the 'v-on' directive in Vue.js?",
+        "options": ["To bind data to an element", "To handle user events like clicks and input", "To create Vue components", "To define Vue routes"],
+        "correctAnswer": "To handle user events like clicks and input"
+    },
+    {
+        "id": 115,
+        "text": "Which HTML tag is used to create an ordered list in HTML?",
+        "options": ["<ul>", "<li>", "<ol>", "<dl>"],
+        "correctAnswer": "<ol>"
+    },
+    {
+        "id": 116,
+        "text": "In JavaScript, what is the purpose of the 'addEventListener' method?",
+        "options": ["To change the style of an element", "To add event handlers to HTML elements", "To create new HTML elements", "To create animations"],
+        "correctAnswer": "To add event handlers to HTML elements"
+    },
+    {
+        "id": 117,
+        "text": "What is the purpose of the 'v-if' directive in Vue.js?",
+        "options": ["To create a new Vue instance", "To define Vue routes", "To conditionally render elements in the template", "To manage component state"],
+        "correctAnswer": "To conditionally render elements in the template"
+    },
+    {
+        "id": 118,
+        "text": "Which CSS property is used to control the order of stacked elements in the z-axis?",
+        "options": ["z-index", "stack-order", "position", "depth"],
+        "correctAnswer": "z-index"
+    },
+    {
+        "id": 119,
+        "text": "What is the purpose of the 'localStorage' in JavaScript?",
+        "options": ["To store session data on the server", "To store data locally on the user's device", "To store cookies", "To store data in a database"],
+        "correctAnswer": "To store data locally on the user's device"
+    },
+    {
+        "id": 120,
+        "text": "In React, what is the purpose of the 'key' prop when rendering a list of components?",
+        "options": ["To specify the data type of the list items", "To provide a unique identifier for each list item", "To control the styling of list items", "To add event handlers to list items"],
+        "correctAnswer": "To provide a unique identifier for each list item"
+    },
+    {
+        "id": 121,
+        "text": "What is the purpose of the 'aria-label' attribute in HTML?",
+        "options": ["To define a label for a form element", "To specify the order of elements", "To create a hyperlink", "To provide accessibility information for screen readers"],
+        "correctAnswer": "To provide accessibility information for screen readers"
+    },
+    {
+        "id": 122,
+        "text": "In CSS, what does the 'position: absolute' property do?",
+        "options": ["It removes an element from the document flow", "It centers an element horizontally", "It makes an element invisible", "It applies a background color to an element"],
+        "correctAnswer": "It removes an element from the document flow"
+    },
+    {
+        "id": 123,
+        "text": "Which React lifecycle method is called after a component is rendered for the first time?",
+        "options": ["componentWillUnmount", "componentDidUpdate", "componentWillMount", "componentDidMount"],
+        "correctAnswer": "componentDidMount"
+    },
+    {
+        "id": 124,
+        "text": "What is the purpose of the 'ngForOf' directive in Angular?",
+        "options": ["To create a new Angular component", "To iterate over a list of items in the template", "To conditionally render elements in the template", "To handle routing in Angular applications"],
+        "correctAnswer": "To iterate over a list of items in the template"
+    },
+    {
+        "id": 125,
+        "text": "In CSS, what does the 'display: flex' property do?",
+        "options": ["It applies a border to an element", "It removes an element from the document flow", "It centers an element vertically", "It creates a flex container"],
+        "correctAnswer": "It creates a flex container"
+    },
+    {
+        "id": 126,
+        "text": "What is the purpose of the 'v-bind' directive in Vue.js?",
+        "options": ["To bind data to an element", "To handle user events like clicks and input", "To create Vue components", "To define Vue routes"],
+        "correctAnswer": "To bind data to an element"
+    },
+    {
+        "id": 127,
+        "text": "Which HTML tag is used to create a hyperlink in HTML?",
+        "options": ["<link>", "<a>", "<href>", "<hyperlink>"],
+        "correctAnswer": "<a>"
+    },
+    {
+        "id": 128,
+        "text": "In JavaScript, what is the purpose of the 'querySelector' method?",
+        "options": ["To change the style of an element", "To add event handlers to HTML elements", "To create new HTML elements", "To select and manipulate elements in the DOM"],
+        "correctAnswer": "To select and manipulate elements in the DOM"
+    },
+    {
+        "id": 129,
+        "text": "What is the purpose of the 'v-if-else' directive in Vue.js?",
+        "options": ["To create a new Vue instance", "To define Vue routes", "To conditionally render elements based on a condition", "To handle user events like clicks and input"],
+        "correctAnswer": "To conditionally render elements based on a condition"
+    },
+    {
+        "id": 130,
+        "text": "In CSS, what does the 'box-sizing: border-box' property do?",
+        "options": ["It removes an element from the document flow", "It applies a border to an element", "It includes padding and border in the element's total width and height", "It centers an element horizontally"],
+        "correctAnswer": "It includes padding and border in the element's total width and height"
+    },
+    {
+        "id": 131,
+        "text": "What is the purpose of the 'role' attribute in HTML?",
+        "options": ["To define a label for a form element", "To specify the order of elements", "To create a hyperlink", "To provide accessibility information for screen readers"],
+        "correctAnswer": "To provide accessibility information for screen readers"
+    },
+    {
+        "id": 132,
+        "text": "In CSS, what does the 'position: relative' property do?",
+        "options": ["It removes an element from the document flow", "It centers an element horizontally", "It makes an element invisible", "It applies a background color to an element"],
+        "correctAnswer": "It centers an element horizontally"
+    },
+    {
+        "id": 133,
+        "text": "Which React lifecycle method is called before a component is removed from the DOM?",
+        "options": ["componentWillUnmount", "componentDidUpdate", "componentWillMount", "componentDidMount"],
+        "correctAnswer": "componentWillUnmount"
+    },
+    {
+        "id": 134,
+        "text": "What is the purpose of the 'ngSwitch' directive in Angular?",
+        "options": ["To create a new Angular component", "To iterate over a list of items in the template", "To conditionally render elements in the template", "To handle routing in Angular applications"],
+        "correctAnswer": "To conditionally render elements in the template"
+    },
+    {
+        "id": 135,
+        "text": "In CSS, what does the 'display: inline-block' property do?",
+        "options": ["It applies a border to an element", "It removes an element from the document flow", "It centers an element vertically", "It creates an inline-level block container"],
+        "correctAnswer": "It creates an inline-level block container"
+    },
+    {
+        "id": 136,
+        "text": "What is the purpose of the 'v-model' directive in Vue.js?",
+        "options": ["To bind data to an element", "To handle user events like clicks and input", "To create Vue components", "To define Vue routes"],
+        "correctAnswer": "To bind data to an element"
+    },
+    {
+        "id": 137,
+        "text": "Which HTML tag is used to define a table in HTML?",
+        "options": ["<table>", "<tr>", "<td>", "<th>"],
+        "correctAnswer": "<table>"
+    },
+    {
+        "id": 138,
+        "text": "In JavaScript, what is the purpose of the 'JSON.stringify' method?",
+        "options": ["To change the style of an element", "To add event handlers to HTML elements", "To create new HTML elements", "To convert a JavaScript object to a JSON string"],
+        "correctAnswer": "To convert a JavaScript object to a JSON string"
+    },
+    {
+        "id": 139,
+        "text": "What is the purpose of the 'v-for' directive in Vue.js?",
+        "options": ["To create a new Vue instance", "To define Vue routes", "To iterate over a list of items in the template", "To manage component state"],
+        "correctAnswer": "To iterate over a list of items in the template"
+    },
+    {
+        "id": 140,
+        "text": "In CSS, what does the 'display: none' property do?",
+        "options": ["It applies a border to an element", "It removes an element from the document flow", "It centers an element vertically", "It creates a flex container"],
+        "correctAnswer": "It removes an element from the document flow"
+    },
+    {
+        "id": 141,
+        "text": "What is the purpose of the 'alt' attribute in HTML?",
+        "options": ["To define a label for a form element", "To specify the order of elements", "To create a hyperlink", "To provide alternative text for images"],
+        "correctAnswer": "To provide alternative text for images"
+    },
+    {
+        "id": 142,
+        "text": "In CSS, what does the 'position: fixed' property do?",
+        "options": ["It removes an element from the document flow", "It centers an element horizontally", "It makes an element invisible", "It fixes an element's position relative to the viewport"],
+        "correctAnswer": "It fixes an element's position relative to the viewport"
+    },
+    {
+        "id": 143,
+        "text": "Which React hook is used for handling side effects in functional components?",
+        "options": ["useState", "useEffect", "useContext", "useReducer"],
+        "correctAnswer": "useEffect"
+    },
+    {
+        "id": 144,
+        "text": "What is the purpose of the 'ngStyle' directive in Angular?",
+        "options": ["To create inline styles in Angular components", "To define routing configurations", "To manage component state", "To create new Angular services"],
+        "correctAnswer": "To create inline styles in Angular components"
+    },
+    {
+        "id": 145,
+        "text": "In CSS, what does the 'display: grid' property do?",
+        "options": ["It applies a border to an element", "It removes an element from the document flow", "It centers an element vertically", "It creates a grid container"],
+        "correctAnswer": "It creates a grid container"
+    },
+    {
+        "id": 146,
+        "text": "What is the purpose of the 'v-once' directive in Vue.js?",
+        "options": ["To bind data to an element", "To handle user events like clicks and input", "To create Vue components", "To render an element and its children only once"],
+        "correctAnswer": "To render an element and its children only once"
+    },
+    {
+        "id": 147,
+        "text": "Which HTML tag is used to create a form in HTML?",
+        "options": ["<form>", "<input>", "<label>", "<button>"],
+        "correctAnswer": "<form>"
+    },
+    {
+        "id": 148,
+        "text": "In JavaScript, what is the purpose of the 'Array.map' method?",
+        "options": ["To change the style of an element", "To add event handlers to HTML elements", "To create new HTML elements", "To transform each element of an array into a new array"],
+        "correctAnswer": "To transform each element of an array into a new array"
+    },
+    {
+        "id": 149,
+        "text": "What is the purpose of the 'v-show' directive in Vue.js?",
+        "options": ["To create a new Vue instance", "To define Vue routes", "To conditionally render elements in the template", "To toggle the visibility of an element"],
+        "correctAnswer": "To toggle the visibility of an element"
+    },
+    {
+        "id": 150,
+        "text": "In CSS, what does the 'opacity' property do?",
+        "options": ["It applies a border to an element", "It makes an element invisible", "It centers an element vertically", "It creates a flex container"],
+        "correctAnswer": "It makes an element invisible"
+    },
+    {
+        "id": 151,
+        "text": "What does CSS stand for?",
+        "options": ["Cascading Style Sheets", "Creative Style Solutions", "Computer Science Styles", "Coding Style Sheets"],
+        "correctAnswer": "Cascading Style Sheets"
+    },
+    {
+        "id": 152,
+        "text": "In HTML, which tag is used to create an ordered list?",
+        "options": ["<ul>", "<ol>", "<li>", "<dl>"],
+        "correctAnswer": "<ol>"
+    },
+    {
+        "id": 153,
+        "text": "What is the purpose of the 'useState' hook in React?",
+        "options": ["To handle side effects in functional components", "To manage component state in functional components", "To define routing configurations", "To create a new React component"],
+        "correctAnswer": "To manage component state in functional components"
+    },
+    {
+        "id": 154,
+        "text": "What is the purpose of the 'ngIf' directive in Angular?",
+        "options": ["To create a new Angular component", "To iterate over a list of items in the template", "To conditionally render elements in the template", "To handle routing in Angular applications"],
+        "correctAnswer": "To conditionally render elements in the template"
+    },
+    {
+        "id": 155,
+        "text": "In CSS, what does the 'margin' property control?",
+        "options": ["The size of an element's content", "The spacing between elements", "The background color of an element", "The font style of an element"],
+        "correctAnswer": "The spacing between elements"
+    },
+    {
+        "id": 156,
+        "text": "What is the purpose of the 'v-for' directive in Vue.js?",
+        "options": ["To create a new Vue instance", "To define Vue routes", "To iterate over a list of items in the template", "To manage component state"],
+        "correctAnswer": "To iterate over a list of items in the template"
+    },
+    {
+        "id": 157,
+        "text": "Which HTML tag is used to create a hyperlink in HTML?",
+        "options": ["<link>", "<a>", "<href>", "<hyperlink>"],
+        "correctAnswer": "<a>"
+    },
+    {
+        "id": 158,
+        "text": "In JavaScript, what is the purpose of the 'querySelectorAll' method?",
+        "options": ["To change the style of an element", "To add event handlers to HTML elements", "To create new HTML elements", "To select and manipulate multiple elements in the DOM"],
+        "correctAnswer": "To select and manipulate multiple elements in the DOM"
+    },
+    {
+        "id": 159,
+        "text": "What is the purpose of the 'v-else' directive in Vue.js?",
+        "options": ["To create a new Vue instance", "To define Vue routes", "To conditionally render elements in the template", "To handle user events like clicks and input"],
+        "correctAnswer": "To conditionally render elements in the template"
+    },
+    {
+        "id": 160,
+        "text": "In CSS, what does the 'padding' property control?",
+        "options": ["The size of an element's content", "The spacing between elements", "The background color of an element", "The font style of an element"],
+        "correctAnswer": "The size of an element's content"
+    },
+    {
+        "id": 161,
+        "text": "What is the purpose of the 'src' attribute in an HTML <img> tag?",
+        "options": ["To specify the image's width", "To provide alternative text for the image", "To define the source URL of the image", "To set the image's background color"],
+        "correctAnswer": "To define the source URL of the image"
+    },
+    {
+        "id": 162,
+        "text": "In CSS, what does the 'display: inline' property do?",
+        "options": ["It applies a border to an element", "It removes an element from the document flow", "It centers an element vertically", "It makes an element inline-level"],
+        "correctAnswer": "It makes an element inline-level"
+    },
+    {
+        "id": 163,
+        "text": "Which React hook is used for managing state in functional components?",
+        "options": ["useState", "useEffect", "useContext", "useReducer"],
+        "correctAnswer": "useState"
+    },
+    {
+        "id": 164,
+        "text": "What is the purpose of the 'ngClass' directive in Angular?",
+        "options": ["To create a new Angular component", "To define component structure", "To conditionally apply CSS classes to elements", "To handle routing in Angular applications"],
+        "correctAnswer": "To conditionally apply CSS classes to elements"
+    },
+    {
+        "id": 165,
+        "text": "In CSS, what does the 'position: static' property do?",
+        "options": ["It removes an element from the document flow", "It centers an element horizontally", "It makes an element invisible", "It positions an element relative to its containing block"],
+        "correctAnswer": "It positions an element relative to its containing block"
+    },
+    {
+        "id": 166,
+        "text": "What is the purpose of the 'v-pre' directive in Vue.js?",
+        "options": ["To bind data to an element", "To handle user events like clicks and input", "To create Vue components", "To skip compilation for this element and its children"],
+        "correctAnswer": "To skip compilation for this element and its children"
+    },
+    {
+        "id": 167,
+        "text": "Which HTML tag is used to create an input field for text in HTML?",
+        "options": ["<text>", "<input>", "<textfield>", "<textbox>"],
+        "correctAnswer": "<input>"
+    },
+    {
+        "id": 168,
+        "text": "In JavaScript, what is the purpose of the 'Array.reduce' method?",
+        "options": ["To change the style of an element", "To add event handlers to HTML elements", "To create new HTML elements", "To reduce an array to a single value using a callback function"],
+        "correctAnswer": "To reduce an array to a single value using a callback function"
+    },
+    {
+        "id": 169,
+        "text": "What is the purpose of the 'v-bind' directive in Vue.js?",
+        "options": ["To bind data to an element", "To handle user events like clicks and input", "To create Vue components", "To define Vue routes"],
+        "correctAnswer": "To bind data to an element"
+    },
+    {
+        "id": 170,
+        "text": "In CSS, what does the 'display: block' property do?",
+        "options": ["It applies a border to an element", "It removes an element from the document flow", "It centers an element vertically", "It makes an element block-level"],
+        "correctAnswer": "It makes an element block-level"
+    },
+    {
+        "id": 171,
+        "text": "What does HTML stand for?",
+        "options": ["Hyper Text Markup Language", "Highly Technical Modern Language", "Hyperlink and Text Markup Language", "Hyper Transfer Markup Language"],
+        "correctAnswer": "Hyper Text Markup Language"
+    },
+    {
+        "id": 172,
+        "text": "In JavaScript, what is the purpose of the 'localStorage' object?",
+        "options": ["To store session data on the server", "To store data locally on the user's device", "To store cookies", "To store data in a database"],
+        "correctAnswer": "To store data locally on the user's device"
+    },
+    {
+        "id": 173,
+        "text": "What is the purpose of the 'ngClick' directive in Angular?",
+        "options": ["To create a new Angular component", "To iterate over a list of items in the template", "To handle click events on elements", "To define routing in Angular applications"],
+        "correctAnswer": "To handle click events on elements"
+    },
+    {
+        "id": 174,
+        "text": "In CSS, what does the 'box-shadow' property control?",
+        "options": ["It applies a shadow to an element's border", "It removes an element from the document flow", "It centers an element vertically", "It makes an element block-level"],
+        "correctAnswer": "It applies a shadow to an element's border"
+    },
+    {
+        "id": 175,
+        "text": "What is the purpose of the 'data-' attribute in HTML?",
+        "options": ["To define a label for a form element", "To store custom data private to the page or application", "To create a hyperlink", "To provide accessibility information for screen readers"],
+        "correctAnswer": "To store custom data private to the page or application"
+    },
+    {
+        "id": 176,
+        "text": "In JavaScript, what is the purpose of the 'addEventListener' method?",
+        "options": ["To change the style of an element", "To add event handlers to HTML elements", "To create new HTML elements", "To create animations"],
+        "correctAnswer": "To add event handlers to HTML elements"
+    },
+    {
+        "id": 177,
+        "text": "What is the purpose of the 'aria-describedby' attribute in HTML?",
+        "options": ["To define a label for a form element", "To specify additional information about an element", "To create a hyperlink", "To provide accessibility information for screen readers"],
+        "correctAnswer": "To specify additional information about an element"
+    },
+    {
+        "id": 178,
+        "text": "In CSS, what does the 'text-align' property control?",
+        "options": ["The size of an element's content", "The alignment of text within an element", "The background color of an element", "The font style of an element"],
+        "correctAnswer": "The alignment of text within an element"
+    },
+    {
+        "id": 179,
+        "text": "What is the purpose of the 'v-pre' directive in Vue.js?",
+        "options": ["To bind data to an element", "To handle user events like clicks and input", "To create Vue components", "To skip compilation for this element and its children"],
+        "correctAnswer": "To skip compilation for this element and its children"
+    },
+    {
+        "id": 180,
+        "text": "Which HTML tag is used to create a button in HTML?",
+        "options": ["<button>", "<input>", "<label>", "<form>"],
+        "correctAnswer": "<button>"
+    },
+    {
+        "id": 181,
+        "text": "What is the purpose of the 'border-radius' property in CSS?",
+        "options": ["To define the thickness of an element's border", "To create rounded corners for elements", "To control the spacing between elements", "To change the font size of an element"],
+        "correctAnswer": "To create rounded corners for elements"
+    },
+    {
+        "id": 182,
+        "text": "In HTML, which tag is used to create a checkbox input field?",
+        "options": ["<input type='radio'>", "<input type='checkbox'>", "<input type='text'>", "<input type='button'>"],
+        "correctAnswer": "<input type='checkbox'>"
+    },
+    {
+        "id": 183,
+        "text": "What is the purpose of the 'useState' hook in React?",
+        "options": ["To handle side effects in functional components", "To manage component state in functional components", "To define routing configurations", "To create a new React component"],
+        "correctAnswer": "To manage component state in functional components"
+    },
+    {
+        "id": 184,
+        "text": "In Angular, what is the purpose of the 'ngFor' directive?",
+        "options": ["To create a new Angular component", "To iterate over a list of items in the template", "To conditionally render elements in the template", "To handle routing in Angular applications"],
+        "correctAnswer": "To iterate over a list of items in the template"
+    },
+    {
+        "id": 185,
+        "text": "In CSS, what does the 'box-sizing: border-box' property do?",
+        "options": ["It removes an element from the document flow", "It applies a border to an element", "It includes padding and border in the element's total width and height", "It centers an element horizontally"],
+        "correctAnswer": "It includes padding and border in the element's total width and height"
+    },
+    {
+        "id": 186,
+        "text": "What is the purpose of the 'v-for' directive in Vue.js?",
+        "options": ["To create a new Vue instance", "To define Vue routes", "To iterate over a list of items in the template", "To manage component state"],
+        "correctAnswer": "To iterate over a list of items in the template"
+    },
+    {
+        "id": 187,
+        "text": "Which HTML tag is used to create a hyperlink in HTML?",
+        "options": ["<link>", "<a>", "<href>", "<hyperlink>"],
+        "correctAnswer": "<a>"
+    },
+    {
+        "id": 188,
+        "text": "In JavaScript, what is the purpose of the 'querySelector' method?",
+        "options": ["To change the style of an element", "To add event handlers to HTML elements", "To create new HTML elements", "To select and manipulate elements in the DOM"],
+        "correctAnswer": "To select and manipulate elements in the DOM"
+    },
+    {
+        "id": 189,
+        "text": "What is the purpose of the 'v-if-else' directive in Vue.js?",
+        "options": ["To create a new Vue instance", "To define Vue routes", "To conditionally render elements based on a condition", "To handle user events like clicks and input"],
+        "correctAnswer": "To conditionally render elements based on a condition"
+    },
+    {
+        "id": 190,
+        "text": "In CSS, what does the 'display: inline-block' property do?",
+        "options": ["It applies a border to an element", "It removes an element from the document flow", "It centers an element vertically", "It creates an inline-level block container"],
+        "correctAnswer": "It creates an inline-level block container"
+    },
+    {
+        "id": 191,
+        "text": "What is the purpose of the 'alt' attribute in HTML?",
+        "options": ["To define a label for a form element", "To specify the order of elements", "To create a hyperlink", "To provide alternative text for images"],
+        "correctAnswer": "To provide alternative text for images"
+    },
+    {
+        "id": 192,
+        "text": "In CSS, what does the 'position: fixed' property do?",
+        "options": ["It removes an element from the document flow", "It centers an element horizontally", "It makes an element invisible", "It fixes an element's position relative to the viewport"],
+        "correctAnswer": "It fixes an element's position relative to the viewport"
+    },
+    {
+        "id": 193,
+        "text": "Which React hook is used for handling side effects in functional components?",
+        "options": ["useState", "useEffect", "useContext", "useReducer"],
+        "correctAnswer": "useEffect"
+    },
+    {
+        "id": 194,
+        "text": "What is the purpose of the 'ngStyle' directive in Angular?",
+        "options": ["To create inline styles in Angular components", "To define routing configurations", "To manage component state", "To create new Angular services"],
+        "correctAnswer": "To create inline styles in Angular components"
+    },
+    {
+        "id": 195,
+        "text": "In CSS, what does the 'display: grid' property do?",
+        "options": ["It applies a border to an element", "It removes an element from the document flow", "It centers an element vertically", "It creates a grid container"],
+        "correctAnswer": "It creates a grid container"
+    },
+    {
+        "id": 196,
+        "text": "What is the purpose of the 'v-once' directive in Vue.js?",
+        "options": ["To bind data to an element", "To handle user events like clicks and input", "To create Vue components", "To render an element and its children only once"],
+        "correctAnswer": "To render an element and its children only once"
+    },
+    {
+        "id": 197,
+        "text": "Which HTML tag is used to define a table in HTML?",
+        "options": ["<table>", "<tr>", "<td>", "<th>"],
+        "correctAnswer": "<table>"
+    },
+    {
+        "id": 198,
+        "text": "In JavaScript, what is the purpose of the 'JSON.stringify' method?",
+        "options": ["To change the style of an element", "To add event handlers to HTML elements", "To create new HTML elements", "To convert a JavaScript object to a JSON string"],
+        "correctAnswer": "To convert a JavaScript object to a JSON string"
+    },
+    {
+        "id": 199,
+        "text": "What is the purpose of the 'v-for' directive in Vue.js?",
+        "options": ["To create a new Vue instance", "To define Vue routes", "To iterate over a list of items in the template", "To manage component state"],
+        "correctAnswer": "To iterate over a list of items in the template"
+    },
+    {
+        "id": 200,
+        "text": "In CSS, what does the 'display: none' property do?",
+        "options": ["It applies a border to an element", "It removes an element from the document flow", "It centers an element vertically", "It creates a flex container"],
+        "correctAnswer": "It removes an element from the document flow"
+    }      
+]
