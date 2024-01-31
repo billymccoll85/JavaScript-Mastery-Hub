@@ -1,25 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const QuestionDisplay = ({ question, handleAnswer }) => {
+const QuestionDisplay = ({ question, handleAnswer, questionNumber }) => {
+    const [selectedOption, setSelectedOption] = useState('');
+
     if (!question || !question.options) return <p>Question data is missing.</p>;
 
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        handleAnswer(selectedOption);
+    };
+
     return (
-        <div className="p-4">
-            <h2 className="text-xl font-bold mb-4">{question.text}</h2>
+        <form onSubmit={handleSubmit} className="p-4">
+            <h2 className="text-xl font-bold mb-4">Question {questionNumber}: {question.text}</h2>
             <div className="flex flex-col space-y-2">
                 {question.options.map((option, index) => (
-                    <button
-                        key={option.id || index} // Assuming each option has a unique 'id'
-                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                        onClick={() => handleAnswer(option)}
-                        aria-label={`Option ${option}`}
-                    >
+                    <label key={index}>
+                        <input 
+                            type="radio"
+                            name="questionOption"
+                            value={option}
+                            onChange={(e) => setSelectedOption(e.target.value)}
+                            className="mr-2"
+                        />
                         {option}
-                    </button>
+                    </label>
                 ))}
             </div>
-        </div>
+            <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">
+                Submit Answer
+            </button>
+        </form>
     );
 };
 
@@ -29,6 +41,7 @@ QuestionDisplay.propTypes = {
         options: PropTypes.arrayOf(PropTypes.string).isRequired,
     }),
     handleAnswer: PropTypes.func.isRequired,
+    questionNumber: PropTypes.number.isRequired,
 };
 
 export default QuestionDisplay;

@@ -37,9 +37,11 @@ const QuizContainer = () => {
         <div className="container mx-auto p-4">
             {!quizCompleted ? (
                 <QuestionDisplay 
-                    question={questions[currentQuestionIndex]} 
-                    handleAnswer={handleAnswer} 
+                    question={questions[currentQuestionIndex]}
+                    handleAnswer={handleAnswer}
+                    questionNumber={currentQuestionIndex + 1}
                 />
+
             ) : (
                 <ResultDisplay score={score} totalQuestions={questions.length} />
             )}
