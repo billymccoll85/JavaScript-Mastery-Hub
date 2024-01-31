@@ -7,6 +7,7 @@ const QuizContainer = () => {
     const {
         questions,
         currentQuestionIndex,
+        setCurrentQuestionIndex,
         setUserAnswers,
         userAnswers,
         score,
@@ -18,13 +19,19 @@ const QuizContainer = () => {
     const handleAnswer = (selectedOption) => {
         const correctAnswer = questions[currentQuestionIndex].correctAnswer;
         setUserAnswers([...userAnswers, selectedOption]);
-
+    
         if (selectedOption === correctAnswer) {
             setScore((prevScore) => prevScore + 1);
         }
-
-        setQuizCompleted(currentQuestionIndex >= questions.length - 1);
-    }; 
+    
+        const nextQuestionIndex = currentQuestionIndex + 1;
+        if (nextQuestionIndex < questions.length) {
+            setCurrentQuestionIndex(nextQuestionIndex);
+        } else {
+            setQuizCompleted(true);
+        }
+    };
+    
 
     return (
         <div className="container mx-auto p-4">
