@@ -12,23 +12,23 @@ const QuestionDisplay = ({ question, handleAnswer, questionNumber }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="p-4">
-            <h2 className="text-xl font-bold mb-4">Question {questionNumber}: {question.text}</h2>
-            <div className="flex flex-col space-y-2">
+        <form onSubmit={handleSubmit} className="p-4 bg-slate-900 shadow-md rounded-xl w-1/2">
+            <h2 className="text-3xl font-bold mb-8 pt-8">Question {questionNumber}: {question.text}</h2>
+            <div className="p-4">
                 {question.options.map((option, index) => (
-                    <label key={index}>
+                    <label key={index} className="flex items-center space-x-2">
                         <input 
                             type="radio"
                             name="questionOption"
                             value={option}
                             onChange={(e) => setSelectedOption(e.target.value)}
-                            className="mr-2"
+                            className="form-radio h-5 w-5 text-blue-600"
                         />
-                        {option}
+                        <span className="text-md text-left">{option}</span>
                     </label>
                 ))}
             </div>
-            <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">
+            <button type="submit" className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                 Submit Answer
             </button>
         </form>

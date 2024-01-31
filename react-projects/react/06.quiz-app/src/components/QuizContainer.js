@@ -34,7 +34,7 @@ const QuizContainer = () => {
     
 
     return (
-        <div className="container mx-auto p-4">
+        <div className="container flex justify-center items-center p-4">
             {!quizCompleted ? (
                 <QuestionDisplay 
                     question={questions[currentQuestionIndex]}
