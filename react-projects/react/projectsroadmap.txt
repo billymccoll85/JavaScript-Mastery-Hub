@@ -11,7 +11,7 @@ Beginner's Exploration: Building Foundations 🌱 ✅
 
 Intermediate Progression: Enhancing Skills 💡
 6. Recipe Finder: _Reinforce_: API calls and state management. _New Skill_: Implementing search functionality and handling user input.
-7. Quiz App: _Reinforce_: State management with complex logic. _New Skill_: Conditional rendering based on state.
+7. Quiz App: _Reinforce_: State management with complex logic. _New Skill_: Conditional rendering based on state. ✅
 8. Note Taking App: _Reinforce_: CRUD operations in React. _New Skill_: Managing an array of objects in state.
 9. Portfolio Site: _Focus_: Introduction to React Router. _New Skill_: Implementing routing in a React application.
 10. Markdown Previewer: _Reinforce_: Real-time state updates. _New Skill_: Handling text input and rendering transformed output.
