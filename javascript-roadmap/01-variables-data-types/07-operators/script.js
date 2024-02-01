@@ -1,57 +1,57 @@
 // 1. Arithmetic Operators
 
-let x;
+let result;
 
-x = 5 + 5;
-x = 5 - 5;
-x = 5 * 5;
-x = 5 / 5;
-x = 7 % 5;
+result = 5 + 5;
+result = 5 - 5;
+result = 5 * 5;
+result = 5 / 5;
+result = 7 % 5;
 
 // Concatenation
-x = 'Hello' + ' ' + 'World';
+result = 'Hello' + ' ' + 'World';
 
 // Exponent
-x = 2 ** 3;
+result = 2 ** 3;
 
 // Increment
-x = 1;
-// x = x + 1;
-x++;
+result = 1;
+// result = result + 1;
+result++;
 
 // Decrement
-// x = x - 1;
-x--;
+// result = result - 1;
+result--;
 
 // 2. Assignment Operators
 
-x = 10;
+result = 10;
 
-x += 5;
-x -= 5;
-x *= 5;
-x /= 5;
-x %= 5;
-x **= 5;
+result += 5;
+result -= 5;
+result *= 5;
+result /= 5;
+result %= 5;
+result **= 5;
 
 // 3. Comparison Operators
 
 // Equal to (Just the value, not the type)
-x = 2 == '2';
+result = 2 == '2';
 
 // Equal to (Type and value)
-x = 2 === '2';
+result = 2 === '2';
 
 // Not equal to (Just the value, not the type)
-x = 2 != '2';
+result = 2 != '2';
 
 // Not equal to (Type and value)
-x = 2 !== 2;
+result = 2 !== 2;
 
 // Greater than and less than
-x = 10 > 5;
-x = 10 < 5;
-x = 10 <= 5;
-x = 10 >= 5;
+result = 10 > 5;
+result = 10 < 5;
+result = 10 <= 5;
+result = 10 >= 5;
 
-console.log(x);
+console.log(result);

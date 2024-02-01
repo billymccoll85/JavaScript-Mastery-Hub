@@ -4,21 +4,17 @@ const name = 'John';
 const age = 31;
 
 // Concatenation
-x = 'Hello, my name is ' + name + ' and I am ' + age + ' years old';
-
-// Template Literals
 x = `Hello, my name is ${name} and I am ${age} years old`;
 
 // String Properties and Methods
 
-// Creating a "string object" (JS does this automatically when using a propery or method on a primitive string)
-const s = new String('Hello World');
+const s = 'Hello World';
 
 x = typeof s;
 
 x = s.length;
 
-// Access value by key
+// Access value by index
 x = s[0];
 
 // Shows the prototype of the string object. Shows the properties and methods
@@ -42,8 +38,7 @@ x = s.substring(7);
 x = s.slice(-11, -6);
 
 // trim() - remove whitespace from beginning and end of string
-x = '         Hello World';
-x = x.trim();
+x = '         Hello World'.trim();
 
 // replace() - replace all instances of a string
 x = s.replace('World', 'John');
