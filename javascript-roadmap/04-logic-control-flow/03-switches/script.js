@@ -14,17 +14,14 @@ switch (month) {
     console.log('It is March');
     break;
   default:
-    console.log('It is not Jan, Feb or March');
+    console.log('It is not Jan, Feb, or March');
 }
 
 // Range evaluation
-switch (true) {
-  case hour < 12:
-    console.log('Good Morning');
-    break;
-  case hour < 18:
-    console.log('Good Afternoon');
-    break;
-  default:
-    console.log('Good Night');
+if (hour < 12) {
+  console.log('Good Morning');
+} else if (hour < 18) {
+  console.log('Good Afternoon');
+} else {
+  console.log('Good Night');
 }

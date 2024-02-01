@@ -27,10 +27,12 @@ if (x !== y) {
   console.log(`${z} is 20`);
 }
 
-console.log(z); // Throw error
+// console.log(z); // Throws an error since z is not accessible outside the block scope
 
 // Shorthand If/Else
-if (x >= y)
-  console.log(`${x} is greater than or equal to ${y}`),
-    console.log('This is true');
-else console.log('This is false');
+if (x >= y) {
+  console.log(`${x} is greater than or equal to ${y}`);
+  console.log('This is true');
+} else {
+  console.log('This is false');
+}
