@@ -2,9 +2,9 @@
 
 /*
 Multi-line comment
-console.log(100);
+console.log(200);
 
-console.log('Hello World');
+console.log('Hello New Developer');
 
-console.log(20, 'Hello', true);
+console.log(30, 'Hi', false);
 */
