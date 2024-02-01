@@ -1,5 +1,5 @@
 // Define a function
-function sayHello() {
+const sayHello = () => {
   console.log('Hello World');
 }
 
@@ -7,7 +7,7 @@ function sayHello() {
 sayHello();
 
 // Define a function with parameters
-function add(num1, num2) {
+const add = (num1, num2) => {
   console.log(num1 + num2);
 }
 
@@ -19,10 +19,8 @@ add(5, 10);
 // Arguments are the values that are passed into the function
 
 // Returning a value
-function subtract(num1, num2) {
+const subtract = (num1, num2) => {
   return num1 - num2;
-
-  console.log('After the return');
 }
 
 // Assign the returned value to a variable

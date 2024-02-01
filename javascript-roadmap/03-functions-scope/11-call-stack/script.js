@@ -2,17 +2,17 @@
 
 // First Example
 
-function first() {
+const first = () => {
   console.log('first...');
-}
+};
 
-function second() {
+const second = () => {
   console.log('second...');
-}
+};
 
-function third() {
+const third = () => {
   console.log('third...');
-}
+};
 
 first();
 second();
@@ -20,18 +20,18 @@ third();
 
 // Second Example
 
-// function first() {
+// const first = () => {
 //   console.log('first...');
 //   second();
-// }
+// };
 
-// function second() {
+// const second = () => {
 //   console.log('second...');
 //   third();
-// }
+// };
 
-// function third() {
+// const third = () => {
 //   console.log('third...');
-// }
+// };
 
 // first();

@@ -1,3 +1,4 @@
+// Using let and const instead of var
 const x = 100;
 
 // An If statement is a block
@@ -16,25 +17,24 @@ for (let i = 0; i <= 10; i++) {
 
 // console.log(i); // ReferenceError: i is not defined
 
-// Using var
+// Using let instead of var
 if (true) {
   const a = 500;
   let b = 600;
-  var c = 700;
+  let c = 700;
 }
 
-console.log(c);
+// console.log(c); // ReferenceError: c is not defined
 
 // var IS function scoped
 function run() {
-  var d = 100;
+  let d = 100;
   console.log(d);
 }
 
 run();
 
-// console.log(d);
-
+// console.log(d); // ReferenceError: d is not defined
 
 const foo = 1;
-var bar = 2; // Put on the window object
+let bar = 2; // Not added to the global object
