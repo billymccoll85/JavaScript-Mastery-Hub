@@ -12,7 +12,6 @@ const person = {
 console.log(person.age);
 
 // Destructuring object properties
-
 const todo = {
   id: 1,
   title: 'Take out trash',
@@ -21,11 +20,7 @@ const todo = {
   },
 };
 
-const {
-  id: todoId, // rename id to todoId
-  title,
-  user: { name }, // destructuring multiple levels
-} = todo;
+const { id: todoId, title, user: { name } } = todo;
 
 console.log(todoId);
 

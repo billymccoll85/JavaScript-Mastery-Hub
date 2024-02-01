@@ -1,7 +1,7 @@
 let x;
 
 const fruits = ['apple', 'pear', 'orange'];
-const berries = ['strawberry', 'blueberry', 'rasberry'];
+const berries = ['strawberry', 'blueberry', 'raspberry'];
 
 // Nesting arrays
 
@@ -28,10 +28,10 @@ x = arr.flat();
 
 // Static methods of Array object
 
-// isArray() - Check is is an array
+// isArray() - Check if it is an array
 x = Array.isArray(fruits);
 
-// from() - Create an array from an array like value
+// from() - Create an array from an array-like value
 x = Array.from('12345');
 
 // of() - Create an array from a set of values

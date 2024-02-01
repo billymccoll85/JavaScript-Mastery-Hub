@@ -1,13 +1,11 @@
-let x;
+// Create object using object literal
+const todo = {
+  id: 1,
+  name: 'Buy Milk',
+  completed: false,
+};
 
-// Create object using the object constructor
-const todo = new Object();
-
-todo.id = 1;
-todo.name = 'Buy Milk';
-todo.completed = false;
-
-x = todo;
+let x = todo;
 
 // Object Nesting
 const person = {
@@ -27,7 +25,7 @@ const obj2 = { c: 3, d: 4 };
 // Spread operator
 const obj3 = { ...obj1, ...obj2 };
 // Same as using ...
-const obj4 = Object.assign({}, obj1, obj2);
+const obj4 = { ...obj1, ...obj2 };
 
 // Array of objects
 const todos = [

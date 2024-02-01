@@ -1,27 +1,23 @@
-let x;
-
 // Creating an object
 const person = {
   name: 'John Doe',
   age: 30,
   isAdmin: true,
   address: {
-    street: '123 Main st',
-    city: 'Boston',
-    state: 'MA',
+    street: '12  dave st',
+    city: 'London',
   },
   hobbies: ['music', 'sports'],
 };
 
 // Accessing object properties
-x = person.name; // Dot notation
-x = person['age']; // Bracket notation
-x = person.address.state;
-x = person.hobbies[0];
+const { name, age, address, hobbies } = person;
+const { street, city, state } = address;
+const firstHobby = hobbies[0];
 
 // Updating properties
 person.name = 'Jane Doe';
-person['isAdmin'] = false;
+person.isAdmin = false;
 
 // Deleting properties
 delete person.age;
@@ -38,10 +34,20 @@ person.greet();
 
 // Keys with multiple words
 const person2 = {
-  'first name': 'Brad',
-  'last name': 'Traversy',
+  firstName: 'Brad',
+  lastName: 'Traversy',
 };
 
-x = person2['first name'];
+const { firstName } = person2;
 
-console.log(x);
+console.log(firstName);
+// Update address to UK address
+person.address.street = '10 Downing Street';
+person.address.city = 'London';
+
+// Update names to UK names
+person.name = 'John Smith';
+person2.firstName = 'William';
+
+console.log(person);
+console.log(person2);
