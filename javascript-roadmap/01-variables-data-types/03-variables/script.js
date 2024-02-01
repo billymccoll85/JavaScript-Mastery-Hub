@@ -1,60 +1,60 @@
 // Ways to declare a variable
 // `var`, `let`, & `const`
 
-let firstName = 'John';
-const lastName = 'Doe';
-let age = 30;
+let fullName = 'Jane Smith';
+const jobTitle = 'Software Engineer';
+let yearsOfExperience = 2;
 
-console.log(age);
+console.log(yearsOfExperience);
 
 // Naming Conventions
 // - Only letters, numbers, underscores and dollar signs
 // - Can't start with a number
 
 // Multi-Word Formatting
-// firstName = camelCase
-// first_name = underscore
-// FirstName = PascalCase
-// firstname = lowercase
+// fullName = camelCase
+// full_name = underscore
+// FullName = PascalCase
+// fullname = lowercase
 
-// We can re-assign `let` variables. If you change `age` to use `const`, you will get an error
-age = 31;
-console.log(age);
+// We can re-assign `let` variables. If you change `yearsOfExperience` to use `const`, you will get an error
+yearsOfExperience = 3;
+console.log(yearsOfExperience);
 
 // With let, we can declare a value without assigning a value
-let score;
-score = 1;
-console.log(score);
+let skillLevel;
+skillLevel = 'Intermediate';
+console.log(skillLevel);
 
 if (true) {
-  score = score + 1;
+  skillLevel = 'Advanced';
 }
 
-console.log(score);
+console.log(skillLevel);
 
-const x = 100;
+const projectCount = 5;
 
 // We can not re-assign a const variable
-// x = 200 // Will result in an error
+// projectCount = 6; // Will result in an error
 
 // We can still manipulate arrays and objects using const
-const arr = [1, 2, 3, 4];
-arr.push(5);
-console.log(arr);
+const numbers = [1, 2, 3, 4];
+numbers.push(5);
+console.log(numbers);
 
-const person = {
-  name: 'Brad',
+const developer = {
+  name: 'Jane',
 };
-person.name = 'John';
-person.email = 'brad@gmail.com';
-console.log(person);
+developer.name = 'John';
+developer.email = 'john@gmail.com';
+console.log(developer);
 
 // Declare multiple values at once
-let a, b, c;
+let projectA, projectB, projectC;
 
-const d = 10,
-  e = 20,
-  f = 30;
+const projectD = 'Project D',
+  projectE = 'Project E',
+  projectF = 'Project F';
 
-console.log(d);
-console.log(a);
+console.log(projectD);
+console.log(projectA);
