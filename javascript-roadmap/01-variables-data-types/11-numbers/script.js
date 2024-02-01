@@ -1,6 +1,6 @@
 let x;
 
-const num = new Number(5);
+const num = 5;
 
 // toString() - returns a string representation of the number
 x = num.toString();
@@ -17,7 +17,7 @@ x = num.toPrecision(3);
 x = num.toExponential(2);
 
 // toLocaleString() - returns a string representation of the number, using the current locale
-x = num.toLocaleString('en-US');
+x = num.toLocaleString('en-GB');
 
 // valueOf - Get value
 x = num.valueOf();
