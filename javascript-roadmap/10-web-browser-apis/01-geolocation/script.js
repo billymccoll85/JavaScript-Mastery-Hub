@@ -1,11 +1,11 @@
 // getCurrentPosition()
 
 function curSuccess(pos) {
-  const coords = pos.coords;
+  const { latitude, longitude, accuracy } = pos.coords;
 
-  console.log(`Latitude: ${coords.latitude}`);
-  console.log(`Longitude: ${coords.longitude}`);
-  console.log(`Within: ${coords.accuracy} meters`);
+  console.log(`Latitude: ${latitude}`);
+  console.log(`Longitude: ${longitude}`);
+  console.log(`Within: ${accuracy} meters`);
 }
 
 function curError(err) {
@@ -18,7 +18,7 @@ const curOptions = {
   maximumAge: 0, // Do not use a cached position
 };
 
-// navigator.geolocation.getCurrentPosition(curSuccess, curError, curOptions);
+navigator.geolocation.getCurrentPosition(curSuccess, curError, curOptions);
 
 // watchPosition()
 
@@ -28,13 +28,10 @@ const target = {
 };
 
 function watchSuccess(pos) {
-  const coords = pos.coords;
-  console.log(coords);
+  const { latitude, longitude } = pos.coords;
+  console.log(pos.coords);
 
-  if (
-    target.latitude === coords.latitude &&
-    target.longitude === coords.longitude
-  ) {
+  if (target.latitude === latitude && target.longitude === longitude) {
     console.log('You have reached your destination!');
     navigator.geolocation.clearWatch(id);
   }
