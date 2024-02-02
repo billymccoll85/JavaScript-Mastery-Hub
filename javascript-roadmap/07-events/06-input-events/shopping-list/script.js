@@ -3,26 +3,24 @@ const priorityInput = document.getElementById('priority-input');
 const checkbox = document.getElementById('checkbox');
 const heading = document.querySelector('h1');
 
-function onInput(e) {
+const onInput = (e) => {
   heading.textContent = e.target.value;
-}
+};
 
-function onChecked(e) {
+const onChecked = (e) => {
   const isChecked = e.target.checked;
   heading.textContent = isChecked ? 'Checked' : 'Not Checked';
-}
+};
 
-function onFocus() {
+const onFocus = () => {
   console.log('Input is focused');
-  itemInput.style.outlineStyle = 'solid';
-  itemInput.style.outlineWidth = '1px';
-  itemInput.style.outlineColor = 'red';
-}
+  itemInput.style.outline = '1px solid red';
+};
 
-function onBlur() {
+const onBlur = () => {
   console.log('Input is not focused');
-  itemInput.style.outlineStyle = 'none';
-}
+  itemInput.style.outline = 'none';
+};
 
 // input, change, focus and blur events
 itemInput.addEventListener('input', onInput);
