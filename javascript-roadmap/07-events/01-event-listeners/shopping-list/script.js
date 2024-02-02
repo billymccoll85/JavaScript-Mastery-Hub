@@ -4,13 +4,7 @@ function onClear() {
   const itemList = document.querySelector('ul');
   const items = itemList.querySelectorAll('li');
 
-  // itemList.innerHTML = '';
-
-  // items.forEach((item) => item.remove());
-
-  while (itemList.firstChild) {
-    itemList.removeChild(itemList.firstChild);
-  }
+  items.forEach((item) => item.remove());
 }
 
 // JavaScript Event Listener

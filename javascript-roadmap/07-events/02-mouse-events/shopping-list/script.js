@@ -2,13 +2,8 @@ const logo = document.querySelector('img');
 
 const onClick = () => console.log('click event');
 const onDoubleClick = () => {
-  if (document.body.style.backgroundColor !== 'purple') {
-    document.body.style.backgroundColor = 'purple';
-    document.body.style.color = 'white';
-  } else {
-    document.body.style.backgroundColor = 'white';
-    document.body.style.color = 'black';
-  }
+  document.body.style.backgroundColor = document.body.style.backgroundColor !== 'purple' ? 'purple' : 'white';
+  document.body.style.color = document.body.style.backgroundColor !== 'purple' ? 'white' : 'black';
 };
 const onRightClick = () => console.log('right click event');
 const onMouseDown = () => console.log('mouse down event');
