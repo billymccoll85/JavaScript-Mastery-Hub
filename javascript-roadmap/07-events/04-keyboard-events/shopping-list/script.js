@@ -16,7 +16,7 @@ const onKeyDown = (e) => {
 
   // keyCode
   // https://www.toptal.com/developers/keycode/table-of-all-keycodes
-  if (e.keyCode === 13) {
+  if (e.key === 'Enter') {
     alert('You pressed enter');
   }
 
@@ -27,13 +27,13 @@ const onKeyDown = (e) => {
 
   // repeat
   if (e.repeat) {
-    console.log('You are holding down ' + e.key);
+    console.log(`You are holding down ${e.key}`);
   }
 
   // shiftKey, ctrlKey & altKey
-  console.log('Shift: ' + e.shiftKey);
-  console.log('Control: ' + e.ctrlKey);
-  console.log('Alt: ' + e.altKey);
+  console.log(`Shift: ${e.shiftKey}`);
+  console.log(`Control: ${e.ctrlKey}`);
+  console.log(`Alt: ${e.altKey}`);
 
   if (e.shiftKey && e.key === 'K') {
     console.log('You hit shift + K');
