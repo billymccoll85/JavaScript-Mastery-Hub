@@ -1,6 +1,5 @@
 // setTimeout - takes in a callback and a time to wait until that callback is executed
-
-setTimeout(function () {
+setTimeout(() => {
   console.log('Hello from callback');
 }, 2000);
 
