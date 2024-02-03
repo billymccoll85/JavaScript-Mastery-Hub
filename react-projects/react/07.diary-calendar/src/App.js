@@ -1,32 +1,29 @@
 import React, { useState, useEffect } from 'react';
-import Calendar from './components/Calendar'; // Ensure path is correct based on your project structure
-import DiaryEntryModal from './components/DiaryEntryModal'; // Ensure path is correct
+import Calendar from './Calendar'; // Adjust this import if necessary
+import DiaryEntryModal from './DiaryEntryModal'; // Adjust this import if necessary
 
 const App = () => {
   const [selectedDay, setSelectedDay] = useState(null);
   const [entries, setEntries] = useState(() => {
+    // Load saved entries from localStorage
     const savedEntries = localStorage.getItem('diaryEntries');
     return savedEntries ? JSON.parse(savedEntries) : {};
   });
 
   useEffect(() => {
+    // Save entries to localStorage whenever they change
     localStorage.setItem('diaryEntries', JSON.stringify(entries));
   }, [entries]);
 
   const handleDayClick = (day) => {
-    const today = new Date();
-    const selectedDate = new Date(today.getFullYear(), today.getMonth(), day);
-    if (selectedDate <= today) {
-      setSelectedDay(day);
-    } else {
-      alert("Future dates cannot be selected for entries.");
-    }
+    // Removed the check for future dates
+    setSelectedDay(day);
   };
 
   const saveEntry = (day, entryText) => {
     const newEntries = { ...entries, [day]: entryText };
     setEntries(newEntries);
-    setSelectedDay(null);
+    setSelectedDay(null); // Close the modal after saving
   };
 
   return (
