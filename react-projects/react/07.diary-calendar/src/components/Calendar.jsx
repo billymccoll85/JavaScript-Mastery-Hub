@@ -1,4 +1,6 @@
 import React from 'react';
+import { convert } from 'html-to-text';
+
 
 const Calendar = ({ onDayClick, entries }) => {
   const days = Array.from({ length: 30 }, (_, i) => i + 1); // Adjust based on the actual month
@@ -37,7 +39,7 @@ const Calendar = ({ onDayClick, entries }) => {
                 <span className="font-semibold">{day}<sup>{getDaySuffix(day)}</sup></span>
               </div>
               <div className="text-sm text-gray-500 mt-1 overflow-hidden flex-grow">
-                {entries && entries[day] && entries[day].substring(0, 256)}
+              {entries && entries[day] && convert(entries[day], { wordwrap: false }).substring(0, 256)}
               </div>
             </div>
           ))}
