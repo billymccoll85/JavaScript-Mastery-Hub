@@ -25,7 +25,7 @@ const DiaryEntryModal = ({ onSave, onClose, selectedDay, currentEntry }) => {
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex justify-center items-center p-4">
       <div className="relative bg-white rounded-lg shadow-xl p-5 w-full max-w-2xl md:w-1/2 h-auto md:h-3/4" onClick={(e) => e.stopPropagation()}>
         <Editor
-          apiKey='vjnfdlank203iph9jy0m9n7yixp6mtq0tjzpt55nlw7yq4s3'
+          apiKey='api key here'
           init={{
             height: 500,
             menubar: false,
