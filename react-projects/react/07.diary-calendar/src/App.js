@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Calendar from './Calendar'; // Adjust this import if necessary
-import DiaryEntryModal from './DiaryEntryModal'; // Adjust this import if necessary
+import Calendar from './components/Calendar'; // Adjust this import if necessary
+import DiaryEntryModal from './components/DiaryEntryModal'; // Adjust this import if necessary
 
 const App = () => {
   const [selectedDay, setSelectedDay] = useState(null);
