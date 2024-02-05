@@ -1,44 +1,26 @@
+// src/components/NoteForm.js
 import React, { useState } from 'react';
 
 function NoteForm({ addNote }) {
-  const [noteText, setNoteText] = useState('');
-  const [category, setCategory] = useState('');
+  const [text, setText] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!noteText.trim()) return; // Avoid adding empty notes
-    const newNote = {
-      id: Date.now(),
-      text: noteText.trim(),
-      category // Add category to the note model
-    };
-    addNote(newNote);
-    setNoteText(''); // Reset the note text field
-    setCategory(''); // Reset the category field
+    if (!text) return;
+    addNote({ id: Date.now(), text });
+    setText('');
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-sm mx-auto my-8">
+    <form onSubmit={handleSubmit} className="mb-4">
       <textarea
-        className="w-full p-2 mb-4 border border-gray-200 rounded shadow-sm"
-        placeholder="Write your note here..."
-        value={noteText}
-        onChange={(e) => setNoteText(e.target.value)}
+        className="w-full p-2 text-gray-700 border rounded-lg focus:outline-none"
+        rows="3"
+        placeholder="Enter your note here..."
+        value={text}
+        onChange={(e) => setText(e.target.value)}
       ></textarea>
-      <select
-        className="w-full p-2 mb-4 border border-gray-200 rounded shadow-sm"
-        value={category}
-        onChange={(e) => setCategory(e.target.value)}
-      >
-        <option value="">Select Category</option>
-        <option value="personal">Personal</option>
-        <option value="work">Work</option>
-        <option value="other">Other</option>
-      </select>
-      <button
-        type="submit"
-        className="w-full p-2 text-white bg-blue-500 rounded hover:bg-blue-600"
-      >
+      <button type="submit" className="px-3 py-2 text-sm text-blue-100 bg-blue-600 rounded-lg">
         Add Note
       </button>
     </form>

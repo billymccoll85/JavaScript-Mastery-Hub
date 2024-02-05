@@ -1,3 +1,4 @@
+// src/App.js
 import React, { useState } from 'react';
 import NoteForm from './components/NoteForm';
 import NoteList from './components/NoteList';
@@ -6,21 +7,20 @@ function App() {
   const [notes, setNotes] = useState([]);
 
   const addNote = (newNote) => {
-    setNotes([...notes, newNote]);
+    setNotes([newNote, ...notes]);
   };
 
-  const deleteNote = (noteId) => {
-    setNotes(notes.filter(note => note.id !== noteId));
+  const deleteNote = (id) => {
+    setNotes(notes.filter(note => note.id !== id));
   };
 
-  // Optional: Implement updateNote if you plan to allow note editing
-  const updateNote = (id, updatedNote) => {
-    setNotes(notes.map(note => note.id === id ? updatedNote : note));
+  const updateNote = (id, updatedText) => {
+    setNotes(notes.map(note => note.id === id ? { ...note, text: updatedText } : note));
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold text-center my-4">Note Taking App</h1>
+    <div className="container mx-auto px-4">
+      <h1 className="text-xl font-semibold text-center my-5">Note Taking App</h1>
       <NoteForm addNote={addNote} />
       <NoteList notes={notes} deleteNote={deleteNote} updateNote={updateNote} />
     </div>

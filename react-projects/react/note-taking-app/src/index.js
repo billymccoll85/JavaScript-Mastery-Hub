@@ -1,7 +1,7 @@
 // src/index.js
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css'; // This imports Tailwind CSS
+import './index.css';
 import App from './App';
 
 ReactDOM.render(
