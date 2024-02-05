@@ -1,41 +1,54 @@
 import React, { useState } from 'react';
 
 function NoteItem({ note, deleteNote, updateNote }) {
-  const [isEditing, setIsEditing] = useState(false);
-  const [editedNote, setEditedNote] = useState(note.text);
+  const [editMode, setEditMode] = useState(false);
+  const [editedText, setEditedText] = useState(note.text);
 
   const handleEdit = () => {
-    setIsEditing(true);
+    setEditMode(true);
   };
 
   const handleSave = () => {
-    updateNote(note.id, { ...note, text: editedNote });
-    setIsEditing(false);
+    updateNote(note.id, { ...note, text: editedText });
+    setEditMode(false);
   };
 
   return (
-    <div className="flex items-center justify-between p-4 m-2 border-b border-gray-200">
-      {isEditing ? (
+    <div className="flex flex-col p-4 m-2 bg-white rounded-lg shadow-md">
+      {editMode ? (
         <textarea
-          className="flex-1 mr-4 p-2 border border-gray-200 rounded shadow"
-          value={editedNote}
-          onChange={(e) => setEditedNote(e.target.value)}
-        />
+          className="p-2 mb-4 border border-gray-200 rounded shadow-sm"
+          value={editedText}
+          onChange={(e) => setEditedText(e.target.value)}
+        ></textarea>
       ) : (
-        <p className="flex-1">{note.text}</p>
+        <span className="mb-4">{note.text}</span>
       )}
-      <button onClick={() => deleteNote(note.id)} className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">
-        Delete
-      </button>
-      {isEditing ? (
-        <button onClick={handleSave} className="ml-2 bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded">
-          Save
-        </button>
-      ) : (
-        <button onClick={handleEdit} className="ml-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">
-          Edit
-        </button>
-      )}
+      <div className="flex justify-end space-x-2">
+        {editMode ? (
+          <button
+            onClick={handleSave}
+            className="px-4 py-2 text-white bg-green-500 rounded hover:bg-green-600"
+          >
+            Save
+          </button>
+        ) : (
+          <>
+            <button
+              onClick={handleEdit}
+              className="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600"
+            >
+              Edit
+            </button>
+            <button
+              onClick={() => deleteNote(note.id)}
+              className="px-4 py-2 text-white bg-red-500 rounded hover:bg-red-600"
+            >
+              Delete
+            </button>
+          </>
+        )}
+      </div>
     </div>
   );
 }
