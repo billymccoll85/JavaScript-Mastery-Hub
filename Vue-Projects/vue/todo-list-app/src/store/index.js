@@ -1,7 +1,6 @@
-// src/store/index.js
 import Vue from 'vue';
 import Vuex from 'vuex';
-import todoList from './modules/todoList';
+import todoList from './modules/todoList'; // Adjust the path accordingly
 
 Vue.use(Vuex);
 
