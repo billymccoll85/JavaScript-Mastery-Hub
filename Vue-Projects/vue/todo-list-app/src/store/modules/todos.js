@@ -11,6 +11,9 @@ export default {
       UPDATE_TODO(state, updateTodo) {
         const index = state.todoList.findIndex(todo => todo.id === updateTodo.id)
         if (index !== -1) state.todoList.splice(index, 1, updateTodo)
+      },
+      REMOVE_TODO(state, id) {
+        state.todoList = state.todoList.filter(todo => todo.id !== id)
       }
     },
     actions: {
@@ -28,6 +31,14 @@ export default {
             commit('UPDATE_TODO', response.data)
           } catch (error) {
             console.error('Error updating todo:', error)
+          }
+        },
+        async deleteTodo({ commit }, id) {
+          try {
+            await axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
+            commit('REMOVE_TODO', id)
+          } catch (error) {
+            console.error('Error deleing todo:', error)
           }
         }
     },
