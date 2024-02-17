@@ -1,10 +1,8 @@
 import { createStore } from 'vuex';
-import todos from './todos';
+import todos from './modules/todos';
 
-const store = createStore({
+export default createStore({
   modules: {
     todos
   }
 });
-
-export default store;

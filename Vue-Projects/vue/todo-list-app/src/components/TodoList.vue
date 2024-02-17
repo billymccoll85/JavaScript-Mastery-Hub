@@ -1,9 +1,9 @@
 <template>
     <div>
       <add-todo></add-todo>
-      <ul>
-        <todo-item v-for="todo in allTodos" :key="todo.id" :todo="todo"></todo-item>
-      </ul>
+      <div v-for="todo in allTodos" :key="todo.id" class="flex-row mb-4 mx-4 items-center">
+        <todo-item :todo="todo"></todo-item>
+      </div>
     </div>
   </template>
   
@@ -22,7 +22,7 @@
         allTodos: 'todos/allTodos'
       })
     },
-    mounted() {
+    created() {
       this.$store.dispatch('todos/fetchTodos');
     }
   };
