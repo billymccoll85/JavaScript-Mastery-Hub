@@ -1,9 +1,9 @@
 import { createStore } from 'vuex';
-import todos from './todos'; // Import the todos module
+import todos from './todos';
 
 const store = createStore({
   modules: {
-    todos // Include the todos module in your store
+    todos
   }
 });
 
