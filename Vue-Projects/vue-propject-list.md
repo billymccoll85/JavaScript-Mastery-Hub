@@ -4,6 +4,7 @@ Beginner's Vue.js and Vuex Roadmap:
 
    - Basic Vue components and state.
    - Understanding component structure and state management.
+   - Completed ✅
 
 2. **Weather App:**
 
