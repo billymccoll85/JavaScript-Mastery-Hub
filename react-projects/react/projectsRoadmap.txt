@@ -28,7 +28,16 @@ _New Skill_: Implementing routing in a React application.
 _New Skill_: Handling text input and rendering transformed output.✅
 
 Advanced Development: Mastering State Management 🚀 
-11. E-commerce Site: _Focus_: React Context for global state. _New Skill_: Implementing context for shared state across components. 12. Chat Application: _Reinforce_: Real-time updates, Context API. _New Skill_: Managing a more dynamic and responsive state. 13. Social Media Dashboard: _Focus_: Introduction to Redux. _New Skill_: Setting up Redux for more complex state management. 14. Task Manager: _Reinforce_: Advanced state management with Redux. _New Skill_: Implementing more intricate features (like filtering and sorting). 15. Music Player: _Reinforce_: Managing state with user interactions. _New Skill_: Handling media, playback controls, and playlists.
+11. E-commerce Site: _Focus_: React Context for global state. 
+_New Skill_: Implementing context for shared state across components. 
+12. Chat Application: _Reinforce_: Real-time updates, Context API. 
+_New Skill_: Managing a more dynamic and responsive state. 
+13. Social Media Dashboard: _Focus_: Introduction to Redux. 
+_New Skill_: Setting up Redux for more complex state management. 
+14. Task Manager: _Reinforce_: Advanced state management with Redux. 
+_New Skill_: Implementing more intricate features (like filtering and sorting). 
+15. Music Player: _Reinforce_: Managing state with user interactions. 
+_New Skill_: Handling media, playback controls, and playlists.
 
 Expert Challenges: Real-World Applications 🌍 16. Full-Feature Blog Platform: _Reinforce_: Complex state with Redux/Context API, routing with React Router. _New Skill_: Backend integration, authentication, and advanced routing. 17. Real-time Collaborative Drawing App: _Reinforce_: Real-time updates, complex state management. _New Skill_: WebSocket integration for collaborative features. 18. Multiplayer Game (Chess/Tic-Tac-Toe): _Reinforce_: Advanced state logic, real-time updates. _New Skill_: Game logic implementation and state synchronization in multiplayer settings.
 
