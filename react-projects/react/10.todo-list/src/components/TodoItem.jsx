@@ -1,14 +1,15 @@
 import React from 'react';
 
-// TodoItem component: Displays a single to-do item.
-// Props:
-// - item: An object representing a to-do item (contains id, name, and completed status).
-// - onToggle: A function passed from the TodoList component to handle the click event (toggling the completion status).
+// TodoItem component definition.
+// This component is responsible for displaying an individual to-do item.
+// It receives two props: 'item' and 'onToggle'.
+// 'item' is an object representing a to-do item, which contains the name and completion status.
+// 'onToggle' is a function passed down from the TodoList component that toggles the completion status of the item.
 function TodoItem({ item, onToggle }) {
   return (
-    // ListItem with conditional styling based on the completion status.
-    // Uses Tailwind CSS for styling.
-    // onClick event triggers the onToggle function, changing the item's completion status.
+    // List item element that displays the to-do item.
+    // Applies conditional styling based on the item's completion status.
+    // When clicked, it calls the onToggle function to toggle the completion status of the item.
     <li
       className={`cursor-pointer ${item.completed ? 'text-gray-500 line-through' : 'text-black'}`}
       onClick={onToggle}
