@@ -1,4 +1,4 @@
-# JavaScript Fundamentals
+# JavaScript Mastery Hub
 
 This repository contains code examples and explanations for JavaScript fundamentals.
 
