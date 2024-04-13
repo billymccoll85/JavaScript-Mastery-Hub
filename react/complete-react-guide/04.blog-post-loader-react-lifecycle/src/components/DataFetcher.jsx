@@ -1,42 +1,49 @@
-import React, { useState, useEffect } from 'react';
+import React, { Component } from 'react';
 import PostList from './PostList';
 import FilterInput from './FilterInput';
 
-const DataFetcher = () => {
-  const [posts, setPosts] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [filter, setFilter] = useState('');
-
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        setError(null);
-        setIsLoading(true);
-        const response = await fetch('https://jsonplaceholder.typicode.com/posts');
-        if (!response.ok) {
-          throw new Error('Failed to fetch data');
-        }
-        const data = await response.json();
-        setPosts(data);
-        setIsLoading(false);
-      } catch (error) {
-        setError(error.message);
-        setIsLoading(false);
-      }
+class DataFetcher extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      posts: [],
+      isLoading: true,
+      error: null,
+      filter: ''
     };
+  }
 
-    fetchPosts();
-  }, []);
+  componentDidMount() {
+    this.fetchData();
+  }
 
-  const filteredPosts = posts.filter(post => post.title.toLowerCase().includes(filter.toLowerCase()));
+  fetchData = () => {
+    fetch('https://jsonplaceholder.typicode.com/posts')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => this.setState({ posts: data, isLoading: false }))
+      .catch(error => this.setState({ error: error.message, isLoading: false }));
+  }
 
-  return (
-    <div className="container mx-auto p-4">
-      <FilterInput filter={filter} setFilter={setFilter} />
-      <PostList posts={filteredPosts} isLoading={isLoading} error={error} />
-    </div>
-  );
-};
+  handleFilterChange = (filterValue) => {
+    this.setState({ filter: filterValue });
+  }
+
+  render() {
+    const { posts, isLoading, error, filter } = this.state;
+    const filteredPosts = posts.filter(post => post.title.toLowerCase().includes(filter.toLowerCase()));
+
+    return (
+      <div className="container mx-auto p-4">
+        <FilterInput filter={this.state.filter} onFilterChange={this.handleFilterChange} />
+        <PostList posts={filteredPosts} isLoading={isLoading} error={error} />
+      </div>
+    );
+  }
+}
 
 export default DataFetcher;

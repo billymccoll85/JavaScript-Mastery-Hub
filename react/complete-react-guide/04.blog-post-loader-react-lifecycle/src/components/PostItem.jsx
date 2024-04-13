@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const PostItem = ({ post }) => {
-  return (
-    <li className="list-none p-2 hover:bg-gray-100">
-      <h3 className="font-bold">{post.title}</h3>
-      <p>{post.body}</p>
-    </li>
-  );
-};
+class PostItem extends Component {
+  render() {
+    const { post } = this.props;
+    return (
+      <li className="border-b border-gray-200 mb-2 pb-2">
+        <h3 className="font-bold text-lg">{post.title}</h3>
+        <p>{post.body}</p>
+      </li>
+    );
+  }
+}
 
 export default PostItem;

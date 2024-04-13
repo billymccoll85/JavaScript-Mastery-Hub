@@ -1,15 +1,23 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const FilterInput = ({ filter, setFilter }) => {
-  return (
-    <input
-      type="text"
-      placeholder="Filter posts..."
-      value={filter}
-      onChange={e => setFilter(e.target.value)}
-      className="mb-4 p-2 border rounded"
-    />
-  );
-};
+class FilterComponent extends Component {
+  handleChange = (event) => {
+    this.props.onFilterChange(event.target.value);
+  }
 
-export default FilterInput;
+  render() {
+    return (
+      <div className="mb-4">
+        <input
+          type="text"
+          className="p-2 border rounded w-full"
+          placeholder="Filter posts by title..."
+          value={this.props.filter}
+          onChange={this.handleChange}
+        />
+      </div>
+    );
+  }
+}
+
+export default FilterComponent;

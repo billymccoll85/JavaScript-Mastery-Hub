@@ -1,20 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PostItem from './PostItem';
 
-const PostList = ({ posts, isLoading, error }) => {
-  if (error) {
-    return <div className="text-red-500">Error: {error}</div>;
+class PostList extends Component {
+  render() {
+    const { posts, isLoading, error } = this.props;
+    if (isLoading) {
+      return <div>Loading...</div>;
+    }
+    if (error) {
+      return <div className="text-red-500">Error: {error}</div>;
+    }
+    return (
+      <ul>
+        {posts.map(post => <PostItem key={post.id} post={post} />)}
+      </ul>
+    );
   }
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-  return (
-    <ul>
-      {posts.map(post => (
-        <PostItem key={post.id} post={post} />
-      ))}
-    </ul>
-  );
-};
+}
 
 export default PostList;
