@@ -1,9 +1,14 @@
-/** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [],
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}", // make sure Tailwind checks all your component files
+  ],
   theme: {
-    extend: {},
+    extend: {
+      container: {
+        center: true,
+        padding: '2rem',
+      },
+    },
   },
   plugins: [],
 }
-
