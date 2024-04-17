@@ -1,35 +1,51 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Container from './components/Container';
 import Grid from './components/Grid';
 import CurrentWeather from './components/CurrentWeather';
 import HourlyForecast from './components/HourlyForecast';
 import DailyForecast from './components/DailyForecast';
+import { getCurrentWeather, getWeeklyWeather, getHourlyWeather, getWeatherAlerts } from './api/weatherService';
 
-/**
- * Main Application Component
- * Combines all the main components of the weather dashboard using a container and grid layout.
- *
- * Subcomponents:
- * - CurrentWeather: Displays current weather conditions.
- * - HourlyForecast: Shows weather forecast for the next few hours.
- * - DailyForecast: Shows weather forecast for the next several days.
- */
 const App = () => {
-  const weatherData = {
-    current: {},  // Data for the current weather conditions
-    hourly: [],   // Array of data for the hourly forecast
-    daily: []     // Array of data for the daily forecast
-  };
+  const [currentWeather, setCurrentWeather] = useState(null);
+  const [weeklyWeather, setWeeklyWeather] = useState(null);
+  const [hourlyWeather, setHourlyWeather] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const lat = 35.6895; // Example latitude for Tokyo
+  const lon = 139.6917; // Example longitude for Tokyo
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const current = await getCurrentWeather(lat, lon);
+        const weekly = await getWeeklyWeather(lat, lon);
+        const hourly = await getHourlyWeather(lat, lon);
+        setCurrentWeather(current);
+        setWeeklyWeather(weekly);
+        setHourlyWeather(hourly);
+        setLoading(false);
+      } catch (err) {
+        console.error("Failed to fetch data:", err);
+        setError('Failed to fetch weather data.');
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
 
   return (
     <Container>
       <Grid>
-        {/* Passing 'weatherData' to the CurrentWeather component as a prop named 'weatherData' */}
-        <CurrentWeather weatherData={weatherData.current} />
-        {/* Passing 'forecastData' to the HourlyForecast component as a prop named 'forecastData' */}
-        <HourlyForecast forecastData={weatherData.hourly} />
-        {/* Passing 'forecastData' to the DailyForecast component as a prop named 'forecastData' */}
-        <DailyForecast forecastData={weatherData.daily} />
+        <CurrentWeather data={currentWeather} />
+        <HourlyForecast data={hourlyWeather} />
+        <DailyForecast data={weeklyWeather} />
       </Grid>
     </Container>
   );

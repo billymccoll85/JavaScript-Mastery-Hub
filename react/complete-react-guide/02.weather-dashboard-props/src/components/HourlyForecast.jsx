@@ -1,40 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { fetchHourlyWeather } from './api/weatherService';
+// HourlyForecast.jsx
+import React from 'react';
 
-function HourlyForecast({ lat, lon }) {
-  const [forecast, setForecast] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+const HourlyForecast = ({ data }) => {
+  if (!data || data.length === 0) return <div className="text-center text-lg">No hourly forecast data available.</div>;
 
-  useEffect(() => {
-    async function loadData() {
-      try {
-        const data = await fetchHourlyWeather(lat, lon);
-        setForecast(data.hourly);
-        setLoading(false);
-      } catch (err) {
-        setError(err.message);
-        setLoading(false);
-      }
-    }
-
-    loadData();
-  }, [lat, lon]);
-
-  if (loading) return <p>Loading hourly forecast...</p>;
-  if (error) return <p>Error loading forecast: {error}</p>;
   return (
-    <div>
-      <h2>Hourly Weather Forecast</h2>
+    <div className="p-5 bg-green-100 rounded-lg shadow">
+      <h2 className="text-2xl font-bold text-green-700">Hourly Forecast</h2>
       <ul>
-        {forecast && forecast.map((hour, index) => (
-          <li key={index}>
+        {data.map((hour, index) => (
+          <li key={index} className="text-xl">
             Time: {new Date(hour.dt * 1000).toLocaleTimeString()}, Temp: {hour.temp}°C, {hour.weather[0].description}
           </li>
         ))}
       </ul>
     </div>
   );
-}
+};
 
 export default HourlyForecast;

@@ -1,32 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { fetchCurrentWeather } from './services/weatherService';
+// CurrentWeather.jsx
+import React from 'react';
 
-const CurrentWeatherDisplay = () => {
-  const [weather, setWeather] = useState(null);
-  const [error, setError] = useState(null);
+const CurrentWeather = ({ data }) => {
+  if (!data) return <div className="text-center text-lg">No current weather data available.</div>;
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await fetchCurrentWeather(51.5074, -0.1278); // Example coordinates for London
-        setWeather(data.current);
-      } catch (err) {
-        setError('Failed to fetch current weather data');
-        console.error(err);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  if (error) return <p>{error}</p>;
-  if (!weather) return <p>Loading...</p>;
   return (
-    <div>
-      <h1>Current Temperature: {weather.temp}°C</h1>
-      <p>Conditions: {weather.weather[0].description}</p>
+    <div className="p-5 bg-blue-100 rounded-lg shadow">
+      <h2 className="text-2xl font-bold text-blue-700">Current Weather</h2>
+      <p className="text-xl">Temperature: {data.temp}°C</p>
+      <p className="text-xl">Conditions: {data.weather[0].description}</p>
     </div>
   );
 };
 
-export default CurrentWeatherDisplay;
+export default CurrentWeather;
