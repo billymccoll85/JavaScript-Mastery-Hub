@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import QuestionCard from './QuestionCard'; // Importing the QuestionCard component
-import NavigationButton from './NavigationButton'; // Importing the NavigationButton component
+import React, { useState, useEffect, useMemo } from 'react';
+import QuestionCard from './QuestionCard';
+import NavigationButton from './NavigationButton';
+import ResultCard from './ResultCard';
 
 const QuizContainer = () => {
-    // Example questions data structure
-    const questions = [
+    // useMemo to initialize questions array
+    const questions = useMemo(() => [
         { id: 1, questionText: "What does HTML stand for?", answers: [
             { text: "Hyper Text Markup Language", isCorrect: true },
             { text: "Home Tool Markup Language", isCorrect: false },
@@ -125,51 +126,61 @@ const QuizContainer = () => {
             { text: "var myVariable;", isCorrect: true },
             { text: "myVariable = var;", isCorrect: false }
         ]}
-    ];
-    
+    ], []);
 
-    // State to track the current question index
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-    // State to track user's answers: storing question ids and selected answer texts
     const [userAnswers, setUserAnswers] = useState([]);
+    const [score, setScore] = useState(0);
 
-    // Function to handle user's answer selection
-    const handleAnswer = (answerText) => {
+    // Calculate the score
+    useEffect(() => {
+        const calculateScore = () => {
+            let newScore = userAnswers.reduce((acc, answer) => {
+                const question = questions.find(q => q.id === answer.questionId);
+                const correctAnswer = question.answers.find(a => a.isCorrect).text;
+                return acc + (answer.answerText === correctAnswer ? 1 : 0);
+            }, 0);
+            setScore(newScore);
+        };
+
+        if (userAnswers.length === questions.length) {
+            calculateScore();
+        }
+    }, [userAnswers, questions]); // Now questions is stable and won't cause re-runs
+
+    const handleAnswerSelection = (answerText) => {
         const newAnswers = [...userAnswers, { questionId: questions[currentQuestionIndex].id, answerText }];
         setUserAnswers(newAnswers);
 
-        // Move to the next question or do something else when the answer is selected
-        if (currentQuestionIndex < questions.length - 1) {
-            setCurrentQuestionIndex(currentQuestionIndex + 1);
-        } else {
-            // All questions answered
-            console.log('Quiz completed. Answers:', newAnswers);
-            // Here you could navigate to a results component or handle the end of the quiz
+        // Automatically move to the next question if not the last one
+        const nextQuestionIndex = currentQuestionIndex + 1;
+        if (nextQuestionIndex < questions.length) {
+            setCurrentQuestionIndex(nextQuestionIndex);
         }
     };
 
-    // Function to navigate to the next question
     const goToNext = () => {
-        if (currentQuestionIndex < questions.length - 1) {
-            setCurrentQuestionIndex(currentQuestionIndex + 1);
+        const nextQuestionIndex = currentQuestionIndex + 1;
+        if (nextQuestionIndex < questions.length) {
+            setCurrentQuestionIndex(nextQuestionIndex);
         }
     };
 
-    // Function to navigate to the previous question
     const goToPrevious = () => {
-        if (currentQuestionIndex > 0) {
-            setCurrentQuestionIndex(currentQuestionIndex - 1);
+        const prevQuestionIndex = currentQuestionIndex - 1;
+        if (prevQuestionIndex >= 0) {
+            setCurrentQuestionIndex(prevQuestionIndex);
         }
     };
 
     return (
-        <div className="quiz-container">
-            <h1>Quiz on Web Development</h1>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex flex-col justify-center items-center">
+            <h1 className="text-2xl font-bold text-center mb-6">Quiz on Web Development</h1>
             {questions && questions.length > 0 && (
-                <>
+                <div className="w-full max-w-4xl">
                     <QuestionCard
                         question={questions[currentQuestionIndex]}
-                        handleAnswer={handleAnswer}
+                        handleAnswer={handleAnswerSelection}
                     />
                     <NavigationButton
                         goToNext={goToNext}
@@ -177,7 +188,26 @@ const QuizContainer = () => {
                         currentIndex={currentQuestionIndex}
                         totalQuestions={questions.length}
                     />
-                </>
+                    
+                    {userAnswers.length === questions.length && (
+                        <div>
+                            {questions.map((question, index) => (
+                                <ResultCard
+                                    key={question.id}
+                                    question={question}
+                                    userAnswer={userAnswers.find(answer => answer.questionId === question.id)?.answerText}
+                                />
+                            ))}
+                            <div className="score mt-4 text-center">
+                                Your score: {score} / {questions.length}
+                            </div>
+                        </div>
+                    )}
+
+                    <p className="text-sm mb-2 text-center">
+                        Question {currentQuestionIndex + 1} of {questions.length}
+                    </p>
+                </div>
             )}
         </div>
     );
