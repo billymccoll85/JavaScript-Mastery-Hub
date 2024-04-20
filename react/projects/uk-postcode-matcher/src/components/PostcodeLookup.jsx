@@ -17,30 +17,37 @@ function PostcodeLookup() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        if (!postcode) {
-            setError('Please enter a postcode');
-            return;
-        }
+        setError('');
+        clearData(); // Ensure data is cleared before making a new search
+
+        // Determine if the input is likely a full postcode or an outcode
+        const isOutcode = /^[A-Z]{1,2}\d[A-Z\d]?$/i.test(postcode);
+
+        const baseUrl = 'https://api.postcodes.io/';
+        const url = isOutcode ? `${baseUrl}outcodes/${encodeURIComponent(postcode)}` : `${baseUrl}postcodes/${encodeURIComponent(postcode)}`;
 
         try {
-            const response = await fetch(`https://api.postcodes.io/postcodes/${postcode}`);
+            const response = await fetch(url);
             const data = await response.json();
             if (data.status === 200 && data.result) {
-                setAdminWard(data.result.admin_ward);
-                setAdminDistrict(data.result.admin_district);
-                setMsoa(data.result.msoa);
-                setDateIntroduced(data.result.date_of_introduction);
-                setLatitude(data.result.latitude);
-                setLongitude(data.result.longitude);
-                setOutcode(data.result.outcode);
-                setError('');
+                if (isOutcode) {
+                    setAdminDistrict(data.result.admin_district || []);
+                    setLatitude(data.result.latitude);
+                    setLongitude(data.result.longitude);
+                } else {
+                    setAdminWard(data.result.admin_ward);
+                    setAdminDistrict(data.result.admin_district);
+                    setMsoa(data.result.msoa);
+                    setDateIntroduced(data.result.date_of_introduction);
+                    setLatitude(data.result.latitude);
+                    setLongitude(data.result.longitude);
+                    setOutcode(data.result.outcode);
+                }
             } else {
-                clearData();
                 setError('No results found');
             }
         } catch (error) {
             console.error(error);
-            clearData();
             setError('Failed to fetch data');
         }
     };
@@ -56,37 +63,30 @@ function PostcodeLookup() {
     };
 
     return (
-        <div className="max-w-md mx-auto p-4">
-            <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                    <input
-                        type="text"
-                        value={postcode}
-                        onChange={handleInputChange}
-                        placeholder="Enter postcode"
-                        className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    />
-                </div>
-                <div>
-                    <button
-                        type="submit"
-                        className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    >
-                        Lookup
-                    </button>
-                </div>
+        <div>
+            <form onSubmit={handleSubmit}>
+                <input
+                    type="text"
+                    value={postcode}
+                    onChange={handleInputChange}
+                    placeholder="Enter full postcode or outcode"
+                    className="input-field-class"
+                />
+                <button type="submit">Lookup</button>
             </form>
-            {error && <p className="text-red-500 text-sm">{error}</p>}
+            {error && <p>Error: {error}</p>}
             {!error && (
-                <div className="mt-4 space-y-2">
-                    {adminWard && <p><strong>Admin Ward:</strong> {adminWard}</p>}
-                    {adminDistrict && <p><strong>Admin District:</strong> {adminDistrict}</p>}
-                    {msoa && <p><strong>MSOA:</strong> {msoa}</p>}
-                    {dateIntroduced && <p><strong>Date Postcode Introduced:</strong> {dateIntroduced}</p>}
-                    {latitude && longitude && (
-                        <p><strong>Location:</strong> Lat {latitude}, Long {longitude}</p>
+                <div>
+                    {adminWard && <p>Admin Ward: {adminWard}</p>}
+                    {adminDistrict.length > 0 ? (
+                        <p>Admin Districts: {adminDistrict.join(', ')}</p>
+                    ) : (
+                        <p>Admin District: {adminDistrict}</p>
                     )}
-                    {outcode && <p><strong>Outcode:</strong> {outcode}</p>}
+                    {msoa && <p>MSOA: {msoa}</p>}
+                    {dateIntroduced && <p>Date Postcode Introduced: {dateIntroduced}</p>}
+                    {latitude && longitude && <p>Location: Lat {latitude}, Long {longitude}</p>}
+                    {outcode && <p>Outcode: {outcode}</p>}
                 </div>
             )}
         </div>
