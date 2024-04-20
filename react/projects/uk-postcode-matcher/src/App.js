@@ -3,11 +3,13 @@ import PostcodeLookup from './components/PostcodeLookup';  // Make sure the path
 
 function App() {
   return (
-    <div className="flex flex-col justify-center items-center">
-      <header className="bg-blue-800 text-white p-6 w-full">
+    <div className="h-lvh flex flex-col bg-slate-900 text-white">
+      <header className="bg-slate-900 text-sky-400 p-6 w-full border-b-2 border-sky-400">
         <h1 className="text-center text-3xl font-bold">UK Postcode Lookup</h1>
       </header>
-      <PostcodeLookup />
+      <div className="flex justify-center"> {/* This div takes the remaining height */}
+        <PostcodeLookup />
+      </div>
     </div>
   );
 }
