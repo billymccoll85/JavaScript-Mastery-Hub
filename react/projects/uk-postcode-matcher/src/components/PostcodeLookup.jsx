@@ -1,4 +1,8 @@
 import React, { useState } from 'react';
+import RenderList from './RenderList';
+import ErrorMessage from './ErrorMessage';  
+import LoadingIndicator from './LoadingIndicator';
+import { formatDate } from '../utils/utils';
 
 function PostcodeLookup() {
     const [input, setInput] = useState('');
@@ -6,9 +10,7 @@ function PostcodeLookup() {
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false);
 
-    const handleInputChange = (event) => {
-        setInput(event.target.value);
-    };
+    const handleInputChange = (event) => setInput(event.target.value);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -16,11 +18,13 @@ function PostcodeLookup() {
         setResults([]);
         setIsLoading(true);
 
+        // Logic for fetching postcodes
         const postcodes = input.split(',').map(pc => pc.trim()).filter(pc => pc !== '');
         const baseUrl = 'https://api.postcodes.io/';
         const fetchPromises = postcodes.map(postcode => {
-            const isOutcode = /^[A-Z]{1,2}\d[A-Z\d]?$/i.test(postcode);
-            const endpoint = isOutcode ? `outcodes/${encodeURIComponent(postcode)}` : `postcodes/${encodeURIComponent(postcode)}`;
+            const endpoint = /^[A-Z]{1,2}\d[A-Z\d]?$/i.test(postcode) ? 
+                             `outcodes/${encodeURIComponent(postcode)}` : 
+                             `postcodes/${encodeURIComponent(postcode)}`;
             return fetch(`${baseUrl}${endpoint}`).then(res => res.json());
         });
 
@@ -45,14 +49,6 @@ function PostcodeLookup() {
         setIsLoading(false);
     };
 
-    const formatDate = (dateStr) => {
-        if (!dateStr) return '';
-        const date = new Date(dateStr);
-        const month = date.toLocaleString('en-GB', { month: 'long' });
-        const year = date.getFullYear();
-        return `${month} ${year}`;
-    };
-
     return (
         <div className="w-full max-w-md mx-auto p-6 antialiased text-slate-500 dark:text-slate-400 bg-slate-700 shadow-md rounded-lg my-12">
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -68,16 +64,15 @@ function PostcodeLookup() {
                     className="w-full text-slate-900 hover:text-sky-400 bg-sky-400 hover:bg-slate-900 focus:outline-none focus:ring-2 border border-sky-400 hover:focus:ring-sky-400 focus:ring-opacity-50 rounded-md text-sm py-2"
                     disabled={isLoading}
                 >
-                    {isLoading ? 'Loading...' : 'Lookup'}
+                    {isLoading ? <LoadingIndicator /> : 'Lookup'}
                 </button>
             </form>
-            {error && <p className="text-red-500">{error}</p>}
+            {error && <ErrorMessage message={error} />}
             <div className="mt-4 space-y-4">
                 {results.map((result, index) => (
                     <div key={index} className="p-4 bg-slate-600 text-white rounded-lg shadow">
-                        {/* <p><strong>{result.isOutcode ? 'Outcode' : 'Postcode'}:</strong> {result.postcode}</p> */}
                         {result.error ? (
-                            <p className="text-red-500">{result.error}</p>
+                            <ErrorMessage message={result.error} />
                         ) : (
                             <>
                                 <RenderList title="Wards" items={result.result.admin_ward} />
@@ -94,27 +89,5 @@ function PostcodeLookup() {
         </div>
     );
 }
-
-function RenderList({ title, items }) {
-    // Check if items is an array and it has items
-    if (!Array.isArray(items) || items.length === 0) {
-        return null; // Return null if items is not an array or if it's empty
-    }
-
-    // Render the <p> element with or without mt-4 class based on index
-    return (
-        <>
-            {items.map((item, idx) => (
-                <React.Fragment key={idx}>
-                    <p className={idx === 0 ? '' : 'mt-4'}><strong>{title}:</strong></p>
-                    <ul>
-                        <li>{item}</li>
-                    </ul>
-                </React.Fragment>
-            ))}
-        </>
-    );
-}
-
 
 export default PostcodeLookup;
