@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import RenderList from './RenderList';
-import ErrorMessage from './ErrorMessage';  
+import PostcodeInput from './PostcodeInput';  
+import ErrorMessage from './ErrorMessage';
 import LoadingIndicator from './LoadingIndicator';
+import RenderList from './RenderList';
 import { formatDate } from '../utils/utils';
 
 function PostcodeLookup() {
@@ -10,15 +11,17 @@ function PostcodeLookup() {
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false);
 
-    const handleInputChange = (event) => setInput(event.target.value);
+    const handleInputChange = (event) => {
+        setInput(event.target.value);
+    };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        if (!input) return;
         setError('');
         setResults([]);
         setIsLoading(true);
 
-        // Logic for fetching postcodes
         const postcodes = input.split(',').map(pc => pc.trim()).filter(pc => pc !== '');
         const baseUrl = 'https://api.postcodes.io/';
         const fetchPromises = postcodes.map(postcode => {
@@ -44,29 +47,27 @@ function PostcodeLookup() {
         } catch (err) {
             console.error(err);
             setError('Failed to fetch data');
+        } finally {
+            setIsLoading(false);
         }
+    };
 
-        setIsLoading(false);
+    const handleClear = () => {
+        setInput('');
+        setResults([]);
+        setError('');
     };
 
     return (
         <div className="w-full max-w-md mx-auto p-6 antialiased text-slate-500 dark:text-slate-400 bg-slate-700 shadow-md rounded-lg my-12">
-            <form onSubmit={handleSubmit} className="space-y-4">
-                <input
-                    type="text"
-                    value={input}
-                    onChange={handleInputChange}
-                    placeholder="Enter Postcodes (comma-separated)"
-                    className="mt-1 block w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                />
-                <button
-                    type="submit"
-                    className="w-full text-slate-900 hover:text-sky-400 bg-sky-400 hover:bg-slate-900 focus:outline-none focus:ring-2 border border-sky-400 hover:focus:ring-sky-400 focus:ring-opacity-50 rounded-md text-sm py-2"
-                    disabled={isLoading}
-                >
-                    {isLoading ? <LoadingIndicator /> : 'Lookup'}
-                </button>
-            </form>
+            <PostcodeInput
+                input={input}
+                handleInputChange={handleInputChange}
+                handleSubmit={handleSubmit}
+                handleClear={handleClear}
+                isLoading={isLoading}
+            />
+            {isLoading && <LoadingIndicator />}
             {error && <ErrorMessage message={error} />}
             <div className="mt-4 space-y-4">
                 {results.map((result, index) => (

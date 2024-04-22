@@ -1,5 +1,5 @@
 import React from 'react';
-import RenderList from './RenderList'; // This will be a separate file
+import RenderList from './RenderList';
 
 const PostcodeResults = ({ results }) => (
     <div className="mt-4 space-y-4">
