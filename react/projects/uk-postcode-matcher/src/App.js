@@ -3,7 +3,7 @@ import PostcodeLookup from './components/PostcodeLookup';  // Make sure the path
 
 function App() {
   return (
-    <div className="h-lvh flex flex-col bg-slate-900 text-white">
+    <div className="min-h-screen flex flex-col bg-slate-900 text-white">
       <header className="bg-slate-900 text-sky-400 p-6 w-full border-b-2 border-sky-400">
         <h1 className="text-center text-3xl font-bold">UK Postcode Lookup</h1>
         <p className='text-center text-sm'>&#169; Copyright William McColl</p>

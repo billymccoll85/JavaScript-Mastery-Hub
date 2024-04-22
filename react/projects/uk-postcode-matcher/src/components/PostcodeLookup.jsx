@@ -54,7 +54,7 @@ function PostcodeLookup() {
     };
 
     return (
-        <div className="w-full max-w-md mx-auto p-6 antialiased text-slate-500 dark:text-slate-400 bg-slate-700 shadow-md rounded-lg mt-12">
+        <div className="w-full max-w-md mx-auto p-6 antialiased text-slate-500 dark:text-slate-400 bg-slate-700 shadow-md rounded-lg my-12">
             <form onSubmit={handleSubmit} className="space-y-4">
                 <input
                     type="text"
@@ -80,12 +80,12 @@ function PostcodeLookup() {
                             <p className="text-red-500">{result.error}</p>
                         ) : (
                             <>
-                                <RenderList className="pb-4" title="Wards" items={result.result.admin_ward} />
+                                <RenderList title="Wards" items={result.result.admin_ward} />
                                 <RenderList title="Districts" items={result.result.admin_district} />
-                                {result.result.msoa && <p className="mt-2"><strong>MSOA:</strong> {result.result.msoa}</p>}
-                                {result.result.date_of_introduction && <p><strong>Date Introduced:</strong> {formatDate(result.result.date_of_introduction)}</p>}
-                                {result.result.latitude && result.result.longitude && <p><strong>Location:</strong> Lat {result.result.latitude}, Long {result.result.longitude}</p>}
-                                {result.result.outcode && <p><strong>Outcode:</strong> {result.result.outcode}</p>}
+                                {result.result.msoa && <p className="mb-4 mt-2"><strong>MSOA:</strong> {result.result.msoa}</p>}
+                                {result.result.date_of_introduction && <p className='mt-4'><strong>Date Introduced:</strong> {formatDate(result.result.date_of_introduction)}</p>}
+                                {result.result.latitude && result.result.longitude && <p className='mt-4'><strong>Location:</strong> Lat {result.result.latitude}, Long {result.result.longitude}</p>}
+                                {result.result.outcode && <p className='mt-4'><strong>Outcode:</strong> {result.result.outcode}</p>}
                             </>
                         )}
                     </div>
@@ -96,19 +96,25 @@ function PostcodeLookup() {
 }
 
 function RenderList({ title, items }) {
-    // Check if items is an array or not
+    // Check if items is an array and it has items
     if (!Array.isArray(items) || items.length === 0) {
-        return null; // Return null if items is not an array or is empty
+        return null; // Return null if items is not an array or if it's empty
     }
 
+    // Render the <p> element with or without mt-4 class based on index
     return (
         <>
-            <p className="mb-2"><strong>{title}:</strong></p>
-            <ul>
-                {items.map((item, idx) => <li key={idx}>{item}</li>)}
-            </ul>
+            {items.map((item, idx) => (
+                <React.Fragment key={idx}>
+                    <p className={idx === 0 ? '' : 'mt-4'}><strong>{title}:</strong></p>
+                    <ul>
+                        <li>{item}</li>
+                    </ul>
+                </React.Fragment>
+            ))}
         </>
     );
 }
+
 
 export default PostcodeLookup;
