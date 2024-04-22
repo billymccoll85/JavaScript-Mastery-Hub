@@ -1,6 +1,7 @@
 import React from 'react';
 import PostcodeLookup from './components/PostcodeLookup';
 import Header from './components/Header';
+import { Analytics } from "@vercel/analytics/react"
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <Header />
       <div className="flex justify-center p-4">
         <PostcodeLookup />
+        <Analytics/>
       </div>
     </div>
   );
