@@ -6,109 +6,57 @@ import ResultCard from './ResultCard';
 const QuizContainer = () => {
     // useMemo to initialize questions array
     const questions = useMemo(() => [
-        { id: 1, questionText: "What does HTML stand for?", answers: [
-            { text: "Hyper Text Markup Language", isCorrect: true },
-            { text: "Home Tool Markup Language", isCorrect: false },
-            { text: "Hyperlinks and Text Markup Language", isCorrect: false },
-            { text: "Hyper Tool Multi Language", isCorrect: false }
-        ]},
-        { id: 2, questionText: "Which language runs in a web browser?", answers: [
-            { text: "Java", isCorrect: false },
-            { text: "C", isCorrect: false },
-            { text: "Python", isCorrect: false },
-            { text: "JavaScript", isCorrect: true }
-        ]},
-        { id: 3, questionText: "What is the correct HTML element for the largest heading?", answers: [
-            { text: "<h1>", isCorrect: true },
-            { text: "<heading>", isCorrect: false },
-            { text: "<head>", isCorrect: false },
-            { text: "<h6>", isCorrect: false }
-        ]},
-        { id: 4, questionText: "Which CSS property is used to change the text color of an element?", answers: [
-            { text: "color", isCorrect: true },
-            { text: "font-color", isCorrect: false },
-            { text: "text-color", isCorrect: false },
-            { text: "foreground-color", isCorrect: false }
-        ]},
-        { id: 5, questionText: "Inside which HTML element do we put the JavaScript?", answers: [
-            { text: "<js>", isCorrect: false },
-            { text: "<javascript>", isCorrect: false },
-            { text: "<script>", isCorrect: true },
-            { text: "<code>", isCorrect: false }
-        ]},
-        { id: 6, questionText: "Which CSS property is used to control the spacing between lines of text?", answers: [
-            { text: "line-height", isCorrect: true },
-            { text: "spacing", isCorrect: false },
-            { text: "letter-spacing", isCorrect: false },
-            { text: "text-spacing", isCorrect: false }
-        ]},
-        { id: 7, questionText: "What is the correct JavaScript syntax to change the content of an HTML element?", answers: [
-            { text: "document.getElementById('demo').innerHTML = 'Hello World!';", isCorrect: true },
-            { text: "#demo.innerHTML = 'Hello World!';", isCorrect: false },
-            { text: "document.getElementByName('demo').innerHTML = 'Hello World!';", isCorrect: false },
-            { text: "document.getElement('demo').innerHTML = 'Hello World!';", isCorrect: false }
-        ]},
-        { id: 8, questionText: "Which HTML attribute specifies an alternate text for an image, if the image cannot be displayed?", answers: [
-            { text: "title", isCorrect: false },
-            { text: "src", isCorrect: false },
-            { text: "alt", isCorrect: true },
-            { text: "href", isCorrect: false }
-        ]},
-        { id: 9, questionText: "How do you create a function in JavaScript?", answers: [
-            { text: "function:myFunction()", isCorrect: false },
-            { text: "function = myFunction()", isCorrect: false },
-            { text: "function myFunction()", isCorrect: true },
-            { text: "myFunction():function", isCorrect: false }
-        ]},
-        { id: 10, questionText: "How do you call a function named 'myFunction'?", answers: [
-            { text: "myFunction()", isCorrect: true },
-            { text: "call myFunction()", isCorrect: false },
-            { text: "call function myFunction()", isCorrect: false },
-            { text: "run myFunction()", isCorrect: false }
-        ]}
-
+        // Array containing the quiz questions and their respective answers
+        // Each question object contains an id, questionText, and an array of answers
+        // Each answer object contains text and a boolean indicating if it's correct
+        // Example question object: { id: 1, questionText: "What does HTML stand for?", answers: [ ... ] }
     ], []);
 
-    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-    const [userAnswers, setUserAnswers] = useState([]);
-    const [score, setScore] = useState(0);
-    const [quizFinished, setQuizFinished] = useState(false);
+    // State variables
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0); // Track the index of the current question
+    const [userAnswers, setUserAnswers] = useState([]); // Track user's answers
+    const [score, setScore] = useState(0); // Track the user's score
+    const [quizFinished, setQuizFinished] = useState(false); // Track if the quiz is finished
 
-    // Calculate the score
+    // Calculate the score when the quiz is finished
     useEffect(() => {
         if (quizFinished) {
             const newScore = userAnswers.reduce((acc, answer) => {
+                // Iterate through user's answers to calculate the score
                 const question = questions.find(q => q.id === answer.questionId);
                 const correctAnswer = question.answers.find(a => a.isCorrect).text;
                 return acc + (answer.answerText === correctAnswer ? 1 : 0);
             }, 0);
-            setScore(newScore);
+            setScore(newScore); // Update the score
         }
     }, [userAnswers, questions, quizFinished]);
 
+    // Handle user's answer selection
     const handleAnswerSelection = (answerText) => {
         const newAnswers = [...userAnswers, { questionId: questions[currentQuestionIndex].id, answerText }];
-        setUserAnswers(newAnswers);
+        setUserAnswers(newAnswers); // Update the user's answers array
 
         // Automatically move to the next question if not the last one
         const nextQuestionIndex = currentQuestionIndex + 1;
         if (nextQuestionIndex < questions.length) {
-            setCurrentQuestionIndex(nextQuestionIndex);
+            setCurrentQuestionIndex(nextQuestionIndex); // Move to the next question
         } else {
             setQuizFinished(true); // Mark the quiz as finished
         }
     };
 
+    // Function to navigate to the next question
     const goToNext = () => {
         const nextQuestionIndex = currentQuestionIndex + 1;
         if (nextQuestionIndex < questions.length) {
-            setCurrentQuestionIndex(nextQuestionIndex);
+            setCurrentQuestionIndex(nextQuestionIndex); // Move to the next question
         }
     };
 
+    // Function to navigate to the previous question
     const goToPrevious = () => {
         if (currentQuestionIndex > 0) {
-            setCurrentQuestionIndex(currentQuestionIndex - 1);
+            setCurrentQuestionIndex(currentQuestionIndex - 1); // Move to the previous question
         }
     };
 
@@ -116,6 +64,7 @@ const QuizContainer = () => {
         <div className="container my-20 mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex flex-col justify-center items-center">
             <h1 className="text-2xl font-bold text-center mb-6">Quiz on Web Development</h1>
             {!quizFinished ? (
+                // Render question card and navigation buttons if the quiz is not finished
                 <div className="w-full max-w-4xl">
                     <QuestionCard
                         question={questions[currentQuestionIndex]}
@@ -132,6 +81,7 @@ const QuizContainer = () => {
                     </p>
                 </div>
             ) : (
+                // Render result cards and score if the quiz is finished
                 <div className="w-full max-w-4xl">
                     {questions.map((question, index) => (
                         <ResultCard

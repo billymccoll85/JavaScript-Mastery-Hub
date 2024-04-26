@@ -4,15 +4,15 @@ const QuestionCard = ({ question, handleAnswer }) => {
     // State to manage the currently selected option
     const [selectedOption, setSelectedOption] = useState('');
 
-    // Handle option change
+    // Handle option change event
     const handleOptionChange = (e) => {
-        setSelectedOption(e.target.value);
+        setSelectedOption(e.target.value); // Event: onChange, updates selectedOption state with the value of the selected option
     };
 
-    // Handle form submission
+    // Handle form submission event
     const handleSubmit = (e) => {
         e.preventDefault();
-        handleAnswer(selectedOption);
+        handleAnswer(selectedOption); // Event: onSubmit, triggers handleAnswer function with the selected option as argument
     };
 
     return (
@@ -27,7 +27,7 @@ const QuestionCard = ({ question, handleAnswer }) => {
                                 name="answer"
                                 value={answer.text}
                                 checked={selectedOption === answer.text}
-                                onChange={handleOptionChange}
+                                onChange={handleOptionChange} // Event: onChange, triggers handleOptionChange function
                                 className="form-radio h-5 w-5 text-blue-600"
                             />
                             <span className="text-gray-700">{answer.text}</span>
